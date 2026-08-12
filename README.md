@@ -17,4 +17,4 @@ Após a bomba, o fluido passa por um acumulador, que contribui para estabilizar 
 A abertura e o fechamento das válvulas são controlados pelo sistema de automação, permitindo que o abastecimento das garrafas ocorra de forma controlada e repetível. Nesta etapa, também serão integrados sensores de nível, pressão e vazão para permitir o monitoramento das principais variáveis do processo pelo sistema SCADA.
 
 ## Diagrama do Processo
-<img width="1600" height="940" alt="image" src="https://github.com/user-attachments/assets/7c7191d5-92e2-4db9-9df7-4793c34c3459" />
+<img width="1600" height="1403" alt="image" src="https://github.com/user-attachments/assets/bdcb7233-5dc2-4afa-9070-5f4fa51626d4" />
