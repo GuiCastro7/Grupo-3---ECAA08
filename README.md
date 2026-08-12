@@ -15,3 +15,6 @@ Nesta etapa, a bebida armazenada no reservatório principal é direcionada ao si
 Após a bomba, o fluido passa por um acumulador, que contribui para estabilizar o fornecimento, e então segue para a válvula solenoide responsável pelo suprimento das garrafas.
 
 A abertura e o fechamento das válvulas são controlados pelo sistema de automação, permitindo que o abastecimento das garrafas ocorra de forma controlada e repetível. Nesta etapa, também serão integrados sensores de nível, pressão e vazão para permitir o monitoramento das principais variáveis do processo pelo sistema SCADA.
+
+## Diagrama do Processo
+<img width="3884" height="2284" alt="image" src="https://github.com/user-attachments/assets/e7e69948-6e27-479a-9d91-c074d907e9d3" />
