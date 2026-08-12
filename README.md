@@ -1,5 +1,5 @@
 # SCADA-Core - Engarrafamento e Inspeção de Bebidas.
-Grupo 3 da disciplina de Automática (ECAA08) 
+**Grupo 3 da disciplina de Automática (ECAA08)** 
 Integrantes:  
 Guilherme Narciso Castro Silva;  
 Rafael Ribeiro Guedes;  
