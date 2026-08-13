@@ -22,6 +22,10 @@ O enchimento das garrafas é realizado pela Válvula de Enchimento (VS2). A aber
 
 ### Módulo de Inspeção de Nível
 
+Após o envase, o sistema realiza a verificação do nível de preenchimento das garrafas. A Válvula Solenoide (VS3) controla o acionamento do mecanismo responsável por posicionar o Sensor de Nível (SL1) na região de inspeção.
+
+O sensor verifica se o líquido atingiu o nível esperado, permitindo identificar garrafas que não foram preenchidas adequadamente. O resultado da inspeção é utilizado pelo sistema de controle para determinar se a unidade está aprovada ou deve ser rejeitada.
+
 ### Sistema de Tampagem
 
 ### Inspeção de Integridade da Vedação
