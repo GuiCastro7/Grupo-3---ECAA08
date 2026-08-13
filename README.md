@@ -28,6 +28,10 @@ O sensor verifica se o líquido atingiu o nível esperado, permitindo identifica
 
 ### Sistema de Tampagem
 
+Após a aprovação do nível de enchimento, a garrafa segue para a etapa de tampagem. A Válvula Solenoide (VS4) controla o acionamento do Atuador de Capping (AC1), responsável por realizar a aplicação da tampa na garrafa.
+
+O acionamento do atuador é realizado conforme a sequência definida pelo sistema de automação, garantindo que a tampa seja posicionada e fixada corretamente antes que a garrafa avance para a próxima etapa.
+
 ### Inspeção de Integridade da Vedação
 
 ## Diagrama do Processo
