@@ -16,3 +16,6 @@
 | **VS4**  | Válvula Solenoide 4     | A ferramenta de tampar (Capping) está posicionada.          | Saída (DO)   |
 | **AC1**  | Atuador de Capping      | O cabeçote está rosqueando/pressionando a tampa.            | Saída (DO)   |
 | **VS5**  | Válvula Solenoide 5     | O sensor SFC1 está posicionado para inspeção.               | Saída (DO)   |
+
+___
+<img width="1600" height="1240" alt="image" src="https://github.com/user-attachments/assets/334cf68c-0975-4158-8a47-c0ad7f6d98a8" />
