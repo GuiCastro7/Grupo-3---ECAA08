@@ -22,5 +22,4 @@ Assim, o projeto integra o processo físico de envase ao sistema de controle e s
 
 
 ## Diagrama do Processo
-<img width="1600" height="1240" alt="image" src="https://github.com/user-attachments/assets/aaeafb85-bd65-4480-845c-4b369b93780c" />
-
+<img width="1600" height="1240" alt="image" src="https://github.com/user-attachments/assets/2660427f-9ae6-4b10-84b9-61a965b0749f" />
