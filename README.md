@@ -34,5 +34,9 @@ O acionamento do atuador é realizado conforme a sequência definida pelo sistem
 
 ### Inspeção de Integridade da Vedação
 
+Na etapa final, o sistema verifica a presença da tampa na garrafa. A Válvula Solenoide (VS5) controla o mecanismo responsável por posicionar o Sensor de Fim de Curso (SFC1) para realizar a inspeção.
+
+A detecção é baseada na presença ou ausência de uma barreira física. Caso o sensor detecte a presença da tampa, a garrafa é considerada aprovada. Caso o sensor complete o curso sem detectar a tampa, o sistema registra uma falha e classifica a garrafa como reprovada.
+
 ## Diagrama do Processo
 <img width="1600" height="1240" alt="image" src="https://github.com/user-attachments/assets/2660427f-9ae6-4b10-84b9-61a965b0749f" />
