@@ -8,6 +8,10 @@ Nickolas Nicoleto Musico;
 
 ## Descrição do Processo
 
+### Logística de Transporte
+
+O transporte das unidades (garrafas) ao longo de todas as etapas é realizado pela Esteira Transportadora (RC1). Este ativo é controlado de forma intermitente pelo motor do sistema, garantindo o posicionamento preciso das garrafas sob os módulos de enchimento, tampagem e inspeção.
+
 ### Sistema de Suprimento e Envasamento de Precisão
 
 Este módulo gerencia a extração do fluido do Reservatório Principal (TS1) e sua distribuição controlada.
