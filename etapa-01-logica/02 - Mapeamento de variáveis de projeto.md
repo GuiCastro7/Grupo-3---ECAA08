@@ -1,8 +1,11 @@
 ## Tabela de Mapeamento: Variáveis de Processo para Proposições Lógicas
 
-___
+### Tabela de proposições
+
+
+
 <img width="1600" height="1240" alt="image" src="https://github.com/user-attachments/assets/334cf68c-0975-4158-8a47-c0ad7f6d98a8" />
-___
+
 ### Tabela: Sigla/Componente
 
 | Tag      | Descrição do Componente    |
