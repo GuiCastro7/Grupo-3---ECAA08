@@ -1,15 +1,24 @@
-Aula 04: Lógica Proposicional — Conectivos e Blocos de Permissivos
-1. Fundamentos Matemáticos: Conectivos LógicosNa matemática discreta, uma proposição é uma sentença declarativa que assume um e apenas um valor-verdade: Verdadeiro ($1$) ou Falso ($0$). 
+# Aula 04: Lógica Proposicional — Conectivos e Blocos de Permissivos
+
+## 1. Fundamentos Matemáticos: Conectivos Lógicos
+
+Na matemática discreta, uma proposição é uma sentença declarativa que assume um e apenas um valor-verdade: Verdadeiro ($1$) ou Falso ($0$).
+
 Na automação de processos, esses valores correspondem diretamente a níveis lógicos em Controladores Lógicos Programáveis (CLP), contatos normalmente abertos/fechados (NA/NF) e estados de
 variáveis digitais.
-As operações sobre variáveis proposicionais são definidas por operadores lógicos fundamentais:Negação ($\neg A$ ou $\bar{A}$): Inverte o valor-verdade da proposição. Em circuitos de
+As operações sobre variáveis proposicionais são definidas por operadores lógicos fundamentais:
+1. **Negação ($\neg A$ ou $\bar{A}$): Inverte o valor-verdade da proposição. Em circuitos de
 controle, modela contatos normalmente fechados (NF), estados de alarme e falhas ativas em nível lógico zero (fail-safe).Conjunção ($A \land B$): Verdadeira se e somente se ambos os 
 operandos forem verdadeiros. Em automação, modela circuitos e condições em série (cadeias de permissivos de segurança e intertravamentos de partida).Disjunção ($A \lor B$): Verdadeira se ao 
 menos um dos operandos for verdadeiro. Em automação, modela circuitos em paralelo, caminhos redundantes de segurança ou múltiplas condições de desligamento de emergência (Trips).Disjunção 
 Exclusiva ($A \oplus B$): Verdadeira se exatamente um dos operandos for verdadeiro ($\neg(A \leftrightarrow B)$). Utilizada obrigatoriamente na validação de seletores de modo operacional 
 ($\text{Auto} \oplus \text{Manual}$).Implicação / Condicional ($A \rightarrow B$): $\neg A \lor B$. Modela regras operacionais do tipo "SE condição $A$ for atendida, ENTÃO a ação $B$ é
 autorizada".Bicondicional ($A \leftrightarrow B$): $(A \rightarrow B) \land (B \rightarrow A)$. Modela equivalência e sincronismo estrito entre comandos de atuadores e confirmações de 
-sensores de fim de curso.2. Aplicação em Engenharia: Permissivos e Intertravamentos do Sistema de Envasamento e EmbalagemEm sistemas automatizados de controle e supervisão (CLP), um 
+sensores de fim de curso.
+
+---
+
+## 2. Aplicação em Engenharia: Permissivos e Intertravamentos do Sistema de Envasamento e EmbalagemEm sistemas automatizados de controle e supervisão (CLP), um 
 permissivo de partida (Start Permissive) é uma condição booleana que deve ser estritamente satisfeita para que uma ação de comando (energização de bomba, acionamento de esteira ou disparo
 de atuadores pneumáticos) seja executada.A planta é composta pelos seguintes ativos e instrumentos principais:Logística: Esteira Transportadora ($\text{RC1}$).Suprimento e Envase: 
 Reservatório Principal ($\text{TS1}$), Sensores de Pressão ($\text{SP1}$) e Vazão ($\text{SQ1}$), Válvula de Sucção ($\text{VS1}$), Bomba Centrífuga ($\text{BC1}$), Acumulador de
