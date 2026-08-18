@@ -30,15 +30,17 @@ A planta é composta pelos seguintes ativos e instrumentos principais:
 - Inspeção de Vedação: Válvula Solenoide ($\text{VS5}$) e Sensor de Fim de Curso ($\text{SFC1}$).
 
 ### 2.1. Permissivo da Bomba Centrífuga de Alimentação ($P_{\text{BC1}}$)
-A bomba centrífuga $\text{BC1}$ é responsável por transferir o fluido do reservatório principal $\text{TS1}$para o acumulador hidráulico $\text{AS1}$. Seu comando de partida ($cmd_{\text{BC1}}$) requer o atendimento conjunto das seguintes condições:
 
-- Pressão na saída de $\text{TS1}$ dentro da faixa operacional: $sp_{1\_ok}$
-- Vazão/disponibilidade de fluido na linha de sucção confirmada: $sq_{1\_ok}$Válvula solenoide de sucção totalmente aberta e confirmada: $ls_{\text{VS1\_open}}$
+A bomba centrífuga $\text{BC1}$ é responsável por transferir o fluido do reservatório principal $\text{TS1}$ para o acumulador hidráulico $\text{AS1}$. Seu comando de partida ($cmd_{\text{BC1}}$) requer o atendimento conjunto das seguintes condições:
+
+- Pressão na saída de $\text{TS1}$ dentro da faixa operacional: $sp_{\text{1\_ok}}$
+- Vazão/disponibilidade de fluido na linha de sucção confirmada: $sq_{\text{1\_ok}}$
+- Válvula solenoide de sucção totalmente aberta e confirmada: $ls_{\text{VS1\_open}}$
 - Sem alarme de sobrepressão no acumulador $\text{AS1}$: $\neg p_{\text{AS1\_high}}$
 - Botão de parada de emergência inativo: $\neg e_{\text{stop}}$
-- Seleção exclusiva de modooperacional: $\text{Auto} \oplus \text{Manual}$
+- Seleção exclusiva de modo operacional: $\text{Auto} \oplus \text{Manual}$
 
-  $$P_{\text{BC1}} \equiv sp_{1\_ok} \land sq_{1\_ok} \land ls_{\text{VS1\_open}} \land \neg p_{\text{AS1\_high}} \land \neg e_{\text{stop}} \land (\text{Auto} \oplus \text{Manual})$$
+$$P_{\text{BC1}} \equiv sp_{\text{1\_ok}} \land sq_{\text{1\_ok}} \land ls_{\text{VS1\_open}} \land \neg p_{\text{AS1\_high}} \land \neg e_{\text{stop}} \land (\text{Auto} \oplus \text{Manual})$$
 
 ```mermaid
 graph LR
