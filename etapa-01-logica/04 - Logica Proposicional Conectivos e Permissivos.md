@@ -88,12 +88,15 @@ $$\text{Aprov}_{\text{Vedação}} \equiv \text{ext}_{\text{VS5}} \land \text{sfc
 Mesmo após a partida, se qualquer condição crítica de processo falhar, a operação é desarmada instantaneamente.
 
 Para a **Bomba Centrífuga BC1**:
+
 $$\text{Trip}_{\text{BC1}} \equiv \neg sp_{\text{1-ok}} \lor \neg sq_{\text{1-ok}} \lor \neg ls_{\text{VS1-open}} \lor p_{\text{AS1-high}} \lor e_{\text{stop}}$$
 
 Pelas **Leis de De Morgan**:
+
 $$\text{Trip}_{\text{BC1}} \equiv \neg P_{\text{BC1-base}}$$
 
 Para a **Esteira Transportadora RC1**:
+
 $$\text{Trip}_{\text{RC1}} \equiv e_{\text{stop}} \lor \text{act}_{\text{VS2}} \lor \text{ext}_{\text{VS3}} \lor \text{ext}_{\text{VS4}} \lor \text{ext}_{\text{VS5}}$$
 ---
 
