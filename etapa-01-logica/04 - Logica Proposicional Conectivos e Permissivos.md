@@ -98,6 +98,7 @@ $$\text{Trip}_{\text{BC1}} \equiv \neg P_{\text{BC1-base}}$$
 Para a **Esteira Transportadora RC1**:
 
 $$\text{Trip}_{\text{RC1}} \equiv e_{\text{stop}} \lor \text{act}_{\text{VS2}} \lor \text{ext}_{\text{VS3}} \lor \text{ext}_{\text{VS4}} \lor \text{ext}_{\text{VS5}}$$
+
 ---
 
 ## 3. Entregável da Aula 04
