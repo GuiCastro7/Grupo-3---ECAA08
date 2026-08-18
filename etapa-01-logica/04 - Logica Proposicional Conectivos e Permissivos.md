@@ -88,7 +88,139 @@ $$\text{Trip}_{\text{RC1}} \equiv e_{\text{stop}} \lor \text{act}_{\text{VS2}} \
 
 * **Algoritmo de Intertravamento Preliminar:** Implementação em Python dos blocos de permissivos e trips para a bomba $\text{BC1}$, esteira transportadora $\text{RC1}$, válvula de envase $\text{VS2}$, atuador de tampagem $\text{VS4/AC1}$ e módulos de inspeção ($\text{VS3/SL1}$ e $\text{VS5/SFC1}$), avaliando o vetor de estados da planta.
 
+```python
+"""
+Aula 04: Lógica Proposicional — Conectivos e Blocos de Permissivos
+Sistema: Linha Automatizada de Envasamento, Tampagem e Inspeção de Garrafas
+"""
 
+from typing import Dict, Any
+
+
+def xor(a: bool, b: bool) -> bool:
+    """Implementação formal do conectivo de Disjunção Exclusiva (XOR)."""
+    return bool(a ^ b)
+
+
+def avaliar_planta(estado: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Avalia os blocos de permissivos lógicos e intertravamentos de trip
+    com base no vetor de variáveis proposicionais dos sensores e atuadores.
+    """
+    # 1. Modos de Operação e Segurança Geral
+    modo_valido = xor(estado["modo_auto"], estado["modo_manual"])
+    e_stop = estado["e_stop"]
+    sem_emergencia = not e_stop
+
+    # 2. Permissivo e Trip da Bomba Centrífuga BC1
+    p_bc1_base = (
+        estado["sp1_ok"]
+        and estado["sq1_ok"]
+        and estado["ls_vs1_open"]
+        and not estado["p_as1_high"]
+        and sem_emergencia
+    )
+    permissivo_bc1 = p_bc1_base and modo_valido
+    trip_bc1 = (
+        (not estado["sp1_ok"])
+        or (not estado["sq1_ok"])
+        or (not estado["ls_vs1_open"])
+        or estado["p_as1_high"]
+        or e_stop
+    )
+
+    # 3. Permissivo e Trip da Esteira Transportadora RC1
+    bloqueio_mecanico = (
+        estado["act_vs2"]
+        or estado["ext_vs3"]
+        or estado["ext_vs4"]
+        or estado["ext_vs5"]
+    )
+    permissivo_rc1 = (not bloqueio_mecanico) and sem_emergencia and modo_valido
+    trip_rc1 = e_stop or bloqueio_mecanico
+
+    # 4. Permissivo da Válvula de Enchimento VS2
+    permissivo_vs2 = (
+        estado["pos_vs2"]
+        and (not estado["cmd_rc1"])
+        and estado["sp2_ok"]
+        and sem_emergencia
+        and modo_valido
+    )
+
+    # 5. Permissivo da Inspeção de Nível VS3 e Avaliação SL1
+    permissivo_vs3 = (
+        estado["pos_vs3"]
+        and (not estado["cmd_rc1"])
+        and sem_emergencia
+        and modo_valido
+    )
+    aprov_nivel = estado["ext_vs3"] and estado["sl1_nivel_ok"]
+
+    # 6. Permissivo de Tampagem VS4 (AC1)
+    permissivo_vs4 = (
+        estado["pos_vs4"]
+        and estado["aprov_nivel_anterior"]
+        and (not estado["cmd_rc1"])
+        and sem_emergencia
+        and modo_valido
+    )
+
+    # 7. Permissivo da Inspeção de Vedação VS5 e Avaliação SFC1
+    permissivo_vs5 = (
+        estado["pos_vs5"]
+        and (not estado["cmd_rc1"])
+        and sem_emergencia
+        and modo_valido
+    )
+    aprov_vedacao = estado["ext_vs5"] and estado["sfc1_tampa_detectada"]
+
+    return {
+        "Modo_Valido": modo_valido,
+        "P_BC1 (Bomba)": permissivo_bc1,
+        "Trip_BC1": trip_bc1,
+        "P_RC1 (Esteira)": permissivo_rc1,
+        "Trip_RC1": trip_rc1,
+        "P_VS2 (Envase)": permissivo_vs2,
+        "P_VS3 (Insp. Nível)": permissivo_vs3,
+        "Aprov_Nivel": aprov_nivel,
+        "P_VS4 (Tampagem)": permissivo_vs4,
+        "P_VS5 (Insp. Vedação)": permissivo_vs5,
+        "Aprov_Vedacao": aprov_vedacao,
+    }
+
+
+if __name__ == "__main__":
+    cenario_nominal = {
+        "modo_auto": True,
+        "modo_manual": False,
+        "e_stop": False,
+        "sp1_ok": True,
+        "sq1_ok": True,
+        "ls_vs1_open": True,
+        "p_as1_high": False,
+        "sp2_ok": True,
+        "cmd_rc1": False,
+        "act_vs2": False,
+        "ext_vs3": False,
+        "ext_vs4": False,
+        "ext_vs5": False,
+        "pos_vs2": True,
+        "pos_vs3": False,
+        "pos_vs4": False,
+        "pos_vs5": False,
+        "sl1_nivel_ok": False,
+        "aprov_nivel_anterior": True,
+        "sfc1_tampa_detectada": False,
+    }
+
+    resultado = avaliar_planta(cenario_nominal)
+    print("=" * 60)
+    print("ESTADO DOS PERMISSIVOS E INTERTRAVAMENTOS")
+    print("=" * 60)
+    for chave, valor in resultado.items():
+        print(f"{chave:<25}: {str(valor):<6}")
+```
 
 
 
