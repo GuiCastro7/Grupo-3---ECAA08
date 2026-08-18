@@ -55,22 +55,32 @@ graph LR
 ### 2.2. Permissivos dos Módulos Operacionais da Linha
 
 #### A. Permissivo da Esteira Transportadora ($P_{\text{RC1}}$)
+
 A esteira $\text{RC1}$ só pode avançar se nenhuma estação estiver em ciclo de processo com ferramentas/atuadores estendidos:
+
 $$P_{\text{RC1}} \equiv \neg \text{act}_{\text{VS2}} \land \neg \text{ext}_{\text{VS3}} \land \neg \text{ext}_{\text{VS4}} \land \neg \text{ext}_{\text{VS5}} \land \neg e_{\text{stop}} \land (\text{Auto} \oplus \text{Manual})$$
 
 #### B. Permissivo da Válvula de Enchimento ($P_{\text{VS2}}$)
+
 O envase pelo acumulador $\text{AS1}$ só é acionado com a garrafa posicionada sob o bico, a esteira parada e a pressão estável:
-$$P_{\text{VS2}} \equiv s_{\text{pos\_VS2}} \land \neg cmd_{\text{RC1}} \land sp_{2\_ok} \land \neg e_{\text{stop}} \land (\text{Auto} \oplus \text{Manual})$$
+
+$$P_{\text{VS2}} \equiv s_{\text{pos\textunderscore VS2}} \land \neg \text{cmd}_{\text{RC1}} \land sp_{\text{2\textunderscore ok}} \land \neg e_{\text{stop}} \land (\text{Auto} \oplus \text{Manual})$$
 
 #### C. Permissivo de Inspeção de Nível ($P_{\text{VS3}}$) e Tampagem ($P_{\text{VS4}}$)
+
 O módulo de medição $\text{VS3}$ atua com esteira estática e garrafa presente. O módulo de colocação de tampa $\text{VS4}$ / $\text{AC1}$ requer adicionalmente a prévia aprovação do nível da garrafa:
-$$P_{\text{VS3}} \equiv s_{\text{pos\_VS3}} \land \neg cmd_{\text{RC1}} \land \neg e_{\text{stop}} \land (\text{Auto} \oplus \text{Manual})$$
-$$P_{\text{VS4}} \equiv s_{\text{pos\_VS4}} \land \text{Aprov}_{\text{Nível}} \land \neg cmd_{\text{RC1}} \land \neg e_{\text{stop}} \land (\text{Auto} \oplus \text{Manual})$$
+
+$$P_{\text{VS3}} \equiv s_{\text{pos\textunderscore VS3}} \land \neg \text{cmd}_{\text{RC1}} \land \neg e_{\text{stop}} \land (\text{Auto} \oplus \text{Manual})$$
+
+$$P_{\text{VS4}} \equiv s_{\text{pos\textunderscore VS4}} \land \text{Aprov}_{\text{Nível}} \land \neg \text{cmd}_{\text{RC1}} \land \neg e_{\text{stop}} \land (\text{Auto} \oplus \text{Manual})$$
 
 #### D. Permissivo de Inspeção de Vedação ($P_{\text{VS5}}$)
+
 A validação física da tampa pelo sensor de fim de curso $\text{SFC1}$ é condicionada por:
-$$P_{\text{VS5}} \equiv s_{\text{pos\_VS5}} \land \neg cmd_{\text{RC1}} \land \neg e_{\text{stop}} \land (\text{Auto} \oplus \text{Manual})$$
-$$\text{Aprov}_{\text{Vedação}} \equiv \text{ext}_{\text{VS5}} \land sfc_1$$
+
+$$P_{\text{VS5}} \equiv s_{\text{pos\textunderscore VS5}} \land \neg \text{cmd}_{\text{RC1}} \land \neg e_{\text{stop}} \land (\text{Auto} \oplus \text{Manual})$$
+
+$$\text{Aprov}_{\text{Vedação}} \equiv \text{ext}_{\text{VS5}} \land \text{sfc}_{1}$$
 
 ### 2.3. Intertrava de Bloqueio Contínuo (*Run Interlock* / Trip)
 Mesmo após a partida, se qualquer condição crítica de processo falhar, a operação é desarmada instantaneamente.
