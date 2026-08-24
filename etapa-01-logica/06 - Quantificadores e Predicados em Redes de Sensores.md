@@ -13,6 +13,7 @@ Enquanto a lógica proposicional trata sentenças atômicas indivisíveis, a **L
    - "Existe ao menos um $x$ em $U$ tal que $P(x)$ é Verdadeiro".
    - Expansão em domínio finito:
      $$\exists x P(x) \equiv P(x_1) \lor P(x_2) \lor \dots \lor P(x_n)$$
+     //variaveis
 
 ---
 
