@@ -1,10 +1,5 @@
 # Aula 07: Validade de Argumentos e Inferência Lógica na Segurança de Processos
 
-**Projeto Integrador / Disciplina:** Matemática Discreta e Sistemas Digitais  
-**Curso:** Engenharia de Controle e Automação (ECA)  
-**Sistema:** Linha Automatizada de Envasamento e Tampamento de Bebidas  
-**Grupo:** Grupo 3 — ECAA08  
-
 ---
 
 ## 1. Fundamentos Matemáticos: Argumentos Dedutivos, Validade e Tautologias
