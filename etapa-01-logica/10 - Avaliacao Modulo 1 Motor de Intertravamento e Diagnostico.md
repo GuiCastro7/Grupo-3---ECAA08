@@ -108,17 +108,17 @@ A suíte automatizada validou 100% dos cenários industriais:
 
 | Cenário de Teste | Condição Injetada | Diagnóstico / Ação | Resultado |
 | :--- | :--- | :--- | :---: |
-| **Teste 0: Prova Formal** | Todos os estados $(p_{\text{min1}}, y_{\text{bomba}})$ | $\Phi \equiv \mathbf{F} \implies \text{Tautologia } \top$ | **100% Aprovado** |
-| **Cenário 1: Regime Nominal** | $P_{\text{SP1}}=2{,}5$, $Q_{\text{SQ1}}=25$, $P_{\text{SP2}}=3{,}8$ | Permissivos OK, Zero Trips, Zero Alarmes | **100% Aprovado** |
-| **Cenário 2: Risco Cavitação** | $P_{\text{SP1}}=0{,}6\text{ Barg}$, $\text{BC1}=1$ | $\text{Trip}_{\text{BC1}}$, R-03 (`CAVITACAO_BOMBA_BC1`) | **100% Aprovado** |
-| **Cenário 3: Sobrecarga Cascata**| $P_{\text{SP1}}=4{,}2$, $Q_{\text{SQ1}}=55$, $\text{VS1}=1$ | R-01 $\to$ R-02 $\to$ R-09 $\to$ `PARADA_TOTAL_LINHA` | **100% Aprovado** |
-| **Cenário 4: Bomba a Seco** | $P_{\text{SP1}}=0{,}5$, $\text{BC1}=1$, $\text{TS1\_VAZIO}=1$ | R-03 $\to$ R-07 $\to$ R-10 $\to$ Desarme Térmico | **100% Aprovado** |
-| **Cenário 5: Sobrepressão Capping**| $P_{\text{SP2}}=5{,}2\text{ Barg}$, $\text{VS3}=1$ | R-04 e R-06 (`SOBREPRESSAO_SISTEMA_CAPPING`) | **100% Aprovado** |
-| **Cenário 6: Bloqueio Envase** | $Q_{\text{SQ2}}=0{,}8\text{ L/min}$, $\text{VS2}=1$ | R-05 $\to$ R-08 (`DERRAMAMENTO_E_FALHA_ENVASE`) | **100% Aprovado** |
-| **Cenário 7: Falha Sensor** | $I_{\text{SP1}} = 1{,}2\text{ mA} < 3{,}6\text{ mA}$ | Broken-Wire NAMUR NE 43, Permissivos Bloqueados | **100% Aprovado** |
-| **Cenário 8: Perícia Causal RCA**| Meta $G = \text{"PARADA\_TOTAL\_LINHA"}$ | Backward Chaining provou via $\text{R-09} \leftarrow \text{R-02} \leftarrow \text{R-01}$ | **100% Aprovado** |
+| **Teste 0: Prova Formal** | Todos os estados ($p_{\text{min1}}$, $y_{\text{bomba}}$) | $\Phi \equiv \mathbf{F} \implies \text{Tautologia } \top$ | **100% Aprovado** |
+| **Cenário 1: Regime Nominal** | $P_{\text{SP1}}=2,5$, $Q_{\text{SQ1}}=25$, $P_{\text{SP2}}=3,8$ | Permissivos OK, Zero Trips, Zero Alarmes | **100% Aprovado** |
+| **Cenário 2: Risco Cavitação** | $P_{\text{SP1}}=0,6\text{ Barg}$, $\text{BC1}=1$ | $\text{Trip}_{\text{BC1}}$, R-03 (`CAVITACAO_BOMBA_BC1`) | **100% Aprovado** |
+| **Cenário 3: Sobrecarga Cascata**| $P_{\text{SP1}}=4,2$, $Q_{\text{SQ1}}=55$, $\text{VS1}=1$ | R-01 $\to$ R-02 $\to$ R-09 $\to$ `PARADA_TOTAL_LINHA` | **100% Aprovado** |
+| **Cenário 4: Bomba a Seco** | $P_{\text{SP1}}=0,5$, $\text{BC1}=1$, `TS1_VAZIO` $=1$ | R-03 $\to$ R-07 $\to$ R-10 $\to$ Desarme Térmico | **100% Aprovado** |
+| **Cenário 5: Sobrepressão Capping**| $P_{\text{SP2}}=5,2\text{ Barg}$, $\text{VS3}=1$ | R-04 e R-06 (`SOBREPRESSAO_SISTEMA_CAPPING`) | **100% Aprovado** |
+| **Cenário 6: Bloqueio Envase** | $Q_{\text{SQ2}}=0,8\text{ L/min}$, $\text{VS2}=1$ | R-05 $\to$ R-08 (`DERRAMAMENTO_E_FALHA_ENVASE`) | **100% Aprovado** |
+| **Cenário 7: Falha Sensor** | $I_{\text{SP1}} = 1,2\text{ mA} < 3,6\text{ mA}$ | Broken-Wire NAMUR NE 43, Permissivos Bloqueados | **100% Aprovado** |
+| **Cenário 8: Perícia Causal RCA**| Meta $G =$ `"PARADA_TOTAL_LINHA"` | Backward Chaining provou via $\text{R-09} \leftarrow \text{R-02} \leftarrow \text{R-01}$ | **100% Aprovado** |
 | **Cenário 9: Benchmark Químico**| Reator Fertilizantes ($\text{PT-101}, \text{TT-101}$) | `reacao_runaway` e `trip_nh3` validados | **100% Aprovado** |
-| **Cenário 10: Estresse Temporal**| $10.000$ iterações de varredura | Latência: $9{,}38\ \mu\text{s/scan}$ \| Throughput: $106.578\text{ scans/s}$ | **100% Aprovado** |
+| **Cenário 10: Estresse Temporal**| $10.000$ iterações de varredura | Latência: $9,38\ \mu\text{s/scan}$ \| Throughput: $106.578\text{ scans/s}$ | **100% Aprovado** |
 
 ---
 
