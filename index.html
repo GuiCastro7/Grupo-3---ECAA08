@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCADA-Core | Engarrafamento e Inspeção de Bebidas (Grupo 3 - UNIFEI)</title>
+  <meta name="description" content="Portal técnico e memorial descritivo da Linha de Envasamento e Inspeção de Bebidas - Grupo 3 da disciplina ECAA08 (Automática / Matemática Discreta) da UNIFEI.">
+  <link rel="stylesheet" href="doc/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- BARRA DE NAVEGAÇÃO SUPERIOR -->
+  <header class="scada-navbar">
+    <div class="navbar-container">
+      
+      <!-- LOGOTIPO COM BADGE DUPLO -->
+      <div class="brand-group">
+        <div class="brand-icon">⚙️</div>
+        <div class="brand-badge-dual">
+          <span class="badge-segment-title">Engarrafamento e Inspeção de Bebidas</span>
+          <span class="badge-segment-group">Grupo-3---ECAA08</span>
+        </div>
+      </div>
+
+      <!-- LINKS DE NAVEGAÇÃO -->
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link active"><span>🏠</span> Início</a></li>
+          <li><a href="doc/etapa-01-logica.html" class="nav-link"><span>⚡</span> Etapa 01</a></li>
+          <li><a href="doc/planta-modelo.html" class="nav-link"><span>🏭</span> Planta Modelo / Arquitetura</a></li>
+          <li><a href="doc/diretrizes-github.html" class="nav-link"><span>🐙</span> Diretrizes GitHub & 5W2H</a></li>
+        </ul>
+      </nav>
+
+      <!-- AÇÕES: TEMA CLARO/ESCURO & MOBILE TOGGLE -->
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" type="button" aria-label="Alternar tema">
+          <span class="theme-btn-text">🌙 Modo Escuro</span>
+        </button>
+        <button class="mobile-nav-toggle" type="button" aria-label="Abrir menu móvel">☰</button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="scada-container">
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div>
+        <!-- BADGE SUPERIOR DE IDENTIFICAÇÃO -->
+        <div class="institution-badge">
+          <span class="live-indicator"></span>
+          <span>UNIFEI · Engenharia de Controle e Automação · ECAA08</span>
+        </div>
+
+        <!-- TÍTULO DE IMPACTO -->
+        <h1 class="hero-title" style="margin-top: 0.75rem;">
+          Sistema Supervisório e Automação Industrial <br>
+          <span class="gradient-text">SCADA-Core: Linha de Envase</span>
+        </h1>
+
+        <!-- DESCRIÇÃO CONCEITUAL RIGOROSA -->
+        <p class="hero-description" style="margin-top: 0.75rem;">
+          Ambiente técnico integrado para modelagem formal, validação dedutiva, intertravamento de segurança (*Safety Interlocks*) e controle de processos discretos da célula automatizada de dosagem, tampagem e inspeção de integridade física.
+        </p>
+
+        <!-- METADADOS EM TAGS -->
+        <div class="metadata-tags">
+          <span class="meta-tag">🏷️ <strong>Disciplina:</strong> ECAA08 (Automática)</span>
+          <span class="meta-tag">🎯 <strong>Metodologia:</strong> PBL (Project-Based Learning)</span>
+          <span class="meta-tag">🏭 <strong>Estudo de Caso:</strong> Linha de Envasamento de Bebidas</span>
+          <span class="meta-tag">🛡️ <strong>Normas:</strong> IEC 61508 / IEC 61131-3 / NR-12</span>
+        </div>
+
+        <!-- DOIS BOTÕES CTA -->
+        <div class="hero-actions">
+          <a href="doc/etapa-01-logica.html" class="btn-cta-primary">
+            <span>⚡ Explorar Etapa 01 & Simulador</span>
+            <span>➔</span>
+          </a>
+          <a href="doc/planta-modelo.html" class="btn-cta-glass">
+            <span>🏭 Memorial da Planta Modelo</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD ESTILIZADO DE INTRODUÇÃO -->
+      <div class="hero-card-container">
+        <div class="project-scada-card">
+          
+          <div class="card-header-technical">
+            <div class="tech-header-title">
+              <span>●</span> SCADA_DIAG_TERMINAL :: V1.0.4
+            </div>
+            <div class="tech-status-badge">ONLINE / NOMINAL</div>
+          </div>
+
+          <div class="card-body-intro">
+            <p class="intro-lead">
+              O projeto implementa uma abordagem matemática rigorosa para garantir que a planta nunca atinja estados inseguros de cavitação da bomba centrífuga (<code class="mono-font">BC1</code>), sobrepressão em acumulador (<code class="mono-font">AS1</code>) ou colisão de atuadores pneumáticos (<code class="mono-font">AC1/VS3/VS5</code>).
+            </p>
+
+            <div class="team-list-box">
+              <div class="team-list-title">Equipe de Desenvolvimento (Grupo 3)</div>
+              <div class="team-members-grid">
+                <div class="team-member-item">Guilherme Narciso C. Silva</div>
+                <div class="team-member-item">Rafael Ribeiro Guedes</div>
+                <div class="team-member-item">Matheus F. de O. Agostinho</div>
+                <div class="team-member-item">Nickolas Nicoleto Musico</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer-metrics">
+            <div class="metric-mini-item">
+              <span class="metric-mini-value">6</span>
+              <span class="metric-mini-label">Sensores Críticos</span>
+            </div>
+            <div class="metric-mini-item">
+              <span class="metric-mini-value">7</span>
+              <span class="metric-mini-label">Atuadores / Válvulas</span>
+            </div>
+            <div class="metric-mini-item">
+              <span class="metric-mini-value">10</span>
+              <span class="metric-mini-label">Regras de Inferência</span>
+            </div>
+            <div class="metric-mini-item">
+              <span class="metric-mini-value">87.5%</span>
+              <span class="metric-mini-label">Otimização Booleana</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TELEMETRIA & STATS TICKER -->
+    <section class="scada-stats-bar">
+      <div class="stat-card">
+        <div class="stat-icon">🛡️</div>
+        <div class="stat-info">
+          <span class="stat-value">SIL-2</span>
+          <span class="stat-label">Confiabilidade & Intertravamento</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">📐</div>
+        <div class="stat-info">
+          <span class="stat-value">100%</span>
+          <span class="stat-label">Validação Dedutiva (Tautologias)</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">⚡</div>
+        <div class="stat-info">
+          <span class="stat-value">&lt; 0.5s</span>
+          <span class="stat-label">Tempo de Resposta em Falha Crítica</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">🔄</div>
+        <div class="stat-info">
+          <span class="stat-value">FC / BC</span>
+          <span class="stat-label">Motor de Inferência Híbrido</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROADMAP DAS ETAPAS DO SEMESTRE -->
+    <section class="roadmap-section">
+      <div class="section-header">
+        <span class="section-tag">Cronograma Técnico</span>
+        <h2 class="section-title">Roadmap das Etapas do Semestre (ECAA08)</h2>
+        <p class="section-subtitle">
+          Evolução incremental do sistema supervisório e de controle da Linha de Envasamento de Bebidas, integrando modelagem matemática, lógica formal e software SCADA.
+        </p>
+      </div>
+
+      <div class="roadmap-container">
+        
+        <!-- ETAPA 01 (DISPONÍVEL) -->
+        <article class="stage-card available">
+          <div class="stage-number-box">
+            <span class="stage-prefix">Etapa</span>
+            <span class="stage-num">01</span>
+          </div>
+
+          <div class="stage-details">
+            <div class="stage-header-line">
+              <h3 class="stage-title">Lógica Matemática, Dedução Formal e Sistemas Especialistas</h3>
+              <span class="status-chip chip-available">✅ DISPONÍVEL</span>
+            </div>
+            <p class="stage-description">
+              Mapeamento de variáveis físicas para proposições booleanas, prova de tautologias de intertravamento de segurança, formas normais (FND/FNC), otimização de Quine-McCluskey e motores de inferência *Forward* e *Backward Chaining* para diagnóstico de causa-raiz.
+            </p>
+            <div class="stage-topics-tags">
+              <span class="topic-tag">Álgebra Booleana</span>
+              <span class="topic-tag">Mapas de Karnaugh</span>
+              <span class="topic-tag">Quine-McCluskey</span>
+              <span class="topic-tag">Provador SAT / Refutação</span>
+              <span class="topic-tag">Forward & Backward Chaining</span>
+              <span class="topic-tag">15 Slides Executivos</span>
+            </div>
+          </div>
+
+          <div class="stage-action-box">
+            <a href="doc/etapa-01-logica.html" class="btn-cta-primary">Acessar Memorial & Simulador ➔</a>
+          </div>
+        </article>
+
+        <!-- ETAPA 02 (EM BREVE) -->
+        <article class="stage-card upcoming">
+          <div class="stage-number-box">
+            <span class="stage-prefix">Etapa</span>
+            <span class="stage-num">02</span>
+          </div>
+
+          <div class="stage-details">
+            <div class="stage-header-line">
+              <h3 class="stage-title">Modelagem por Redes de Petri e Grafos de Transição de Estados</h3>
+              <span class="status-chip chip-upcoming">⏳ EM BREVE</span>
+            </div>
+            <p class="stage-description">
+              Formalização do comportamento dinâmico concorrente e assíncrono da linha de envase, análise de propriedades estruturais (vivacidade, limitabilidade e ausência de *deadlocks*), matrizes de incidência e equações de estado.
+            </p>
+            <div class="stage-topics-tags">
+              <span class="topic-tag">Redes de Petri Interpretadas</span>
+              <span class="topic-tag">Matriz de Incidência</span>
+              <span class="topic-tag">Prevenção de Deadlocks</span>
+              <span class="topic-tag">Concorrência e Sincronismo</span>
+            </div>
+          </div>
+
+          <div class="stage-action-box">
+            <button class="btn-cta-glass" disabled style="opacity: 0.6; cursor: not-allowed;">Aguardando Liberação</button>
+          </div>
+        </article>
+
+        <!-- ETAPA 03 (EM BREVE) -->
+        <article class="stage-card upcoming">
+          <div class="stage-number-box">
+            <span class="stage-prefix">Etapa</span>
+            <span class="stage-num">03</span>
+          </div>
+
+          <div class="stage-details">
+            <div class="stage-header-line">
+              <h3 class="stage-title">Autômatos Finitos Determinísticos e Controle por Eventos Discretos</h3>
+              <span class="status-chip chip-upcoming">⏳ EM BREVE</span>
+            </div>
+            <p class="stage-description">
+              Síntese de controladores supervisórios pela Teoria de Ramadge-Wonham (SCT), modelagem da planta não controlada vs. especificações de segurança através de autômatos finitos determinísticos e sincronização de eventos controláveis e não controláveis.
+            </p>
+            <div class="stage-topics-tags">
+              <span class="topic-tag">Teoria de Ramadge-Wonham</span>
+              <span class="topic-tag">Autômatos Finitos (DFA)</span>
+              <span class="topic-tag">Eventos Controláveis</span>
+              <span class="topic-tag">Síntese de Supervisores</span>
+            </div>
+          </div>
+
+          <div class="stage-action-box">
+            <button class="btn-cta-glass" disabled style="opacity: 0.6; cursor: not-allowed;">Aguardando Liberação</button>
+          </div>
+        </article>
+
+        <!-- ETAPA 04 (EM BREVE) -->
+        <article class="stage-card upcoming">
+          <div class="stage-number-box">
+            <span class="stage-prefix">Etapa</span>
+            <span class="stage-num">04</span>
+          </div>
+
+          <div class="stage-details">
+            <div class="stage-header-line">
+              <h3 class="stage-title">Supervisão SCADA em Tempo Real, Protocolos Industriais e IHM</h3>
+              <span class="status-chip chip-upcoming">⏳ EM BREVE</span>
+            </div>
+            <p class="stage-description">
+              Desenvolvimento da interface homem-máquina (IHM) operacional, telas de alarmes com estampas de tempo (ISA-18.2), gráficos de tendência em tempo real, comunicação industrial (Modbus/OPC UA) e integração ao CLP.
+            </p>
+            <div class="stage-topics-tags">
+              <span class="topic-tag">OPC UA / Modbus TCP</span>
+              <span class="topic-tag">Gerenciamento de Alarmes</span>
+              <span class="topic-tag">Telas Sinóticas SCADA</span>
+              <span class="topic-tag">Comissionamento Virtual</span>
+            </div>
+          </div>
+
+          <div class="stage-action-box">
+            <button class="btn-cta-glass" disabled style="opacity: 0.6; cursor: not-allowed;">Aguardando Liberação</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ARQUITETURA DA PLANTA MODELO (PREVIEW) -->
+    <section class="plant-section">
+      <div class="section-header">
+        <span class="section-tag">Arquitetura de Ativos</span>
+        <h2 class="section-title">Componentes Principais da Linha de Produção</h2>
+        <p class="section-subtitle">
+          Visão geral dos subsistemas eletromecânicos, sensores e válvulas solenoides monitorados pelo SCADA.
+        </p>
+      </div>
+
+      <div class="plant-overview-grid">
+        
+        <div class="plant-card">
+          <div class="plant-card-header">
+            <span class="plant-tag">TS1 / AS1 / BC1</span>
+            <span class="plant-icon">🚰</span>
+          </div>
+          <h3 class="plant-card-title">Suprimento & Bombeamento</h3>
+          <p class="plant-card-desc">
+            Extração de fluido do reservatório primário TS1, pressurização por bomba centrífuga BC1 e estabilização no pulmão hidráulico AS1.
+          </p>
+          <ul class="plant-specs-list">
+            <li><span>Sensor Pressão SP1:</span> <strong>1,0 - 3,5 Barg</strong></li>
+            <li><span>Sensor Vazão SQ1:</span> <strong>5,0 - 45,0 L/min</strong></li>
+            <li><span>Válvula Sucção VS1:</span> <strong>ON/OFF Intertravada</strong></li>
+          </ul>
+        </div>
+
+        <div class="plant-card">
+          <div class="plant-card-header">
+            <span class="plant-tag">VS2 / SQ2 / SP2</span>
+            <span class="plant-icon">🧪</span>
+          </div>
+          <h3 class="plant-card-title">Estação de Dosagem / Envase</h3>
+          <p class="plant-card-desc">
+            Injeção de precisão de volume na garrafa sob a esteira parada com controle de vazão contínua e corte automático.
+          </p>
+          <ul class="plant-specs-list">
+            <li><span>Sensor Pressão SP2:</span> <strong>3,0 - 4,5 Barg</strong></li>
+            <li><span>Sensor Vazão SQ2:</span> <strong>2,0 - 8,0 L/min</strong></li>
+            <li><span>Válvula Envase VS2:</span> <strong>Dosagem Fina</strong></li>
+          </ul>
+        </div>
+
+        <div class="plant-card">
+          <div class="plant-card-header">
+            <span class="plant-tag">SL1 / VS3 / VS4 / AC1 / SFC1</span>
+            <span class="plant-icon">🔍</span>
+          </div>
+          <h3 class="plant-card-title">Inspeção & Tampagem</h3>
+          <p class="plant-card-desc">
+            Validação óptica do nível de enchimento (≥95%), aplicação mecânica da tampa por capping AC1 e inspeção tátil por fim de curso SFC1.
+          </p>
+          <ul class="plant-specs-list">
+            <li><span>Inspeção Nível SL1:</span> <strong>≥ 95% Volume</strong></li>
+            <li><span>Atuador Capping AC1:</span> <strong>Rosqueamento</strong></li>
+            <li><span>Vedação SFC1:</span> <strong>Barreira Mecânica</strong></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="scada-footer">
+    <div class="footer-container">
+      
+      <div class="footer-brand">
+        <div class="brand-group">
+          <div class="brand-icon">⚡</div>
+          <div class="brand-badge-dual">
+            <span class="badge-segment-title">SCADA-Core UNIFEI</span>
+            <span class="badge-segment-group">Grupo-3---ECAA08</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          Universidade Federal de Itajubá (UNIFEI) · Campus Itajubá - MG.<br>
+          Instituto de Engenharia de Sistemas e Tecnologias da Informação (IESTI).<br>
+          Desenvolvido para a disciplina de Automática (ECAA08) - 6º Semestre.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Navegação Rápida</div>
+        <ul class="footer-links">
+          <li><a href="index.html">🏠 Página Inicial</a></li>
+          <li><a href="doc/etapa-01-logica.html">⚡ Etapa 01 - Memorial & Simulador</a></li>
+          <li><a href="doc/planta-modelo.html">🏭 Planta Modelo & P&ID</a></li>
+          <li><a href="doc/diretrizes-github.html">🐙 Diretrizes de Governança & 5W2H</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Equipe Grupo 3</div>
+        <ul class="footer-links">
+          <li><span>Guilherme Narciso Castro Silva</span></li>
+          <li><span>Rafael Ribeiro Guedes</span></li>
+          <li><span>Matheus F. de O. Agostinho</span></li>
+          <li><span>Nickolas Nicoleto Musico</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Grupo 3 - ECAA08 - UNIFEI. Licença de uso acadêmico.</div>
+      <div>Commit Sync: <code class="mono-font">b74d92a (main)</code> · Compatível com GitHub Pages</div>
+    </div>
+  </footer>
+
+  <script src="doc/js/app.js"></script>
+</body>
+</html>

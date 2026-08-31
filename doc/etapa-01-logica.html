@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etapa 01: Lógica Matemática & Simulador | SCADA-Core UNIFEI</title>
+  <meta name="description" content="Memorial Descritivo, Apresentação Executiva em 15 Slides e Simulador Interativo da Etapa 01 - Linha de Envasamento e Inspeção de Bebidas (Grupo 3 - UNIFEI).">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- BARRA DE NAVEGAÇÃO SUPERIOR -->
+  <header class="scada-navbar">
+    <div class="navbar-container">
+      
+      <div class="brand-group">
+        <div class="brand-icon">⚙️</div>
+        <div class="brand-badge-dual">
+          <span class="badge-segment-title">Engarrafamento e Inspeção de Bebidas</span>
+          <span class="badge-segment-group">Grupo-3---ECAA08</span>
+        </div>
+      </div>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link"><span>🏠</span> Início</a></li>
+          <li><a href="etapa-01-logica.html" class="nav-link active"><span>⚡</span> Etapa 01</a></li>
+          <li><a href="planta-modelo.html" class="nav-link"><span>🏭</span> Planta Modelo / Arquitetura</a></li>
+          <li><a href="diretrizes-github.html" class="nav-link"><span>🐙</span> Diretrizes GitHub & 5W2H</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" type="button" aria-label="Alternar tema">
+          <span class="theme-btn-text">🌙 Modo Escuro</span>
+        </button>
+        <button class="mobile-nav-toggle" type="button" aria-label="Abrir menu móvel">☰</button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="scada-container">
+
+    <!-- 1. HERO SECTION (IDENTIDADE E AÇÕES RÁPIDAS) -->
+    <section class="hero-section">
+      
+      <div class="institution-badge">
+        <span class="live-indicator"></span>
+        <span>UNIFEI · Engenharia de Controle e Automação · ECAA08</span>
+      </div>
+
+      <div>
+        <h1 class="hero-title">
+          Sistema Supervisório e Automação Industrial <br>
+          <span class="gradient-text">SCADA-Core: Linha de Envase (Etapa 01)</span>
+        </h1>
+        <p class="hero-description">
+          Modelagem formal, provas dedutivas de segurança contra falhas mecânicas, otimização de circuitos lógicos no CLP e motor especialista de inferência para a célula automatizada de envasamento e inspeção de bebidas.
+        </p>
+      </div>
+
+      <!-- GRID DE METADADOS (4 CARDS ESTILIZADOS) -->
+      <div class="metadata-grid-4">
+        
+        <div class="meta-box-card">
+          <div class="meta-box-icon">👥</div>
+          <div class="meta-box-content">
+            <span class="meta-box-label">Equipe</span>
+            <span class="meta-box-value">Grupo 3 • Engarrafamento e Inspeção de Bebidas</span>
+          </div>
+        </div>
+
+        <div class="meta-box-card">
+          <div class="meta-box-icon">📐</div>
+          <div class="meta-box-content">
+            <span class="meta-box-label">Fundamento</span>
+            <span class="meta-box-value">Lógica Proposicional, Predicados e Sistemas Especialistas</span>
+          </div>
+        </div>
+
+        <div class="meta-box-card">
+          <div class="meta-box-icon">🏭</div>
+          <div class="meta-box-content">
+            <span class="meta-box-label">Planta Modelo</span>
+            <span class="meta-box-value">Linha Automatizada de Envase, Nível, Tampagem e Inspeção</span>
+          </div>
+        </div>
+
+        <div class="meta-box-card">
+          <div class="meta-box-icon">🎯</div>
+          <div class="meta-box-content">
+            <span class="meta-box-label">Escopo</span>
+            <span class="meta-box-value">Módulos 02 a 09 (Etapa 01 Concluída)</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- BLOCO DE 3 BOTÕES DE AÇÃO RÁPIDA (CTAs) -->
+      <div class="cta-group-3">
+        <button class="btn-cta-slide" id="cta-btn-slides" type="button">
+          <span>📽️</span>
+          <span>Ver Apresentação (15 Slides)</span>
+          <span>➔</span>
+        </button>
+
+        <button class="btn-cta-sim" id="cta-btn-sim" type="button">
+          <span>🎛️</span>
+          <span>Abrir Simulador SCADA</span>
+        </button>
+
+        <button class="btn-cta-docs" id="cta-btn-docs" type="button">
+          <span>📖</span>
+          <span>Consultar Aulas 02 a 09</span>
+        </button>
+      </div>
+
+    </section>
+
+    <!-- 2. APRESENTAÇÃO EXECUTIVA EM 15 SLIDES (COMPONENTE INTERATIVO) -->
+    <section id="section-slides" class="slide-deck-wrapper">
+      
+      <div class="slide-deck-header">
+        <div class="slide-deck-title">
+          <span>📽️</span> APRESENTAÇÃO EXECUTIVA :: ETAPA 01 (SCADA-CORE)
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <a href="Apresentacao-Etapa-01-Grupo-3.pdf" download="Apresentacao-Etapa-01-Grupo-3.pdf" class="btn-cta-glass" style="padding: 0.35rem 0.8rem; font-size: 0.78rem; border-color: var(--cyan-neon); color: var(--cyan-neon);">
+            <span>📥</span> Baixar Slides em PDF
+          </a>
+          <div class="slide-counter-badge" id="slide-counter-display">
+            Slide 1 de 15
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-progress-bar-bg">
+        <div class="slide-progress-bar-fill" id="slide-progress-fill"></div>
+      </div>
+
+      <div class="slide-display-area">
+        
+        <!-- SLIDE 1 -->
+        <div class="slide-item active" data-slide="1">
+          <div class="slide-card-inner">
+            <span class="slide-tag">Slide 01 · Introdução</span>
+            <h2 class="slide-heading">Capa e Escopo do Grupo 3: Linha de Envase e Inspeção</h2>
+            <p class="slide-body-text">
+              Desenvolvimento de arquitetura supervisória de alta confiabilidade (SIL-2 / IEC 61508) para o processo industrial de envasamento contínuo, verificação óptica de volume, colocação mecânica de tampas e inspeção física de selagem.
+            </p>
+            <div class="slide-grid-content">
+              <div class="slide-subcard">
+                <h4>🎯 Objetivos do Projeto</h4>
+                <ul>
+                  <li>Eliminar riscos de cavitação em bombas centrífugas (<code class="mono-font">BC1</code>).</li>
+                  <li>Evitar sobrepressão no acumulador intermediário (<code class="mono-font">AS1</code>).</li>
+                  <li>Garantir rejeição automática de garrafas com volume &lt; 95% ou sem vedação.</li>
+                </ul>
+              </div>
+              <div class="slide-subcard">
+                <h4>👥 Membros da Equipe (UNIFEI)</h4>
+                <p>
+                  • Guilherme Narciso Castro Silva<br>
+                  • Rafael Ribeiro Guedes<br>
+                  • Matheus Felipe de Oliveira Agostinho<br>
+                  • Nickolas Nicoleto Musico
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <div class="slide-item" data-slide="2">
+          <div class="slide-card-inner">
+            <span class="slide-tag">Slide 02 · Módulo 02</span>
+            <h2 class="slide-heading">Mapeamento de Variáveis de Processo & Tags</h2>
+            <p class="slide-body-text">
+              Formalização das grandezas físicas da planta em um espaço de variáveis de controle. O mapeamento conecta diretamente sensores de campo a variáveis proposicionais discretas no CLP.
+            </p>
+            <div class="slide-grid-content">
+              <div class="slide-subcard">
+                <h4>🏷️ Sensores de Entrada</h4>
+                <ul>
+                  <li><code class="mono-font">SP1</code>: Pressão de sucção do tanque principal (<code class="mono-font">TS1</code>)</li>
+                  <li><code class="mono-font">SQ1</code>: Medição de vazão de sucção primária</li>
+                  <li><code class="mono-font">SP2</code> / <code class="mono-font">SQ2</code>: Pressão e vazão na linha pós-acumulador</li>
+                  <li><code class="mono-font">SL1</code>: Sensor fotoelétrico de nível de envase (&ge; 95%)</li>
+                  <li><code class="mono-font">SFC1</code>: Sensor fim de curso de integridade de tampa</li>
+                </ul>
+              </div>
+              <div class="slide-subcard">
+                <h4>⚙️ Atuadores e Válvulas</h4>
+                <ul>
+                  <li><code class="mono-font">RC1</code>: Motor da esteira transportadora</li>
+                  <li><code class="mono-font">BC1</code>: Bomba centrífuga de alimentação</li>
+                  <li><code class="mono-font">VS1 - VS5</code>: Válvulas solenoides eletropneumáticas</li>
+                  <li><code class="mono-font">AC1</code>: Atuador de Capping (rosqueamento mecânico)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3 -->
+        <div class="slide-item" data-slide="3">
+          <div class="slide-card-inner">
+            <span class="slide-tag">Slide 03 · Módulo 02</span>
+            <h2 class="slide-heading">Discretização e Limiares de Sinais Analógicos 4-20mA</h2>
+            <p class="slide-body-text">
+              Critérios para ativação das variáveis booleanas a partir dos transmissores analógicos de vazão, pressão e velocidade.
+            </p>
+            <div class="slide-grid-content">
+              <div class="slide-subcard">
+                <h4>📏 Faixas de Operação dos Sensores de Pressão</h4>
+                <p>
+                  • <strong>SP1 (Entrada TS1):</strong><br>
+                  - $p_{\text{máx1}} = \mathbf{V} \iff p > 3,5\,\text{Barg}$ (Sobrepressão)<br>
+                  - $p_{\text{mín1}} = \mathbf{V} \iff p < 1,0\,\text{Barg}$ (Risco de Cavitação)<br>
+                  • <strong>SP2 (Acumulador AS1):</strong><br>
+                  - $p_{\text{máx2}} = \mathbf{V} \iff p > 4,5\,\text{Barg}$ (Alívio Crítico)
+                </p>
+              </div>
+              <div class="slide-subcard">
+                <h4>🌊 Faixas de Operação dos Sensores de Vazão</h4>
+                <p>
+                  • <strong>SQ1 (Sucção):</strong> Nominal entre $5,0$ e $45,0\,\text{L/min}$<br>
+                  • <strong>SQ2 (Dosador VS2):</strong> Nominal entre $2,0$ e $8,0\,\text{L/min}$<br>
+                  • <strong>RC1 (Esteira):</strong> $0,1 \le v \le 0,4\,\text{m/s}$
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 4 -->
+        <div class="slide-item" data-slide="4">
+          <div class="slide-card-inner">
+            <span class="slide-tag">Slide 04 · Módulo 03</span>
+            <h2 class="slide-heading">Tautologias e Segurança Operacional</h2>
+            <p class="slide-body-text">
+              Empregamos a lógica proposicional clássica para garantir que condições críticas de trip e intertravamento sejam expressas como sentenças tautológicas ($\top$).
+            </p>
+            <div class="slide-grid-content">
+              <div class="slide-subcard">
+                <h4>🛡️ Evento Crítico de Sucção ($F_1$)</h4>
+                <p>
+                  $$F_1 \equiv p_{\text{mín1}} \lor p_{\text{máx1}} \lor q_{\text{máx1}}$$
+                  O intertravamento de segurança estipula:
+                  $$F_1 \rightarrow (\neg y_{\text{bomba}} \land \neg y_{\text{válv1}})$$
+                </p>
+              </div>
+              <div class="slide-subcard">
+                <h4>⚡ Permissivo da Bomba BC1 ($P_{\text{bomba}}$)</h4>
+                <p>
+                  $$P_{\text{bomba}} \equiv y_{\text{válv1}} \land \neg p_{\text{mín1}} \land \neg p_{\text{máx1}} \land \neg p_{\text{máx2}}$$
+                  $$y_{\text{bomba}} \rightarrow P_{\text{bomba}}$$
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 5 -->
+        <div class="slide-item" data-slide="5">
+          <div class="slide-card-inner">
+            <span class="slide-tag">Slide 05 · Módulo 03</span>
+            <h2 class="slide-heading">Prova Formal de Não-Ocorrência de Falha Crítica</h2>
+            <p class="slide-body-text">
+              Demonstração analítica da impossibilidade matemática de ocorrência do estado de risco $S_{\text{risco}} = p_{\text{mín1}} \land y_{\text{bomba}}$ sob a regra de intertravamento.
+            </p>
+            <div class="slide-subcard" style="margin-top: 0.5rem;">
+              <h4>📐 Dedução Passo a Passo</h4>
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; line-height: 1.6;">
+                1. $S_{\text{risco}} \land (p_{\text{mín1}} \rightarrow \neg y_{\text{bomba}}) \equiv (p_{\text{mín1}} \land y_{\text{bomba}}) \land (\neg p_{\text{mín1}} \lor \neg y_{\text{bomba}})$<br>
+                2. Distribuindo: $\big((p_{\text{mín1}} \land y_{\text{bomba}}) \land \neg p_{\text{mín1}}\big) \lor \big((p_{\text{mín1}} \land y_{\text{bomba}}) \land \neg y_{\text{bomba}}\big)$<br>
+                3. Por comutatividade e não-contradição: $(\mathbf{F} \land y_{\text{bomba}}) \lor (p_{\text{mín1}} \land \mathbf{F}) \equiv \mathbf{F} \lor \mathbf{F} \equiv \mathbf{FALSO} \; (\bot)$<br>
+                4. Conclusão: $\neg [S_{\text{risco}} \land (p_{\text{mín1}} \rightarrow \neg y_{\text{bomba}})] \equiv \mathbf{TAUTOLOGIA} \; (\top)$
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 6 -->
+        <div class="slide-item" data-slide="6">
+          <div class="slide-card-inner">
+            <span class="slide-tag">Slide 06 · Módulo 04</span>
+            <h2 class="slide-heading">Lógica Proposicional: Conectivos e Permissivos</h2>
+            <p class="slide-body-text">
+              Estruturação das cadeias de permissivos para acionamento da esteira, bicos injetores e cabeçote de tampamento.
+            </p>
+            <div class="slide-grid-content">
+              <div class="slide-subcard">
+                <h4>🛤️ Permissivo da Esteira Transportadora ($P_{\text{RC1}}$)</h4>
+                <p>
+                  A esteira só avança se nenhum atuador estiver rebaixado na garrafa:
+                  $$P_{\text{RC1}} \equiv \neg \text{act}_{\text{VS2}} \land \neg \text{ext}_{\text{VS3}} \land \neg \text{ext}_{\text{VS4}} \land \neg \text{ext}_{\text{VS5}} \land \neg e_{\text{stop}}$$
+                </p>
+              </div>
+              <div class="slide-subcard">
+                <h4>🍾 Permissivo de Tampagem ($P_{\text{VS4}}$)</h4>
+                <p>
+                  O capping só desce com esteira estática e garrafa com nível aprovado:
+                  $$P_{\text{VS4}} \equiv s_{\text{pos-VS4}} \land \text{Aprov}_{\text{Nível}} \land \neg \text{cmd}_{\text{RC1}} \land \neg e_{\text{stop}}$$
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 7 -->
+        <div class="slide-item" data-slide="7">
+          <div class="slide-card-inner">
+            <span class="slide-tag">Slide 07 · Módulo 05</span>
+            <h2 class="slide-heading">Formas Normais (FND e FNC) no Controle de Envase</h2>
+            <p class="slide-body-text">
+              Mapeamento do espaço vetorial booleano $\mathbb{B}^4 \to \mathbb{B}^3$ com as variáveis de entrada $E$ (Emergência), $N$ (Nível Tanque), $P$ (Presença Garrafa) e $C$ (Garrafa Cheia).
+            </p>
+            <div class="slide-grid-content">
+              <div class="slide-subcard">
+                <h4>∑ Forma Normal Disjuntiva (FND / SOP)</h4>
+                <p>
+                  • Válvula de Envase: $V = m_{14} = E \cdot N \cdot P \cdot \bar{C}$<br>
+                  • Motor da Esteira: $M = \sum m(8, 9, 11, 12, 13, 15)$<br>
+                  • Alarme de Falha: $A = \sum m(0..7, 10)$
+                </p>
+              </div>
+              <div class="slide-subcard">
+                <h4>∏ Forma Normal Conjuntiva (FNC / POS)</h4>
+                <p>
+                  • $V = \prod M(0..13, 15)$<br>
+                  • $M = \prod M(0..7, 10, 14)$<br>
+                  • $A = \prod M(8, 9, 11, 12, 13, 14, 15)$
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 8 -->
+        <div class="slide-item" data-slide="8">
+          <div class="slide-card-inner">
+            <span class="slide-tag">Slide 08 · Módulo 05</span>
+            <h2 class="slide-heading">Otimização Booleana por Mapas de Karnaugh e Quine-McCluskey</h2>
+            <p class="slide-body-text">
+              Minimização algébrica das equações de comando para ganho de velocidade de varredura (*scan-time*) no CLP e eliminação de hazards térmicos.
+            </p>
+            <div class="slide-grid-content">
+              <div class="slide-subcard">
+                <h4>📉 Equações Mínimas Reduzidas</h4>
+                <p>
+                  • <strong>Motor da Esteira:</strong> $\mathbf{M = E \cdot (\bar{P} + C)}$ (de 24 para 3 literais &rarr; <strong>87.5% de redução</strong>)<br>
+                  • <strong>Alarme de Segurança:</strong> $\mathbf{A = \bar{E} + \bar{N}P\bar{C}}$ (de 36 para 4 literais &rarr; <strong>88.9% de redução</strong>)
+                </p>
+              </div>
+              <div class="slide-subcard">
+                <h4>⚡ Benefícios Práticos na Indústria</h4>
+                <ul>
+                  <li>Redução do tempo de processamento por ciclo de varredura no CLP.</li>
+                  <li>Código em Texto Estruturado (IEC 61131-3) limpo e direto.</li>
+                  <li>Menor consumo de memória e confiabilidade certificável.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 9 -->
+        <div class="slide-item" data-slide="9">
+          <div class="slide-card-inner">
+            <span class="slide-tag">Slide 09 · Módulo 06</span>
+            <h2 class="slide-heading">Quantificadores (∀, ∃) em Redes de Sensores de Linha</h2>
+            <p class="slide-body-text">
+              Transição da lógica proposicional para a Lógica de Primeira Ordem (FOL) sobre domínios finitos de instrumentos industriais.
+            </p>
+            <div class="slide-grid-content">
+              <div class="slide-subcard">
+                <h4>🌐 Quantificador Universal (∀)</h4>
+                <p>
+                  <strong>Integridade da Comunicação da Rede:</strong><br>
+                  $$\forall x \in \mathcal{S}_{\text{sensores}}, \; \neg \text{FalhaCom}(x)$$
+                  Operação automática permitida somente se todos os transmissores comunicarem sem erro.
+                </p>
+              </div>
+              <div class="slide-subcard">
+                <h4>⚠️ Quantificador Existencial (∃)</h4>
+                <p>
+                  <strong>Detecção de Sobrepressão na Linha:</strong><br>
+                  $$\exists x \in \mathcal{S}_P, \; \text{Sobrepressao}(x)$$
+                  Se ao menos um sensor ultrapassar o limite, o trip geral é disparado.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 10 -->
+        <div class="slide-item" data-slide="10">
+          <div class="slide-card-inner">
+            <span class="slide-tag">Slide 10 · Módulo 06</span>
+            <h2 class="slide-heading">Lógica de Predicados na Inspeção Óptica e Vedação</h2>
+            <p class="slide-body-text">
+              Parametrização formal da aprovação de garrafas conforme os predicados $NivelOK(g)$ e $VedacaoOK(g)$.
+            </p>
+            <div class="slide-grid-content">
+              <div class="slide-subcard">
+                <h4>🔍 Predicado de Conformidade de Lote</h4>
+                <p>
+                  $$\text{LoteConforme}(L) \equiv \forall g \in L, \; (\text{NivelOK}(g) \land \text{VedacaoOK}(g))$$
+                  Determina a liberação direta para encaixotamento ou acionamento do pistão de descarte.
+                </p>
+              </div>
+              <div class="slide-subcard">
+                <h4>🛑 Predicado de Rejeição Imediata</h4>
+                <p>
+                  $$\text{Rejeitar}(g) \equiv \neg \text{NivelOK}(g) \lor \neg \text{VedacaoOK}(g)$$
+                  Garante tolerância zero para garrafas com selagem defeituosa ou subpreenchidas.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 11 -->
+        <div class="slide-item" data-slide="11">
+          <div class="slide-card-inner">
+            <span class="slide-tag">Slide 11 · Módulo 07</span>
+            <h2 class="slide-heading">Validade Dedutiva & Intertravamento de Segurança (ESD)</h2>
+            <p class="slide-body-text">
+              Verificação formal da integridade dos argumentos de controle contra falácias operacionais comuns.
+            </p>
+            <div class="slide-grid-content">
+              <div class="slide-subcard">
+                <h4>✅ Argumentos Válidos Comprovados</h4>
+                <p>
+                  • <strong>Modus Ponens:</strong> $p_{\text{mín1}} \rightarrow \neg y_{\text{bomba}}, \; p_{\text{mín1}} \models \neg y_{\text{bomba}}$<br>
+                  • <strong>Modus Tollens:</strong> $y_{\text{valv2}} \rightarrow q_{\text{flx2}}, \; \neg q_{\text{flx2}} \models \neg y_{\text{valv2}}$ (Falha de bobina)<br>
+                  • <strong>Silogismo Hipotético:</strong> Propagação de intertrava em cascata
+                </p>
+              </div>
+              <div class="slide-subcard">
+                <h4>❌ Falácias Rejeitadas</h4>
+                <p>
+                  • <strong>Afirmação do Consequente:</strong> Rejeita concluir subpressão apenas porque a bomba parou (pode ter sido parada de emergência).<br>
+                  • <strong>Negação do Antecedente:</strong> Rejeita abrir válvula só porque não há emergência.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 12 -->
+        <div class="slide-item" data-slide="12">
+          <div class="slide-card-inner">
+            <span class="slide-tag">Slide 12 · Módulo 08</span>
+            <h2 class="slide-heading">Base de Conhecimento e Fatos da Linha de Envase</h2>
+            <p class="slide-body-text">
+              Arquitetura formal do Sistema Especialista Baseado em Regras $\langle \mathcal{F}, \mathcal{R}, \mathcal{E} \rangle$.
+            </p>
+            <div class="slide-grid-content">
+              <div class="slide-subcard">
+                <h4>📋 Base Dinâmica de Fatos $\mathcal{F}(t)$</h4>
+                <p>
+                  Alimentada instantaneamente pelos sensores e comandos: <code class="mono-font">p_max1</code>, <code class="mono-font">q_max1</code>, <code class="mono-font">p_min1</code>, <code class="mono-font">y_bomba</code>, <code class="mono-font">l_min_ts1</code>, <code class="mono-font">p_max2</code>, <code class="mono-font">q_min2</code>, <code class="mono-font">y_valv2</code>.
+                </p>
+              </div>
+              <div class="slide-subcard">
+                <h4>🛡️ Estratégia de Arbitragem $\mathcal{E}$</h4>
+                <p>
+                  Resolução de conflitos por <strong>Nível de Severidade</strong> (CRÍTICA &gt; ALTA) e prioridade decrescente (10 a 1) para proteção de vidas e ativos mecânicos.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 13 -->
+        <div class="slide-item" data-slide="13">
+          <div class="slide-card-inner">
+            <span class="slide-tag">Slide 13 · Módulo 08</span>
+            <h2 class="slide-heading">Catálogo de Regras de Diagnóstico e Detecção de Falhas</h2>
+            <p class="slide-body-text">
+              Cláusulas de Horn para identificação das causas-raiz de falha na célula de produção.
+            </p>
+            <div class="slide-subcard" style="margin-top: 0.5rem;">
+              <h4>🔍 Regras Principais em Produção</h4>
+              <ul style="line-height: 1.7;">
+                <li><strong>R-01:</strong> <code>p_max1 ∧ q_max1 &rarr; SOBRECARGA_LINHA_ALIMENTACAO</code> (Severidade: CRÍTICA, Prio 10)</li>
+                <li><strong>R-02:</strong> <code>SOBRECARGA_LINHA_ALIMENTACAO ∧ y_valv1 &rarr; TRIP_BLOQUEIO_EMERGENCIA</code> (Prio 10)</li>
+                <li><strong>R-03:</strong> <code>p_min1 ∧ y_bomba &rarr; CAVITACAO_BOMBA_BC1</code> (Severidade: ALTA, Prio 8)</li>
+                <li><strong>R-04:</strong> <code>p_max2 &rarr; SOBREPRESSAO_ACUMULADOR_AS1</code> (Severidade: CRÍTICA, Prio 9)</li>
+                <li><strong>R-05:</strong> <code>q_min2 ∧ y_valv2 &rarr; OBSTRUCAO_BICO_ENVASE</code> (Severidade: ALTA, Prio 7)</li>
+                <li><strong>R-09:</strong> <code>TRIP_BLOQUEIO_EMERGENCIA &rarr; PARADA_TOTAL_LINHA</code> (ESD Geral)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 14 -->
+        <div class="slide-item" data-slide="14">
+          <div class="slide-card-inner">
+            <span class="slide-tag">Slide 14 · Módulo 09</span>
+            <h2 class="slide-heading">Motores de Inferência: Forward e Backward Chaining</h2>
+            <p class="slide-body-text">
+              Integração dos dois paradigmas de inferência lógica no motor supervisório SCADA.
+            </p>
+            <div class="slide-grid-content">
+              <div class="slide-subcard">
+                <h4>⚡ Forward Chaining (Data-Driven)</h4>
+                <p>
+                  • <strong>Direção:</strong> Dados dos Sensores &rarr; Diagnósticos e Ações.<br>
+                  • <strong>Uso:</strong> Monitoramento contínuo em tempo de varredura (*scan-time*) do CLP.<br>
+                  • <strong>Complexidade:</strong> Determinística $\mathcal{O}(n \cdot m)$.
+                </p>
+              </div>
+              <div class="slide-subcard">
+                <h4>🔎 Backward Chaining (Goal-Driven)</h4>
+                <p>
+                  • <strong>Direção:</strong> Hipótese de Falha &rarr; Busca de Evidências.<br>
+                  • <strong>Uso:</strong> Análise de Causa-Raiz (*Root Cause Analysis - RCA*) e auditoria pericial pós-parada.<br>
+                  • <strong>Recurso:</strong> Árvore de prova explicável (*XAI*).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 15 -->
+        <div class="slide-item" data-slide="15">
+          <div class="slide-card-inner">
+            <span class="slide-tag">Slide 15 · Conclusão</span>
+            <h2 class="slide-heading">Conclusões da Etapa 01 & Integração SCADA</h2>
+            <p class="slide-body-text">
+              A fundamentação teórica e matemática permitiu criar uma base sólida e testável em software para o controle supervisório da linha de envase.
+            </p>
+            <div class="slide-grid-content">
+              <div class="slide-subcard">
+                <h4>🏆 Resultados Alcançados</h4>
+                <ul>
+                  <li>Prova formal da confiabilidade dos intertravamentos (Tautologias $\top$).</li>
+                  <li>Redução de mais de 87% de literais nas equações lógicas dos atuadores.</li>
+                  <li>Motor híbrido (FC/BC) validado e reimplementado em JavaScript no navegador.</li>
+                </ul>
+              </div>
+              <div class="slide-subcard">
+                <h4>🚀 Próximos Passos (Etapa 02)</h4>
+                <p>
+                  Modelagem formal da dinâmica concorrente e assíncrona da esteira e estações através de <strong>Redes de Petri Interpretadas</strong> e análise matricial de estados.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FOOTER / CONTROLES DE NAVEGAÇÃO DOS SLIDES -->
+      <div class="slide-deck-footer">
+        <div class="slide-nav-controls">
+          <button class="btn-slide-nav" id="btn-slide-prev" type="button" disabled>← Anterior</button>
+          <button class="btn-slide-nav" id="btn-slide-next" type="button">Próximo →</button>
+        </div>
+
+        <div class="slide-keyboard-hint">
+          <span>Dica: Use as setas do teclado <kbd>←</kbd> e <kbd>→</kbd> para navegar.</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 3. ABAS TÉCNICAS DO MEMORIAL E DO SIMULADOR -->
+    <div class="scada-tabs" id="nav-tabs-container">
+      <button class="scada-tab-btn" data-target="tab-simulador">🎛️ Simulador SCADA Interativo</button>
+      <button class="scada-tab-btn active" data-target="tab-memorial-consolidado">📖 Memorial Técnico (02 a 09)</button>
+      <button class="scada-tab-btn" data-target="tab-mapeamento">📊 Módulo 02: Mapeamento</button>
+      <button class="scada-tab-btn" data-target="tab-tautologia">🛡️ Módulo 03: Tautologias</button>
+      <button class="scada-tab-btn" data-target="tab-conectivos">⚡ Módulo 04: Conectivos</button>
+      <button class="scada-tab-btn" data-target="tab-otimizacao">📐 Módulo 05: Formas Normais</button>
+      <button class="scada-tab-btn" data-target="tab-predicados">📡 Módulo 06: Predicados</button>
+      <button class="scada-tab-btn" data-target="tab-deducao">⚖️ Módulo 07: Dedução Formal</button>
+      <button class="scada-tab-btn" data-target="tab-regras">🧠 Módulos 08 & 09: Inferência</button>
+    </div>
+
+    <!-- ABA 1: SIMULADOR SCADA INTERATIVO -->
+    <div id="tab-simulador" class="tab-pane">
+      
+      <div class="scada-callout info">
+        <div class="callout-icon">💡</div>
+        <div class="callout-body">
+          <div class="callout-title">Simulador em Tempo Real da Linha de Envase (Grupo 3)</div>
+          <div>
+            Ajuste os sensores de telemetria analógica e comute as falhas abaixo. O motor de inferência em JavaScript avalia os permissivos booleanos, executa o <strong>Forward Chaining</strong> para inferir diagnósticos de causa-raiz e comanda o acionamento seguro dos atuadores.
+          </div>
+        </div>
+      </div>
+
+      <div class="simulator-layout">
+        
+        <!-- PAINEL DE CONTROLE (ENTRADAS E SENSORES) -->
+        <div class="sim-panel">
+          <div class="sim-panel-header">
+            <span>🎛️ PAINEL DE TELEMETRIA & FALHAS</span>
+            <span style="color: var(--cyan-neon);">ENTRADAS (F0)</span>
+          </div>
+          <div class="sim-panel-body">
+            
+            <!-- Sensor SP1 -->
+            <div class="control-group">
+              <div class="control-header">
+                <label for="slider-sp1">Pressão Entrada SP1 (Tanque TS1):</label>
+                <span id="val-sp1">2.5 Barg</span>
+              </div>
+              <input type="range" id="slider-sp1" class="scada-range" min="0.0" max="5.0" step="0.1" value="2.5">
+              <small style="color: var(--text-dim); font-size: 0.75rem;">Faixa Nominal: 1,0 a 3,5 Barg | Subpressão &lt; 1,0 | Sobrepressão &gt; 3,5</small>
+            </div>
+
+            <!-- Sensor SQ1 -->
+            <div class="control-group">
+              <div class="control-header">
+                <label for="slider-sq1">Vazão Sucção SQ1 (Alimentação):</label>
+                <span id="val-sq1">25.0 L/min</span>
+              </div>
+              <input type="range" id="slider-sq1" class="scada-range" min="0.0" max="60.0" step="0.5" value="25.0">
+              <small style="color: var(--text-dim); font-size: 0.75rem;">Faixa Nominal: 5,0 a 45,0 L/min | Sobrefluxo &gt; 45,0 L/min</small>
+            </div>
+
+            <!-- Sensor SP2 -->
+            <div class="control-group">
+              <div class="control-header">
+                <label for="slider-sp2">Pressão Acumulador SP2 (AS1):</label>
+                <span id="val-sp2">3.8 Barg</span>
+              </div>
+              <input type="range" id="slider-sp2" class="scada-range" min="0.0" max="6.0" step="0.1" value="3.8">
+              <small style="color: var(--text-dim); font-size: 0.75rem;">Faixa Nominal: 3,0 a 4,5 Barg | Sobrepressão &gt; 4,5 Barg</small>
+            </div>
+
+            <!-- Sensor SQ2 -->
+            <div class="control-group">
+              <div class="control-header">
+                <label for="slider-sq2">Vazão Dosagem SQ2 (Envase):</label>
+                <span id="val-sq2">5.0 L/min</span>
+              </div>
+              <input type="range" id="slider-sq2" class="scada-range" min="0.0" max="12.0" step="0.2" value="5.0">
+              <small style="color: var(--text-dim); font-size: 0.75rem;">Faixa Nominal: 2,0 a 8,0 L/min | Bloqueio / Obstrução &lt; 2,0 L/min</small>
+            </div>
+
+            <!-- Chaves Digitais -->
+            <div class="scada-toggle-grid" style="margin-top: 0.5rem;">
+              <button class="scada-toggle-btn active" id="btn-estop" type="button">
+                <span>🛑 Parada Emergência</span>
+                <span class="toggle-status">INATIVO (OK)</span>
+              </button>
+              
+              <button class="scada-toggle-btn active" id="btn-ts1-level" type="button">
+                <span>🚰 Nível TS1</span>
+                <span class="toggle-status">OK (> MÍN)</span>
+              </button>
+
+              <button class="scada-toggle-btn active" id="btn-garrafa-pos" type="button">
+                <span>🍾 Presença Garrafa</span>
+                <span class="toggle-status">PRESENTE</span>
+              </button>
+
+              <button class="scada-toggle-btn" id="btn-garrafa-cheia" type="button">
+                <span>🧴 Nível Garrafa (SL1)</span>
+                <span class="toggle-status">VAZIA (&lt;95%)</span>
+              </button>
+            </div>
+
+            <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+              <button class="btn-cta-glass" id="btn-reset-sim" type="button" style="flex: 1; padding: 0.5rem;">🔄 Nominal</button>
+              <button class="btn-cta-primary" id="btn-inject-cav" type="button" style="flex: 1; padding: 0.5rem; font-size: 0.82rem;">⚠️ Cavitação</button>
+              <button class="btn-cta-primary" id="btn-inject-trip" type="button" style="flex: 1; padding: 0.5rem; font-size: 0.82rem; background: linear-gradient(135deg, #c00, #f00);">🚨 Sobrecarga</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- PAINEL DE ATUADORES & DIAGNÓSTICO SCADA -->
+        <div class="sim-panel">
+          <div class="sim-panel-header">
+            <span>⚡ ESTADOS DOS ATUADORES & CLPs</span>
+            <span style="color: var(--emerald-ok);" id="system-status-indicator">● SISTEMA OPERACIONAL</span>
+          </div>
+          <div class="sim-panel-body">
+            
+            <div class="actuator-status-grid">
+              <div class="actuator-card">
+                <div>
+                  <div class="actuator-tag">BC1 · Bomba Centrífuga</div>
+                  <small style="color: var(--text-dim);">Alimentação TS1 -> AS1</small>
+                </div>
+                <span class="actuator-pill on" id="pill-bc1">LIGADA</span>
+              </div>
+
+              <div class="actuator-card">
+                <div>
+                  <div class="actuator-tag">VS1 · Válvula Sucção</div>
+                  <small style="color: var(--text-dim);">Entrada da Bomba</small>
+                </div>
+                <span class="actuator-pill on" id="pill-vs1">ABERTA</span>
+              </div>
+
+              <div class="actuator-card">
+                <div>
+                  <div class="actuator-tag">RC1 · Motor da Esteira</div>
+                  <small style="color: var(--text-dim);">Transporte Linear</small>
+                </div>
+                <span class="actuator-pill off" id="pill-rc1">PARADA (ENVASE)</span>
+              </div>
+
+              <div class="actuator-card">
+                <div>
+                  <div class="actuator-tag">VS2 · Válvula Envase</div>
+                  <small style="color: var(--text-dim);">Dosador de Precisão</small>
+                </div>
+                <span class="actuator-pill on" id="pill-vs2">ABERTA (DOSANDO)</span>
+              </div>
+
+              <div class="actuator-card">
+                <div>
+                  <div class="actuator-tag">AC1 · Atuador Capping</div>
+                  <small style="color: var(--text-dim);">Rosqueamento Tampa</small>
+                </div>
+                <span class="actuator-pill off" id="pill-ac1">AGUARDANDO NÍVEL</span>
+              </div>
+
+              <div class="actuator-card">
+                <div>
+                  <div class="actuator-tag">SFC1 · Inspeção Vedação</div>
+                  <small style="color: var(--text-dim);">Fim de Curso</small>
+                </div>
+                <span class="actuator-pill off" id="pill-sfc1">DESATIVADO</span>
+              </div>
+            </div>
+
+            <!-- Terminal de Logs & Dedução -->
+            <div style="margin-top: 0.5rem;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.3rem;">
+                <span style="color: var(--cyan-neon);">AUDIT TRAIL / MOTOR FORWARD CHAINING</span>
+                <span style="color: var(--text-dim);" id="inference-cycle-counter">Ciclo CLP: #142</span>
+              </div>
+              <div class="scada-terminal" id="sim-terminal">
+                <div class="terminal-entry info">[00:00:01] SCADA-Core inicializado com sucesso.</div>
+                <div class="terminal-entry info">[00:00:01] Telemetria nominal: SP1=2.5 Barg, SQ1=25.0 L/min, SP2=3.8 Barg.</div>
+                <div class="terminal-entry">[00:00:01] Permissivo Bomba P_BC1 = TRUE -> BC1 Energizada.</div>
+                <div class="terminal-entry">[00:00:01] Garrafa alinhada sob o bico -> VS2 Aberta para envase.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ABA 2: MEMORIAL TÉCNICO CONSOLIDADO (02 A 09) -->
+    <div id="tab-memorial-consolidado" class="tab-pane active">
+      <div class="section-header">
+        <span class="section-tag">Memorial Descritivo Integrado</span>
+        <h2 class="section-title">Síntese dos Módulos 02 ao 09</h2>
+        <p class="section-subtitle">
+          Consolidação de todo o arcabouço matemático e computacional extraído dos arquivos de projeto do Grupo 3.
+        </p>
+      </div>
+
+      <div class="plant-overview-grid">
+        <div class="plant-card">
+          <div class="plant-card-header">
+            <span class="plant-tag">Módulos 02 e 03</span>
+            <span class="plant-icon">🛡️</span>
+          </div>
+          <h3 class="plant-card-title">Mapeamento & Tautologias</h3>
+          <p class="plant-card-desc">
+            Discretização de variáveis de processo e prova do Teorema de Segurança contra cavitação e queima da bomba BC1.
+          </p>
+        </div>
+
+        <div class="plant-card">
+          <div class="plant-card-header">
+            <span class="plant-tag">Módulos 04 e 05</span>
+            <span class="plant-icon">⚡</span>
+          </div>
+          <h3 class="plant-card-title">Permissivos & Otimização</h3>
+          <p class="plant-card-desc">
+            Equacionamento booleano em FND/FNC e simplificação por Mapas de Karnaugh com mais de 87% de redução de literais.
+          </p>
+        </div>
+
+        <div class="plant-card">
+          <div class="plant-card-header">
+            <span class="plant-tag">Módulos 06 ao 09</span>
+            <span class="plant-icon">🧠</span>
+          </div>
+          <h3 class="plant-card-title">Predicados & Sistemas Especialistas</h3>
+          <p class="plant-card-desc">
+            Varredura quantificada em malhas de sensores e motor híbrido de inferência Forward & Backward Chaining.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABA 3: MÓDULO 02 -->
+    <div id="tab-mapeamento" class="tab-pane">
+      <div class="section-header">
+        <h2 class="section-title">Módulo 02: Mapeamento de Variáveis de Projeto</h2>
+        <p class="section-subtitle">
+          Conversão de sinais analógicos de instrumentação e estados discretos de atuadores em átomos booleanos para controle no CLP.
+        </p>
+      </div>
+
+      <div class="scada-table-container">
+        <table class="scada-table">
+          <thead>
+            <tr>
+              <th>Tag - Instrumento</th>
+              <th>Proposição Lógica</th>
+              <th>Condição Lógica / Limiar Físico</th>
+              <th>Papel no Intertravamento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>SP1</strong></td><td><code>p_máx1</code></td><td>Pressão maior que 3,5 Barg</td><td>Alarme de sobrepressão na sucção do TS1</td></tr>
+            <tr><td><strong>SP1</strong></td><td><code>p_mín1</code></td><td>Pressão menor que 1,0 Barg</td><td>Trip de subpressão / Prevenção de cavitação na bomba BC1</td></tr>
+            <tr><td><strong>SP2</strong></td><td><code>p_máx2</code></td><td>Pressão maior que 4,5 Barg</td><td>Alarme de sobrepressão no acumulador intermediário AS1</td></tr>
+            <tr><td><strong>SP2</strong></td><td><code>p_mín2</code></td><td>Pressão menor que 3,0 Barg</td><td>Bloqueio de dosagem por baixa pressão</td></tr>
+            <tr><td><strong>SQ1</strong></td><td><code>q_máx1</code></td><td>Vazão maior que 45,0 L/min</td><td>Alarme de sobrefluxo na sucção primária</td></tr>
+            <tr><td><strong>SQ1</strong></td><td><code>q_mín1</code></td><td>Vazão menor que 5,0 L/min</td><td>Indicação de falta de suprimento no tanque TS1</td></tr>
+            <tr><td><strong>SQ2</strong></td><td><code>q_máx2</code></td><td>Vazão maior que 8,0 L/min</td><td>Detecção de vazamento ou ruptura no bico de envase</td></tr>
+            <tr><td><strong>SQ2</strong></td><td><code>q_mín2</code></td><td>Vazão menor que 2,0 L/min</td><td>Alarme de entupimento / obstrução do bico VS2</td></tr>
+            <tr><td><strong>SL1</strong></td><td><code>l_mín</code></td><td>Nível de líquido na garrafa &ge; 95%</td><td>Liberação da garrafa para a etapa de capping (tampagem)</td></tr>
+            <tr><td><strong>RC1</strong></td><td><code>v_máx</code> / <code>v_mín</code></td><td>v &gt; 0,4 m/s (máx) | v &lt; 0,1 m/s (mín)</td><td>Faixa controlada de velocidade da esteira transportadora</td></tr>
+            <tr><td><strong>BC1</strong></td><td><code>y_bomba</code></td><td>Bomba centrífuga em funcionamento (TRUE)</td><td>Atuador de pressurização da linha de suprimento</td></tr>
+            <tr><td><strong>VS1 a VS5</strong></td><td><code>y_válv1 a y_válv5</code></td><td>Válvulas solenoides abertas (TRUE)</td><td>Comando eletropneumático dos ramais da linha</td></tr>
+            <tr><td><strong>AC1</strong></td><td><code>y_capp</code></td><td>Atuador de Capping ativo (TRUE)</td><td>Rosqueamento mecânico e fixação da tampa</td></tr>
+            <tr><td><strong>SFC1</strong></td><td><code>x_fc</code></td><td>Sensor fim de curso ativado</td><td>Confirmação física da correta selagem da tampa</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ABA 4: MÓDULO 03 -->
+    <div id="tab-tautologia" class="tab-pane">
+      <div class="section-header">
+        <h2 class="section-title">Módulo 03: Tautologias e Intertravamentos de Segurança</h2>
+        <p class="section-subtitle">
+          Formalização dos bloqueios de processo e prova dedutiva de impossibilidade de operação sob risco de cavitação.
+        </p>
+      </div>
+
+      <div class="math-card">
+        <div class="math-card-title">🛡️ Regra de Intertravamento da Linha de Alimentação (F1)</div>
+        <div class="math-formula">
+          F_1 \equiv p_{\text{mín1}} \lor p_{\text{máx1}} \lor q_{\text{máx1}} <br>
+          F_1 \rightarrow (\neg y_{\text{bomba}} \land \neg y_{\text{válv1}})
+        </div>
+      </div>
+
+      <div class="math-card">
+        <div class="math-card-title">🛡️ Prova Formal do Teorema de Não-Cavitação (Contradição &perp; & Tautologia &top;)</div>
+        <div class="math-formula">
+          \text{Estado de Risco: } S_{\text{risco}} \equiv p_{\text{mín1}} \land y_{\text{bomba}} <br>
+          \text{Intertrava CLP: } p_{\text{mín1}} \rightarrow \neg y_{\text{bomba}} \equiv \neg p_{\text{mín1}} \lor \neg y_{\text{bomba}} <br><br>
+          S_{\text{risco}} \land (\neg p_{\text{mín1}} \lor \neg y_{\text{bomba}}) \equiv <br>
+          \big((p_{\text{mín1}} \land \neg p_{\text{mín1}}) \land y_{\text{bomba}}\big) \lor \big(p_{\text{mín1}} \land (y_{\text{bomba}} \land \neg y_{\text{bomba}})\big) \equiv <br>
+          (\mathbf{F} \land y_{\text{bomba}}) \lor (p_{\text{mín1}} \land \mathbf{F}) \equiv \mathbf{F} \lor \mathbf{F} \equiv \mathbf{FALSO} \; (\bot)
+        </div>
+      </div>
+    </div>
+
+    <!-- ABA 5: MÓDULO 04 -->
+    <div id="tab-conectivos" class="tab-pane">
+      <div class="section-header">
+        <h2 class="section-title">Módulo 04: Lógica Proposicional, Conectivos e Permissivos</h2>
+        <p class="section-subtitle">
+          Circuitos lógicos de partida (Start Permissives) e desarme contínuo (Run Interlocks / Trips).
+        </p>
+      </div>
+
+      <div class="math-card">
+        <div class="math-card-title">⚡ Permissivo da Bomba Centrífuga (P_BC1)</div>
+        <div class="math-formula">
+          P_{\text{BC1}} \equiv sp_{\text{1-ok}} \land sq_{\text{1-ok}} \land ls_{\text{VS1-open}} \land \neg p_{\text{AS1-high}} \land \neg e_{\text{stop}} \land (\text{Auto} \oplus \text{Manual})
+        </div>
+      </div>
+
+      <div class="math-card">
+        <div class="math-card-title">⚡ Permissivo da Esteira Transportadora (P_RC1)</div>
+        <div class="math-formula">
+          P_{\text{RC1}} \equiv \neg \text{act}_{\text{VS2}} \land \neg \text{ext}_{\text{VS3}} \land \neg \text{ext}_{\text{VS4}} \land \neg \text{ext}_{\text{VS5}} \land \neg e_{\text{stop}} \land (\text{Auto} \oplus \text{Manual})
+        </div>
+      </div>
+    </div>
+
+    <!-- ABA 6: MÓDULO 05 -->
+    <div id="tab-otimizacao" class="tab-pane">
+      <div class="section-header">
+        <h2 class="section-title">Módulo 05: Formas Normais e Otimização Booleana</h2>
+        <p class="section-subtitle">
+          Mapas de Karnaugh de 4 variáveis e algoritmo de Quine-McCluskey para código IEC 61131-3.
+        </p>
+      </div>
+
+      <div class="scada-table-container">
+        <table class="scada-table">
+          <thead>
+            <tr>
+              <th>Função Lógica</th>
+              <th>Forma Canônica (FND - SOP)</th>
+              <th>Forma Mínima Otimizada</th>
+              <th>Redução de Literais</th>
+              <th>Economia de Portas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Válvula Envase (V)</strong></td>
+              <td><code>m14 = E . N . P . ~C</code></td>
+              <td><code>V = E . N . P . ~C</code></td>
+              <td>4 &rarr; 4 (0%)</td>
+              <td>Irredutível</td>
+            </tr>
+            <tr>
+              <td><strong>Motor Esteira (M)</strong></td>
+              <td><code>&sum; m(8, 9, 11, 12, 13, 15)</code> (24 literais)</td>
+              <td><code>M = E . (~P + C)</code></td>
+              <td>24 &rarr; 3 (<strong>87.5%</strong>)</td>
+              <td><strong>78.9%</strong> de redução</td>
+            </tr>
+            <tr>
+              <td><strong>Alarme Falha (A)</strong></td>
+              <td><code>&sum; m(0..7, 10)</code> (36 literais)</td>
+              <td><code>A = ~E + (~N . P . ~C)</code></td>
+              <td>36 &rarr; 4 (<strong>88.9%</strong>)</td>
+              <td><strong>84.0%</strong> de redução</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ABA 7: MÓDULO 06 -->
+    <div id="tab-predicados" class="tab-pane">
+      <div class="section-header">
+        <h2 class="section-title">Módulo 06: Lógica de Predicados e Quantificadores em Redes de Sensores</h2>
+        <p class="section-subtitle">
+          Operadores FORALL (&forall;) e EXISTS (&exist;) aplicados a transmissores industriais.
+        </p>
+      </div>
+
+      <div class="math-card">
+        <div class="math-card-title">📡 1. Integridade da Comunicação da Rede</div>
+        <div class="math-formula">
+          \forall x \in \mathcal{S}_{\text{sensores}}, \; \neg \text{FalhaCom}(x) \equiv \neg\text{Falha}(SP1) \land \neg\text{Falha}(SQ1) \land \neg\text{Falha}(SP2) \land \dots
+        </div>
+      </div>
+
+      <div class="math-card">
+        <div class="math-card-title">📡 2. Detecção de Sobrepressão em Qualquer Ponto</div>
+        <div class="math-formula">
+          \exists x \in \mathcal{S}_P, \; \text{Sobrepressao}(x) \equiv (p_{SP1} > 3,5\,\text{Barg}) \lor (p_{SP2} > 4,5\,\text{Barg})
+        </div>
+      </div>
+    </div>
+
+    <!-- ABA 8: MÓDULO 07 -->
+    <div id="tab-deducao" class="tab-pane">
+      <div class="section-header">
+        <h2 class="section-title">Módulo 07: Validade e Inferência Lógica na Segurança</h2>
+        <p class="section-subtitle">
+          Verificação dedutiva formal por Modus Ponens, Modus Tollens e prova por refutação (SAT).
+        </p>
+      </div>
+
+      <div class="scada-table-container">
+        <table class="scada-table">
+          <thead>
+            <tr>
+              <th>Esquema Canônico</th>
+              <th>Formulação Matemática</th>
+              <th>Aplicação na Linha de Envase (Grupo 3)</th>
+              <th>Status Dedutivo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Modus Ponens (MP)</strong></td>
+              <td><code>P &rarr; Q, P &vdash; Q</code></td>
+              <td>Subpressão em TS1 (SP1 &lt; 1,0) implica desarme imediato da bomba BC1.</td>
+              <td><span style="color: var(--emerald-ok); font-weight: 700;">VÁLIDO &top;</span></td>
+            </tr>
+            <tr>
+              <td><strong>Modus Tollens (MT)</strong></td>
+              <td><code>P &rarr; Q, ~Q &vdash; ~P</code></td>
+              <td>Válvula VS2 aberta implica fluxo em SQ2. Fluxo nulo implica falha mecânica da VS2.</td>
+              <td><span style="color: var(--emerald-ok); font-weight: 700;">VÁLIDO &top;</span></td>
+            </tr>
+            <tr>
+              <td><strong>Silogismo Hipotético (SH)</strong></td>
+              <td><code>P &rarr; Q, Q &rarr; R &vdash; P &rarr; R</code></td>
+              <td>Sobrepressão em AS1 interrompe envase VS2, o que por sua vez para a esteira RC1.</td>
+              <td><span style="color: var(--emerald-ok); font-weight: 700;">VÁLIDO &top;</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ABA 9: MÓDULOS 08 E 09 -->
+    <div id="tab-regras" class="tab-pane">
+      <div class="section-header">
+        <h2 class="section-title">Módulos 08 & 09: Base de Conhecimento e Motores de Inferência (FC/BC)</h2>
+        <p class="section-subtitle">
+          Cláusulas de Horn, encadeamento para frente (telemetria em tempo real) e encadeamento para trás (RCA pós-falha).
+        </p>
+      </div>
+
+      <div class="scada-table-container">
+        <table class="scada-table">
+          <thead>
+            <tr>
+              <th>ID Regra</th>
+              <th>Antecedentes</th>
+              <th>Consequente Inferido</th>
+              <th>Severidade</th>
+              <th>Ação Operacional (POP)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>R-01</strong></td><td><code>p_max1 &and; q_max1</code></td><td><code>SOBRECARGA_LINHA_ALIMENTACAO</code></td><td>CRÍTICA (10)</td><td>POP-SIS-01: Cortar alimentação, parar BC1 e fechar VS1.</td></tr>
+            <tr><td><strong>R-02</strong></td><td><code>SOBRECARGA_LINHA_ALIMENTACAO &and; y_valv1</code></td><td><code>TRIP_BLOQUEIO_EMERGENCIA</code></td><td>CRÍTICA (10)</td><td>POP-SIS-02: Interromper contator de BC1 e fechar VS1.</td></tr>
+            <tr><td><strong>R-03</strong></td><td><code>p_min1 &and; y_bomba</code></td><td><code>CAVITACAO_BOMBA_BC1</code></td><td>ALTA (8)</td><td>POP-MA-04: Desligar BC1 e verificar nível do tanque TS1.</td></tr>
+            <tr><td><strong>R-04</strong></td><td><code>p_max2</code></td><td><code>SOBREPRESSAO_ACUMULADOR_AS1</code></td><td>CRÍTICA (9)</td><td>POP-SST-08: Acionar alívio pneumático e cortar fluxo AS1.</td></tr>
+            <tr><td><strong>R-05</strong></td><td><code>q_min2 &and; y_valv2</code></td><td><code>OBSTRUCAO_BICO_ENVASE</code></td><td>ALTA (7)</td><td>POP-SEC-02: Parar esteira RC1 e realizar retrolavagem.</td></tr>
+            <tr><td><strong>R-09</strong></td><td><code>TRIP_BLOQUEIO_EMERGENCIA</code></td><td><code>PARADA_TOTAL_LINHA</code></td><td>CRÍTICA (10)</td><td>POP-ESD-01: Desabilitar saídas do CLP e acionar alarme geral.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="scada-footer">
+    <div class="footer-container">
+      
+      <div class="footer-brand">
+        <div class="brand-group">
+          <div class="brand-icon">⚡</div>
+          <div class="brand-badge-dual">
+            <span class="badge-segment-title">SCADA-Core UNIFEI</span>
+            <span class="badge-segment-group">Grupo-3---ECAA08</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          Universidade Federal de Itajubá (UNIFEI) · Automática (ECAA08).<br>
+          Memorial descritivo formal e motor de inferência em lógica booleana e cláusulas de Horn.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Navegação</div>
+        <ul class="footer-links">
+          <li><a href="../index.html">🏠 Página Inicial</a></li>
+          <li><a href="etapa-01-logica.html">⚡ Etapa 01 - Memorial & Simulador</a></li>
+          <li><a href="planta-modelo.html">🏭 Planta Modelo & P&ID</a></li>
+          <li><a href="diretrizes-github.html">🐙 Diretrizes de Governança & 5W2H</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Equipe Grupo 3</div>
+        <ul class="footer-links">
+          <li><span>Guilherme Narciso Castro Silva</span></li>
+          <li><span>Rafael Ribeiro Guedes</span></li>
+          <li><span>Matheus F. de O. Agostinho</span></li>
+          <li><span>Nickolas Nicoleto Musico</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Grupo 3 - ECAA08 - UNIFEI. Licença acadêmica.</div>
+      <div>Validação Dedutiva: <code class="mono-font">SAT Solver (Refutação OK)</code></div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/simulator-engine.js"></script>
+</body>
+</html>

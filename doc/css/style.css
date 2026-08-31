@@ -1,0 +1,1753 @@
+/* ==========================================================================
+   SCADA-CORE UNIFEI | DESIGN SYSTEM & STYLESHEET
+   Disciplina: ECAA08 - Automática / Matemática Discreta
+   Projeto: Linha de Envasamento e Inspeção de Bebidas (Grupo 3)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* --- VARIÁVEIS DO SISTEMA (DARK THEME DEFAULT) --- */
+:root {
+  --bg-primary: #070d18;
+  --bg-secondary: #0c1628;
+  --bg-card: rgba(13, 25, 48, 0.75);
+  --bg-card-hover: rgba(18, 35, 68, 0.85);
+  --bg-glass: rgba(10, 21, 40, 0.65);
+  --bg-surface: #10203a;
+  --bg-surface-elevated: #162b4e;
+
+  /* Grid e Linhas Técnicas */
+  --grid-line-color: rgba(0, 180, 255, 0.05);
+  --grid-line-strong: rgba(0, 229, 255, 0.12);
+  --grid-size: 32px;
+  --border-color: rgba(0, 200, 255, 0.18);
+  --border-focus: #00e5ff;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+
+  /* Paleta Neon Industrial */
+  --cyan-neon: #00f0ff;
+  --cyan-glow: rgba(0, 240, 255, 0.35);
+  --blue-primary: #0077ff;
+  --blue-accent: #00a8ff;
+  --blue-glow: rgba(0, 119, 255, 0.3);
+  --emerald-ok: #00e676;
+  --emerald-glow: rgba(0, 230, 118, 0.35);
+  --amber-warn: #ffab00;
+  --amber-glow: rgba(255, 171, 0, 0.35);
+  --crimson-alarm: #ff1744;
+  --crimson-glow: rgba(255, 23, 68, 0.4);
+  --purple-accent: #b388ff;
+
+  /* Tipografia & Textos */
+  --text-main: #f0f6fc;
+  --text-muted: #8b9bb4;
+  --text-dim: #546580;
+  --text-bright: #ffffff;
+  --text-code: #58a6ff;
+
+  /* Efeitos */
+  --shadow-card: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+  --shadow-glow-cyan: 0 0 20px rgba(0, 240, 255, 0.25);
+  --shadow-glow-blue: 0 0 24px rgba(0, 119, 255, 0.3);
+  --shadow-glow-emerald: 0 0 24px rgba(0, 230, 118, 0.3);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- LIGHT THEME OVERRIDES --- */
+[data-theme="light"] {
+  --bg-primary: #f2f6fc;
+  --bg-secondary: #e2ebf6;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-hover: rgba(255, 255, 255, 0.98);
+  --bg-glass: rgba(240, 246, 255, 0.8);
+  --bg-surface: #d8e5f5;
+  --bg-surface-elevated: #cbdbf0;
+
+  --grid-line-color: rgba(0, 100, 200, 0.06);
+  --grid-line-strong: rgba(0, 119, 255, 0.15);
+  --border-color: rgba(0, 102, 204, 0.25);
+  --border-focus: #0066cc;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+
+  --cyan-neon: #0088aa;
+  --cyan-glow: rgba(0, 136, 170, 0.25);
+  --blue-primary: #0055cc;
+  --blue-accent: #0077ee;
+  --blue-glow: rgba(0, 85, 204, 0.25);
+  --emerald-ok: #008a3e;
+  --emerald-glow: rgba(0, 138, 62, 0.25);
+  --amber-warn: #c27d00;
+  --amber-glow: rgba(194, 125, 0, 0.25);
+  --crimson-alarm: #cc1133;
+  --crimson-glow: rgba(204, 17, 51, 0.25);
+
+  --text-main: #142033;
+  --text-muted: #4e617d;
+  --text-dim: #798da8;
+  --text-bright: #09121f;
+  --text-code: #005bb5;
+
+  --shadow-card: 0 8px 30px rgba(0, 50, 120, 0.1);
+  --shadow-glow-cyan: 0 0 16px rgba(0, 136, 170, 0.15);
+  --shadow-glow-blue: 0 0 20px rgba(0, 85, 204, 0.15);
+  --shadow-glow-emerald: 0 0 20px rgba(0, 138, 62, 0.15);
+}
+
+/* --- RESET & BASE --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  background-image: 
+    linear-gradient(var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line-color) 1px, transparent 1px),
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 140, 255, 0.15), transparent 70%);
+  background-size: var(--grid-size) var(--grid-size), var(--grid-size) var(--grid-size), 100% 100%;
+  background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(90deg, var(--grid-line-strong) 1px, transparent 1px) 0 0 / calc(var(--grid-size) * 4) calc(var(--grid-size) * 4),
+    linear-gradient(var(--grid-line-strong) 1px, transparent 1px) 0 0 / calc(var(--grid-size) * 4) calc(var(--grid-size) * 4);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/* --- TIPOGRAFIA TÉCNICA --- */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-bright);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--text-muted);
+}
+
+a {
+  color: var(--cyan-neon);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--blue-accent);
+}
+
+code, pre, .mono-font {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* --- HEADER & NAVBAR SUPERIOR --- */
+.scada-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-container {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--blue-primary), var(--cyan-neon));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-weight: 900;
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+.brand-badge-dual {
+  display: inline-flex;
+  align-items: stretch;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  background: var(--bg-surface);
+}
+
+.badge-segment-title {
+  padding: 0.35rem 0.75rem;
+  background: var(--bg-surface-elevated);
+  color: var(--text-bright);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-right: 1px solid var(--border-color);
+}
+
+.badge-segment-group {
+  padding: 0.35rem 0.75rem;
+  background: rgba(0, 240, 255, 0.12);
+  color: var(--cyan-neon);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 0.5rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.nav-link:hover {
+  color: var(--text-bright);
+  background: var(--bg-surface);
+  border-color: var(--border-subtle);
+}
+
+.nav-link.active {
+  color: var(--cyan-neon);
+  background: rgba(0, 240, 255, 0.08);
+  border-color: var(--border-color);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.15);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.theme-toggle-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 0.5rem 0.8rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.theme-toggle-btn:hover {
+  background: var(--bg-surface-elevated);
+  border-color: var(--cyan-neon);
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+.mobile-nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text-bright);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* --- CONTAINER PRINCIPAL --- */
+.scada-container {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin-bottom: 3.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.institution-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(0, 119, 255, 0.12);
+  border: 1px solid rgba(0, 119, 255, 0.35);
+  color: var(--blue-accent);
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  width: fit-content;
+}
+
+.live-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--emerald-ok);
+  box-shadow: 0 0 10px var(--emerald-ok);
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.hero-title {
+  font-size: 2.6rem;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.hero-title .gradient-text {
+  background: linear-gradient(135deg, var(--cyan-neon) 0%, var(--blue-accent) 60%, #fff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 980px;
+}
+
+/* GRID DE METADADOS (4 CARDS) */
+.metadata-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.meta-box-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.15rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  backdrop-filter: blur(12px);
+  transition: all var(--transition-fast);
+}
+
+.meta-box-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--cyan-neon);
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+.meta-box-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+  padding: 0.4rem;
+  background: var(--bg-surface);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.meta-box-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.meta-box-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--cyan-neon);
+  font-weight: 700;
+}
+
+.meta-box-value {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  line-height: 1.35;
+}
+
+/* BLOCO DE 3 BOTÕES DE AÇÃO RÁPIDA (CTAs) */
+.cta-group-3 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.btn-cta-slide {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--blue-primary) 0%, #0099ff 100%);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-glow-blue);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.btn-cta-slide:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 119, 255, 0.55);
+  color: #fff;
+}
+
+.btn-cta-sim {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, rgba(0, 230, 118, 0.2) 0%, rgba(0, 240, 255, 0.2) 100%);
+  color: var(--emerald-ok);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 1px solid var(--emerald-ok);
+  box-shadow: var(--shadow-glow-emerald);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.btn-cta-sim:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, rgba(0, 230, 118, 0.35) 0%, rgba(0, 240, 255, 0.35) 100%);
+  color: #ffffff;
+  box-shadow: 0 0 30px rgba(0, 230, 118, 0.5);
+}
+
+.btn-cta-docs {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  color: var(--text-bright);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.btn-cta-docs:hover {
+  background: var(--bg-surface-elevated);
+  border-color: var(--cyan-neon);
+  box-shadow: var(--shadow-glow-cyan);
+  transform: translateY(-2px);
+  color: var(--cyan-neon);
+}
+
+/* BOTÕES PRIMÁRIOS E DE VIDRO GERAIS */
+.btn-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--blue-primary) 0%, #0099ff 100%);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-glow-blue);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.btn-cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 119, 255, 0.5);
+  color: #fff;
+}
+
+.btn-cta-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  color: var(--text-bright);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.btn-cta-glass:hover {
+  background: var(--bg-surface-elevated);
+  border-color: var(--cyan-neon);
+  box-shadow: var(--shadow-glow-cyan);
+  transform: translateY(-2px);
+  color: var(--cyan-neon);
+}
+
+/* ==========================================================================
+   APRESENTAÇÃO EXECUTIVA EM 15 SLIDES (COMPONENTE INTERATIVO)
+   ========================================================================== */
+.slide-deck-wrapper {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px);
+  overflow: hidden;
+  margin: 2.5rem 0 4rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-deck-header {
+  padding: 1rem 1.5rem;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.slide-deck-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--cyan-neon);
+}
+
+.slide-counter-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+}
+
+/* Barra de Progresso do Slide */
+.slide-progress-bar-bg {
+  width: 100%;
+  height: 4px;
+  background: var(--bg-surface);
+}
+
+.slide-progress-bar-fill {
+  height: 100%;
+  width: 6.66%;
+  background: linear-gradient(90deg, var(--blue-primary), var(--cyan-neon));
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Área do Slide Ativo */
+.slide-display-area {
+  min-height: 480px;
+  padding: 2.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-item {
+  display: none;
+  width: 100%;
+  animation: slideFadeIn 0.35s ease;
+}
+
+.slide-item.active {
+  display: block;
+}
+
+@keyframes slideFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-card-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.slide-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--cyan-neon);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: rgba(0, 240, 255, 0.1);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  width: fit-content;
+  border: 1px solid rgba(0, 240, 255, 0.25);
+}
+
+.slide-heading {
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.slide-body-text {
+  font-size: 1.05rem;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.slide-grid-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.slide-subcard {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.slide-subcard h4 {
+  font-size: 0.95rem;
+  color: var(--cyan-neon);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.slide-subcard p, .slide-subcard ul {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.slide-subcard ul {
+  padding-left: 1.25rem;
+}
+
+/* Footer / Controles de Navegação dos Slides */
+.slide-deck-footer {
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.slide-nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-slide-nav {
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-bright);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-slide-nav:hover:not(:disabled) {
+  background: rgba(0, 240, 255, 0.15);
+  border-color: var(--cyan-neon);
+  color: var(--cyan-neon);
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+.btn-slide-nav:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.slide-keyboard-hint {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.slide-keyboard-hint kbd {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 0.15rem 0.4rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   COMPONENTES TÉCNICOS & MEMORIAL (ETAPA-01, PLANTA, SIMULADOR)
+   ========================================================================== */
+
+/* Abas de Navegação Técnica */
+.scada-tabs {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.scada-tab-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-bottom: none;
+  color: var(--text-muted);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.scada-tab-btn:hover {
+  background: var(--bg-surface-elevated);
+  color: var(--text-bright);
+  border-color: var(--border-color);
+}
+
+.scada-tab-btn.active {
+  background: var(--bg-card);
+  color: var(--cyan-neon);
+  border-color: var(--border-color);
+  border-top: 2px solid var(--cyan-neon);
+  box-shadow: 0 -4px 12px rgba(0, 240, 255, 0.1);
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tabelas Técnicas SCADA */
+.scada-table-container {
+  width: 100%;
+  overflow-x: auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  margin: 1.5rem 0;
+  box-shadow: var(--shadow-card);
+}
+
+.scada-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+.scada-table th {
+  background: var(--bg-surface-elevated);
+  color: var(--cyan-neon);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  padding: 0.9rem 1.1rem;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.scada-table td {
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-main);
+}
+
+.scada-table tr:hover td {
+  background: rgba(0, 240, 255, 0.03);
+}
+
+.scada-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Caixas de Fórmulas Matemáticas & Teoremas */
+.math-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--cyan-neon);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  font-family: 'JetBrains Mono', monospace;
+  overflow-x: auto;
+}
+
+.math-card-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cyan-neon);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.math-formula {
+  font-size: 1.05rem;
+  color: var(--text-bright);
+  padding: 0.5rem 0;
+  line-height: 1.6;
+}
+
+/* Callouts Técnicos (Avisos, Informações, Sucesso) */
+.scada-callout {
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.scada-callout.info {
+  background: rgba(0, 119, 255, 0.1);
+  border: 1px solid rgba(0, 119, 255, 0.3);
+  color: var(--text-main);
+}
+
+.scada-callout.info .callout-icon {
+  color: var(--blue-accent);
+}
+
+.scada-callout.success {
+  background: rgba(0, 230, 118, 0.1);
+  border: 1px solid rgba(0, 230, 118, 0.3);
+  color: var(--text-main);
+}
+
+.scada-callout.danger {
+  background: rgba(255, 23, 68, 0.1);
+  border: 1px solid rgba(255, 23, 68, 0.3);
+  color: var(--text-main);
+}
+
+.callout-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.callout-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.callout-title {
+  font-weight: 700;
+  color: var(--text-bright);
+}
+
+/* ==========================================================================
+   SIMULADOR INTERATIVO SCADA (PAINEL DE CONTROLE EM TEMPO REAL)
+   ========================================================================== */
+.simulator-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.sim-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.sim-panel-header {
+  padding: 1rem 1.25rem;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.sim-panel-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex: 1;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.control-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+
+.control-header span {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--cyan-neon);
+  font-weight: 600;
+}
+
+.scada-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--bg-surface-elevated);
+  outline: none;
+  transition: opacity 0.2s;
+}
+
+.scada-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--cyan-neon);
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--cyan-neon);
+  border: 2px solid #000;
+}
+
+.scada-toggle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.scada-toggle-btn {
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all var(--transition-fast);
+}
+
+.scada-toggle-btn.active {
+  background: rgba(0, 240, 255, 0.15);
+  border-color: var(--cyan-neon);
+  color: var(--text-bright);
+}
+
+.scada-toggle-btn.active .toggle-status {
+  color: var(--emerald-ok);
+  font-weight: 700;
+}
+
+.toggle-status {
+  color: var(--text-dim);
+}
+
+.actuator-status-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.actuator-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.actuator-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-bright);
+}
+
+.actuator-pill {
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.actuator-pill.on {
+  background: rgba(0, 230, 118, 0.2);
+  color: var(--emerald-ok);
+  border: 1px solid var(--emerald-ok);
+  box-shadow: 0 0 8px rgba(0, 230, 118, 0.3);
+}
+
+.actuator-pill.off {
+  background: rgba(255, 23, 68, 0.15);
+  color: var(--crimson-alarm);
+  border: 1px solid rgba(255, 23, 68, 0.3);
+}
+
+.scada-terminal {
+  background: #040810;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: #00ffaa;
+  height: 220px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.8);
+}
+
+.terminal-entry {
+  line-height: 1.4;
+  word-break: break-all;
+}
+
+.terminal-entry.warn {
+  color: var(--amber-warn);
+}
+
+.terminal-entry.danger {
+  color: var(--crimson-alarm);
+  font-weight: 700;
+}
+
+.terminal-entry.info {
+  color: var(--cyan-neon);
+}
+
+.code-box {
+  background: #050b14;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  overflow-x: auto;
+  color: #c9d1d9;
+  line-height: 1.5;
+}
+
+/* --- CARDS HERO DE PROJETO (INDEX) --- */
+.hero-card-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-scada-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px);
+  overflow: hidden;
+  position: relative;
+}
+
+.project-scada-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cyan-neon), var(--blue-primary), var(--emerald-ok));
+}
+
+.card-header-technical {
+  padding: 1rem 1.25rem;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tech-header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cyan-neon);
+}
+
+.tech-status-badge {
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(0, 230, 118, 0.15);
+  color: var(--emerald-ok);
+  border: 1px solid rgba(0, 230, 118, 0.3);
+}
+
+.card-body-intro {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.intro-lead {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.team-list-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+}
+
+.team-list-title {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  margin-bottom: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.team-members-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.team-member-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.team-member-item::before {
+  content: "▹";
+  color: var(--cyan-neon);
+}
+
+.card-footer-metrics {
+  padding: 0.85rem 1.25rem;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.metric-mini-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-mini-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-bright);
+}
+
+.metric-mini-label {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+/* --- TELEMETRIA & STATS TICKER --- */
+.scada-stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 4rem;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--cyan-neon);
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 1.7rem;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-bright);
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+/* --- SECTION HEADERS --- */
+.section-header {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.section-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--cyan-neon);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.section-title {
+  font-size: 1.9rem;
+  font-weight: 800;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  max-width: 720px;
+  font-size: 1rem;
+}
+
+/* --- ROADMAP DAS ETAPAS DO SEMESTRE --- */
+.roadmap-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 4.5rem;
+}
+
+.stage-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.75rem;
+  align-items: center;
+  backdrop-filter: blur(12px);
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.stage-card.available {
+  border-color: rgba(0, 240, 255, 0.4);
+  box-shadow: 0 4px 24px rgba(0, 240, 255, 0.08);
+}
+
+.stage-card.available:hover {
+  transform: translateY(-3px);
+  border-color: var(--cyan-neon);
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+.stage-card.upcoming {
+  opacity: 0.75;
+  border-color: var(--border-subtle);
+}
+
+.stage-card.upcoming:hover {
+  opacity: 1;
+  border-color: var(--border-color);
+}
+
+.stage-number-box {
+  width: 68px;
+  height: 68px;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.stage-number-box .stage-prefix {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.stage-number-box .stage-num {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--cyan-neon);
+  line-height: 1;
+}
+
+.stage-card.upcoming .stage-number-box .stage-num {
+  color: var(--text-muted);
+}
+
+.stage-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stage-header-line {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.stage-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.status-chip.chip-available {
+  background: rgba(0, 230, 118, 0.15);
+  color: var(--emerald-ok);
+  border: 1px solid rgba(0, 230, 118, 0.4);
+}
+
+.status-chip.chip-upcoming {
+  background: rgba(255, 171, 0, 0.12);
+  color: var(--amber-warn);
+  border: 1px solid rgba(255, 171, 0, 0.35);
+}
+
+.stage-description {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.stage-topics-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+}
+
+.topic-tag {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.55rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  color: var(--text-dim);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.stage-action-box {
+  display: flex;
+  align-items: center;
+}
+
+/* --- PLANTA & ARQUITETURA OVERVIEW --- */
+.plant-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 4.5rem;
+}
+
+.plant-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all var(--transition-normal);
+}
+
+.plant-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--cyan-neon);
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+.plant-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.plant-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cyan-neon);
+  background: var(--bg-surface);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-subtle);
+}
+
+.plant-icon {
+  font-size: 1.4rem;
+}
+
+.plant-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.plant-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.plant-specs-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background: var(--bg-surface);
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-dim);
+}
+
+.plant-specs-list li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.plant-specs-list li strong {
+  color: var(--text-main);
+}
+
+/* --- FOOTER --- */
+.scada-footer {
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  padding: 3rem 1.5rem 2rem 1.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-container {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.footer-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 480px;
+}
+
+.footer-col-title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-bright);
+  margin-bottom: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--cyan-neon);
+}
+
+.footer-bottom {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  font-family: 'JetBrains Mono', monospace;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 1024px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+  }
+  .metadata-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .slide-grid-content {
+    grid-template-columns: 1fr;
+  }
+  .scada-stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .plant-overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .simulator-layout {
+    grid-template-columns: 1fr;
+  }
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  .metadata-grid-4 {
+    grid-template-columns: 1fr;
+  }
+  .cta-group-3 {
+    flex-direction: column;
+  }
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg-surface-elevated);
+    flex-direction: column;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .nav-menu.open {
+    display: flex;
+  }
+  .mobile-nav-toggle {
+    display: block;
+  }
+  .slide-display-area {
+    padding: 1.5rem;
+    min-height: 400px;
+  }
+  .slide-deck-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .slide-nav-controls {
+    justify-content: space-between;
+  }
+  .scada-stats-bar {
+    grid-template-columns: 1fr;
+  }
+  .plant-overview-grid {
+    grid-template-columns: 1fr;
+  }
+  .stage-card {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .stage-number-box {
+    width: 50px;
+    height: 50px;
+  }
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+  .team-members-grid {
+    grid-template-columns: 1fr;
+  }
+  .scada-toggle-grid, .actuator-status-grid {
+    grid-template-columns: 1fr;
+  }
+}

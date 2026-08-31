@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planta Modelo & Arquitetura | SCADA-Core UNIFEI</title>
+  <meta name="description" content="Memorial descritivo da planta modelo, P&ID, sensores, atuadores e dinâmica de processos da Linha de Envasamento de Bebidas.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏭</text></svg>">
+</head>
+<body>
+
+  <!-- BARRA DE NAVEGAÇÃO SUPERIOR -->
+  <header class="scada-navbar">
+    <div class="navbar-container">
+      
+      <div class="brand-group">
+        <div class="brand-icon">⚙️</div>
+        <div class="brand-badge-dual">
+          <span class="badge-segment-title">Engarrafamento e Inspeção de Bebidas</span>
+          <span class="badge-segment-group">Grupo-3---ECAA08</span>
+        </div>
+      </div>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link"><span>🏠</span> Início</a></li>
+          <li><a href="etapa-01-logica.html" class="nav-link"><span>⚡</span> Etapa 01</a></li>
+          <li><a href="planta-modelo.html" class="nav-link active"><span>🏭</span> Planta Modelo / Arquitetura</a></li>
+          <li><a href="diretrizes-github.html" class="nav-link"><span>🐙</span> Diretrizes GitHub & 5W2H</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" type="button" aria-label="Alternar tema">
+          <span class="theme-btn-text">🌙 Modo Escuro</span>
+        </button>
+        <button class="mobile-nav-toggle" type="button" aria-label="Abrir menu móvel">☰</button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="scada-container">
+
+    <div class="section-header">
+      <div class="institution-badge">
+        <span class="live-indicator"></span>
+        <span>ECAA08 · Engenharia de Automação · Planta Modelo</span>
+      </div>
+      <h1 class="hero-title" style="margin-top: 0.5rem; font-size: 2.3rem;">
+        Arquitetura da Planta Modelo & <br>
+        <span class="gradient-text">Diagrama P&ID de Processo</span>
+      </h1>
+      <p class="section-subtitle">
+        Memorial descritivo detalhado de todos os componentes físicos, estações de trabalho, instrumentação industrial e malhas hidráulico-pneumáticas da célula de envase.
+      </p>
+    </div>
+
+    <!-- DIAGRAMA P&ID / PROCESSO -->
+    <section style="margin: 2.5rem 0;">
+      <div class="section-header">
+        <span class="section-tag">Esquemático Sinótico</span>
+        <h2 class="section-title">Diagrama de Tubulação e Instrumentação (P&ID)</h2>
+      </div>
+
+      <div class="scada-table-container" style="padding: 1.5rem; text-align: center; background: #02060f;">
+        <img src="https://github.com/user-attachments/assets/2660427f-9ae6-4b10-84b9-61a965b0749f" alt="Diagrama P&ID da Linha de Envasamento e Inspeção de Bebidas - Grupo 3" style="max-width: 100%; height: auto; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-card);">
+        <p style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
+          Figura 1: Arquitetura P&ID da Linha de Envasamento de Bebidas com malhas de sucção, bombeamento BC1, pulmão AS1 e módulos de inspeção.
+        </p>
+      </div>
+    </section>
+
+    <!-- MEMORIAL DAS ETAPAS DO PROCESSO -->
+    <section style="margin: 3rem 0;">
+      <div class="section-header">
+        <span class="section-tag">Fluxo Operacional</span>
+        <h2 class="section-title">Memorial Descritivo dos Módulos Operacionais</h2>
+      </div>
+
+      <div class="plant-overview-grid">
+        
+        <div class="plant-card">
+          <div class="plant-card-header">
+            <span class="plant-tag">Módulo 1 · RC1</span>
+            <span class="plant-icon">🛤️</span>
+          </div>
+          <h3 class="plant-card-title">Logística de Transporte Linear</h3>
+          <p class="plant-card-desc">
+            O transporte contínuo/intermitente das unidades de envase é provido pelo acionamento do motor da Esteira Transportadora (<code class="mono-font">RC1</code>). A velocidade é mantida rigidamente na faixa nominal (0,1 a 0,4 m/s) com parada indexada sincronizada sob os bicos e estações.
+          </p>
+        </div>
+
+        <div class="plant-card">
+          <div class="plant-card-header">
+            <span class="plant-tag">Módulo 2 · TS1 / BC1 / AS1</span>
+            <span class="plant-icon">🚰</span>
+          </div>
+          <h3 class="plant-card-title">Suprimento & Pressurização</h3>
+          <p class="plant-card-desc">
+            Fluido extraído do tanque principal <code class="mono-font">TS1</code> através da válvula <code class="mono-font">VS1</code> e pressurizado pela bomba centrípeta <code class="mono-font">BC1</code>. O acumulador intermediário <code class="mono-font">AS1</code> absorve picos de pressão e estabiliza a alimentação da linha.
+          </p>
+        </div>
+
+        <div class="plant-card">
+          <div class="plant-card-header">
+            <span class="plant-tag">Módulo 3 · VS2 / SQ2</span>
+            <span class="plant-icon">🧪</span>
+          </div>
+          <h3 class="plant-card-title">Dosagem e Envasamento</h3>
+          <p class="plant-card-desc">
+            Injeção volumétrica pela válvula solenoide <code class="mono-font">VS2</code>. O sensor de vazão <code class="mono-font">SQ2</code> afere o volume deslocado em tempo real, fechando a válvula assim que a cota programada é completada.
+          </p>
+        </div>
+
+        <div class="plant-card">
+          <div class="plant-card-header">
+            <span class="plant-tag">Módulo 4 · VS3 / SL1</span>
+            <span class="plant-icon">👁️</span>
+          </div>
+          <h3 class="plant-card-title">Inspeção Óptica de Nível</h3>
+          <p class="plant-card-desc">
+            A válvula solenoide <code class="mono-font">VS3</code> estende o mecanismo de posicionamento do sensor de nível <code class="mono-font">SL1</code>. A garrafa é aprovada apenas se o menisco alcançar &ge; 95% da capacidade nominal.
+          </p>
+        </div>
+
+        <div class="plant-card">
+          <div class="plant-card-header">
+            <span class="plant-tag">Módulo 5 · VS4 / AC1</span>
+            <span class="plant-icon">🔩</span>
+          </div>
+          <h3 class="plant-card-title">Tampagem (Capping)</h3>
+          <p class="plant-card-desc">
+            Com aprovação de nível prévia, o atuador pneumático <code class="mono-font">VS4</code> desce a ferramenta e o motor elétrico de rosqueamento <code class="mono-font">AC1</code> executa o torque programado de vedação mecânica.
+          </p>
+        </div>
+
+        <div class="plant-card">
+          <div class="plant-card-header">
+            <span class="plant-tag">Módulo 6 · VS5 / SFC1</span>
+            <span class="plant-icon">🛡️</span>
+          </div>
+          <h3 class="plant-card-title">Inspeção de Vedação</h3>
+          <p class="plant-card-desc">
+            A válvula <code class="mono-font">VS5</code> desce o apalpador táctil com sensor de fim de curso <code class="mono-font">SFC1</code>. Se o curso for bloqueado pela tampa na cota esperada, confirma-se a conformidade da selagem.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TABELA COMPLETA DE INSTRUMENTOS -->
+    <section style="margin: 3rem 0;">
+      <div class="section-header">
+        <span class="section-tag">Especificação dos Instrumentos</span>
+        <h2 class="section-title">Catálogo Completo de Sensores e Atuadores</h2>
+      </div>
+
+      <div class="scada-table-container">
+        <table class="scada-table">
+          <thead>
+            <tr>
+              <th>Tag</th>
+              <th>Nome / Descrição</th>
+              <th>Tipo de Sinal</th>
+              <th>Faixa de Trabalho Nominal</th>
+              <th>Condições de Falha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>SP1</strong></td>
+              <td>Transmissor de Pressão de Sucção</td>
+              <td>Analógico (4-20 mA)</td>
+              <td>1,0 a 3,5 Barg</td>
+              <td>Subpressão (&lt;1,0) ou Sobrepressão (&gt;3,5)</td>
+            </tr>
+            <tr>
+              <td><strong>SQ1</strong></td>
+              <td>Medidor de Vazão de Sucção</td>
+              <td>Analógico (4-20 mA)</td>
+              <td>5,0 a 45,0 L/min</td>
+              <td>Vazão Baixa (&lt;5,0) ou Sobrefluxo (&gt;45,0)</td>
+            </tr>
+            <tr>
+              <td><strong>SP2</strong></td>
+              <td>Transmissor de Pressão do Acumulador</td>
+              <td>Analógico (4-20 mA)</td>
+              <td>3,0 a 4,5 Barg</td>
+              <td>Sobrepressão Crítica (&gt;4,5 Barg)</td>
+            </tr>
+            <tr>
+              <td><strong>SQ2</strong></td>
+              <td>Medidor de Vazão de Envase</td>
+              <td>Analógico (Pulso / 4-20 mA)</td>
+              <td>2,0 a 8,0 L/min</td>
+              <td>Obstrução (&lt;2,0) ou Ruptura (&gt;8,0)</td>
+            </tr>
+            <tr>
+              <td><strong>SL1</strong></td>
+              <td>Sensor Fotoelétrico / Laser de Nível</td>
+              <td>Digital Discreto (24V DC)</td>
+              <td>&ge; 95% do volume</td>
+              <td>Nível Insuficiente (&lt;95%)</td>
+            </tr>
+            <tr>
+              <td><strong>SFC1</strong></td>
+              <td>Sensor Fim de Curso de Vedação</td>
+              <td>Digital Discreto (Contato Seco)</td>
+              <td>Contato Fechado na cota</td>
+              <td>Tampa Ausente / Percurso Completo</td>
+            </tr>
+            <tr>
+              <td><strong>RC1</strong></td>
+              <td>Inversor de Frequência do Motor da Esteira</td>
+              <td>Controle Modbus / Digital</td>
+              <td>0,1 a 0,4 m/s</td>
+              <td>Sobrevelocidade ou Sobrecarga Térmica</td>
+            </tr>
+            <tr>
+              <td><strong>BC1</strong></td>
+              <td>Bomba Centrífuga de Alimentação</td>
+              <td>Contator Digital 24V / Relé</td>
+              <td>ON / OFF</td>
+              <td>Cavitação / Sobrecarga Térmica</td>
+            </tr>
+            <tr>
+              <td><strong>VS1 a VS5</strong></td>
+              <td>Válvulas Solenoides Pneumáticas</td>
+              <td>Digital 24V DC</td>
+              <td>Aberta / Fechada</td>
+              <td>Queima de Bobina / Falha de Retorno</td>
+            </tr>
+            <tr>
+              <td><strong>AC1</strong></td>
+              <td>Servomotor de Capping / Rosqueamento</td>
+              <td>Sinal de Controle Digital/PWM</td>
+              <td>Torque Nominal</td>
+              <td>Travamento Mecânico de Tampa</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="scada-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="brand-group">
+          <div class="brand-icon">⚡</div>
+          <div class="brand-badge-dual">
+            <span class="badge-segment-title">SCADA-Core UNIFEI</span>
+            <span class="badge-segment-group">Grupo-3---ECAA08</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          Universidade Federal de Itajubá (UNIFEI) · Automática (ECAA08).<br>
+          Memorial descritivo da arquitetura física e diagrama P&ID da linha de envasamento.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Navegação</div>
+        <ul class="footer-links">
+          <li><a href="../index.html">🏠 Página Inicial</a></li>
+          <li><a href="etapa-01-logica.html">⚡ Etapa 01 - Memorial & Simulador</a></li>
+          <li><a href="planta-modelo.html">🏭 Planta Modelo & P&ID</a></li>
+          <li><a href="diretrizes-github.html">🐙 Diretrizes de Governança & 5W2H</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Equipe Grupo 3</div>
+        <ul class="footer-links">
+          <li><span>Guilherme Narciso Castro Silva</span></li>
+          <li><span>Rafael Ribeiro Guedes</span></li>
+          <li><span>Matheus F. de O. Agostinho</span></li>
+          <li><span>Nickolas Nicoleto Musico</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Grupo 3 - ECAA08 - UNIFEI. Licença acadêmica.</div>
+      <div>Arquitetura da Planta: <code class="mono-font">P&ID Rev 2.1</code></div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

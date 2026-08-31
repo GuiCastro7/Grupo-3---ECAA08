@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diretrizes GitHub & Matriz 5W2H | SCADA-Core UNIFEI</title>
+  <meta name="description" content="Padrões de Governança, Conventional Commits, Engenharia de Software e Matriz 5W2H do Grupo 3 da UNIFEI.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐙</text></svg>">
+</head>
+<body>
+
+  <!-- BARRA DE NAVEGAÇÃO SUPERIOR -->
+  <header class="scada-navbar">
+    <div class="navbar-container">
+      
+      <div class="brand-group">
+        <div class="brand-icon">⚙️</div>
+        <div class="brand-badge-dual">
+          <span class="badge-segment-title">Engarrafamento e Inspeção de Bebidas</span>
+          <span class="badge-segment-group">Grupo-3---ECAA08</span>
+        </div>
+      </div>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link"><span>🏠</span> Início</a></li>
+          <li><a href="etapa-01-logica.html" class="nav-link"><span>⚡</span> Etapa 01</a></li>
+          <li><a href="planta-modelo.html" class="nav-link"><span>🏭</span> Planta Modelo / Arquitetura</a></li>
+          <li><a href="diretrizes-github.html" class="nav-link active"><span>🐙</span> Diretrizes GitHub & 5W2H</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" type="button" aria-label="Alternar tema">
+          <span class="theme-btn-text">🌙 Modo Escuro</span>
+        </button>
+        <button class="mobile-nav-toggle" type="button" aria-label="Abrir menu móvel">☰</button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="scada-container">
+
+    <div class="section-header">
+      <div class="institution-badge">
+        <span class="live-indicator"></span>
+        <span>ECAA08 · Governança & Gestão de Projetos · 5W2H</span>
+      </div>
+      <h1 class="hero-title" style="margin-top: 0.5rem; font-size: 2.3rem;">
+        Diretrizes de Versionamento GitHub & <br>
+        <span class="gradient-text">Matriz de Governança 5W2H</span>
+      </h1>
+      <p class="section-subtitle">
+        Padronização de código, fluxo de trabalho Git, Conventional Commits e planejamento estratégico das entregas da disciplina.
+      </p>
+    </div>
+
+    <!-- PADRÃO CONVENTIONAL COMMITS -->
+    <section style="margin: 2.5rem 0;">
+      <div class="section-header">
+        <span class="section-tag">Engenharia de Software</span>
+        <h2 class="section-title">Padrão de Mensagens de Commit (Conventional Commits)</h2>
+      </div>
+
+      <div class="scada-table-container">
+        <table class="scada-table">
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Propósito</th>
+              <th>Exemplo de Mensagem</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>feat:</code></td>
+              <td>Nova funcionalidade ou implementação de módulo</td>
+              <td><code>feat(inference): adiciona algoritmo de backward chaining com verificacao de loops</code></td>
+            </tr>
+            <tr>
+              <td><code>fix:</code></td>
+              <td>Correção de bug, intertrava incorreta ou falha de sintaxe</td>
+              <td><code>fix(interlock): corrige condicao de subpressao minima do sensor SP1</code></td>
+            </tr>
+            <tr>
+              <td><code>docs:</code></td>
+              <td>Atualização em documentação, memórias descritivos e README</td>
+              <td><code>docs(etapa-01): atualiza memorial de deducao formal e provas de tautologia</code></td>
+            </tr>
+            <tr>
+              <td><code>refactor:</code></td>
+              <td>Refatoração de código sem alteração funcional do algoritmo</td>
+              <td><code>refactor(karnaugh): modulariza classe de Quine-McCluskey e otimizacao</code></td>
+            </tr>
+            <tr>
+              <td><code>test:</code></td>
+              <td>Adição ou melhoria em suítes de testes unitários ou SAT</td>
+              <td><code>test(sat): inclui testes de refutacao para as 10 regras de diagnostico</code></td>
+            </tr>
+            <tr>
+              <td><code>chore:</code></td>
+              <td>Manutenção de configurações, build, CI/CD e dependências</td>
+              <td><code>chore(pages): configura deploy automatico no GitHub Pages via GitHub Actions</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- POLÍTICA DE BRANCHES -->
+    <section style="margin: 3rem 0;">
+      <div class="section-header">
+        <span class="section-tag">Fluxo de Trabalho</span>
+        <h2 class="section-title">Estratégia de Branches & Pull Requests</h2>
+      </div>
+
+      <div class="code-box">
+<span style="color: #8b9bb4;"># Estrutura de Ramificação do Repositório:</span>
+main                      <span style="color: #79c0ff;">[Branch de Produção / GitHub Pages Estável]</span>
+ └── develop              <span style="color: #79c0ff;">[Branch de Integração Contínua das Etapas]</span>
+      ├── feature/etapa-01-logica
+      ├── feature/etapa-02-redes-petri
+      ├── feature/etapa-03-automatos-dfa
+      └── feature/etapa-04-scada-ihm
+      </div>
+
+      <div class="scada-callout info">
+        <div class="callout-icon">📌</div>
+        <div class="callout-body">
+          <div class="callout-title">Regra de Merge & Revisão por Pares</div>
+          <div>
+            Nenhum commit direto na branch <code class="mono-font">main</code> é permitido. Todo avanço de etapa é submetido via <strong>Pull Request (PR)</strong> para a branch <code class="mono-font">develop</code>, exigindo a aprovação de pelo menos um outro membro do Grupo 3.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MATRIZ 5W2H -->
+    <section style="margin: 3rem 0;">
+      <div class="section-header">
+        <span class="section-tag">Planejamento & Gestão</span>
+        <h2 class="section-title">Matriz Estratégica 5W2H do Projeto Integrador</h2>
+        <p class="section-subtitle">
+          Mapeamento completo das diretrizes de execução, responsabilidades e cronograma do Grupo 3.
+        </p>
+      </div>
+
+      <div class="scada-table-container">
+        <table class="scada-table">
+          <thead>
+            <tr>
+              <th>Dimensão</th>
+              <th>Pergunta</th>
+              <th>Definição Estratégica do Projeto (Grupo 3 - ECAA08)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>WHAT</strong></td>
+              <td>O que será feito?</td>
+              <td>Desenvolvimento completo de um sistema de automação e supervisão SCADA integrado para controle seguro de uma Linha de Envasamento, Tampagem e Inspeção de Bebidas.</td>
+            </tr>
+            <tr>
+              <td><strong>WHY</strong></td>
+              <td>Por que será feito?</td>
+              <td>Para consolidar as competências de modelagem discreta, sistemas digitais, segurança funcional (NR-12 / SIL) e controle por eventos discretos no curso de Engenharia de Controle e Automação da UNIFEI.</td>
+            </tr>
+            <tr>
+              <td><strong>WHERE</strong></td>
+              <td>Onde será feito?</td>
+              <td>No ambiente acadêmico da UNIFEI, com repositório hospedado no GitHub e portal técnico distribuído via GitHub Pages.</td>
+            </tr>
+            <tr>
+              <td><strong>WHEN</strong></td>
+              <td>Quando será feito?</td>
+              <td>Ao longo do 6º semestre letivo de 2026, com entregas sequenciais cobrindo as Etapas 01 a 04 conforme cronograma do plano de ensino de ECAA08.</td>
+            </tr>
+            <tr>
+              <td><strong>WHO</strong></td>
+              <td>Quem fará?</td>
+              <td>Membros do Grupo 3: Guilherme Narciso Castro Silva, Rafael Ribeiro Guedes, Matheus Felipe de Oliveira Agostinho e Nickolas Nicoleto Musico.</td>
+            </tr>
+            <tr>
+              <td><strong>HOW</strong></td>
+              <td>Como será feito?</td>
+              <td>Aplicando lógica proposicional, dedução dedutiva formal (SAT Solver), otimização de Quine-McCluskey, sistemas especialistas com motores Forward/Backward Chaining e simulação interativa web (HTML5/CSS3/JS).</td>
+            </tr>
+            <tr>
+              <td><strong>HOW MUCH</strong></td>
+              <td>Quanto custará?</td>
+              <td>Custo financeiro direto zero através do uso exclusivo de tecnologias de código aberto (Python, JavaScript, Git, GitHub Pages, Markdown, VS Code).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="scada-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="brand-group">
+          <div class="brand-icon">⚡</div>
+          <div class="brand-badge-dual">
+            <span class="badge-segment-title">SCADA-Core UNIFEI</span>
+            <span class="badge-segment-group">Grupo-3---ECAA08</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          Universidade Federal de Itajubá (UNIFEI) · Automática (ECAA08).<br>
+          Diretrizes de engenharia de software, Conventional Commits e governança 5W2H.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Navegação</div>
+        <ul class="footer-links">
+          <li><a href="../index.html">🏠 Página Inicial</a></li>
+          <li><a href="etapa-01-logica.html">⚡ Etapa 01 - Memorial & Simulador</a></li>
+          <li><a href="planta-modelo.html">🏭 Planta Modelo & P&ID</a></li>
+          <li><a href="diretrizes-github.html">🐙 Diretrizes de Governança & 5W2H</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Equipe Grupo 3</div>
+        <ul class="footer-links">
+          <li><span>Guilherme Narciso Castro Silva</span></li>
+          <li><span>Rafael Ribeiro Guedes</span></li>
+          <li><span>Matheus F. de O. Agostinho</span></li>
+          <li><span>Nickolas Nicoleto Musico</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Grupo 3 - ECAA08 - UNIFEI. Licença acadêmica.</div>
+      <div>Padrão de Engenharia: <code class="mono-font">Conventional Commits v1.0.0</code></div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
