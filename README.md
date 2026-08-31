@@ -8,8 +8,7 @@ Nickolas Nicoleto Musico;
 
 ### Site do Projeto
 
-### 🌐 Acesso ao Portal & Simulador
-👉 **[Clique aqui para acessar o Portal](https://guicastro7.github.io/Grupo-3---ECAA08/)**
+**[Clique aqui para acessar nosso site](https://guicastro7.github.io/Grupo-3---ECAA08/)**
 
 ## Descrição do Processo
 
