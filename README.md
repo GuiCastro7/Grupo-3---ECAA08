@@ -8,7 +8,7 @@ Nickolas Nicoleto Musico;
 
 ### Site do Projeto
 
-https://github.com/GuiCastro7/Grupo-3---ECAA08/blob/main/index.html
+[https://github.com/GuiCastro7/Grupo-3---ECAA08/blob/main/index.html](https://guicastro7.github.io/Grupo-3---ECAA08/)
 
 ## Descrição do Processo
 
