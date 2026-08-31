@@ -8,7 +8,7 @@ Nickolas Nicoleto Musico;
 
 ### Site do Projeto
 
-**[Clique aqui para acessar nosso site](https://guicastro7.github.io/Grupo-3---ECAA08/)**
+**[SCADA-Core: Linha de Envase](https://guicastro7.github.io/Grupo-3---ECAA08/)**
 
 ## Descrição do Processo
 
