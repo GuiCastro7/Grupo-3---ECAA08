@@ -80,11 +80,11 @@ graph TD
 ### 2.1. Funções Características e Discretização Proposicional
 Cada sinal analógico contínuo $x_i(t) \in \mathbb{R}$, transmitido via loop de corrente $I_i(t) \in [4, 20]\,\text{mA}$, é convertido linearmente para unidades de engenharia:
 
-$$y_i(t) = y_{i,\min} + \left( \frac{I_i(t) - 4.0}{16.0} \right) (y_{i,\max} - y_{i,\min})$$
+$y_i(t) = y_{i,\min} + \left( \frac{I_i(t) - 4.0}{16.0} \right) (y_{i,\max} - y_{i,\min})$
 
 A discretização para os átomos proposicionais $p \in \{0, 1\}$ é governada por funções características com limites críticos definidos em projeto:
 
-$$\chi_{\text{High}}(y_i) = \begin{cases} 1 \text{ (True)}, & \text{se } y_i \ge L_{\text{crit,high}} \\ 0 \text{ (False)}, & \text{se } y_i < L_{\text{crit,high}} \end{cases} \qquad \chi_{\text{Low}}(y_i) = \begin{cases} 1 \text{ (True)}, & \text{se } y_i \le L_{\text{crit,low}} \\ 0 \text{ (False)}, & \text{se } y_i > L_{\text{crit,low}} \end{cases}$$
+$\chi_{\text{High}}(y_i) = \begin{cases} 1 \text{ (True)}, & \text{se } y_i \ge L_{\text{crit,high}} \\ 0 \text{ (False)}, & \text{se } y_i < L_{\text{crit,high}} \end{cases} \qquad \chi_{\text{Low}}(y_i) = \begin{cases} 1 \text{ (True)}, & \text{se } y_i \le L_{\text{crit,low}} \\ 0 \text{ (False)}, & \text{se } y_i > L_{\text{crit,low}} \end{cases}$
 
 ### 2.2. Álgebra Booleana de Permissivos e Intertravamentos de Bloqueio (*Trips*)
 Na engenharia de segurança de processos (normas **IEC 61508**, **IEC 61511** e **NR-12**), a lógica de intertravamento opera em duas dimensões complementares:
@@ -97,17 +97,17 @@ $$P_{\text{BC1}} \equiv y_{\text{valv1}} \land \neg p_{\text{min1}} \land \neg p
 #### B. Permissivo da Esteira Transportadora ($P_{\text{RC1}}$)
 A esteira $\text{RC1}$ só pode tracionar se nenhum cabeçote pneumático ou bico estiver estendido na zona de transporte:
 
-$$P_{\text{RC1}} \equiv \neg \text{act}_{\text{VS2}} \land \neg \text{ext}_{\text{VS3}} \land \neg \text{ext}_{\text{VS4}} \land \neg \text{ext}_{\text{VS5}} \land \neg e_{\text{stop}} \land (\text{Auto} \oplus \text{Manual})$$
+$P_{\text{RC1}} \equiv \neg \text{act}_{\text{VS2}} \land \neg \text{ext}_{\text{VS3}} \land \neg \text{ext}_{\text{VS4}} \land \neg \text{ext}_{\text{VS5}} \land \neg e_{\text{stop}} \land (\text{Auto} \oplus \text{Manual})$
 
 #### C. Permissivo de Dosagem de Precisão ($P_{\text{VS2}}$)
 A válvula solenoide de injeção de fluido $\text{VS2}$ só abre quando a garrafa estiver estática sob o posto e a pressurização hidráulica estiver estável:
 
-$$P_{\text{VS2}} \equiv \text{pos}_{\text{garrafa}} \land \neg cmd_{\text{RC1}} \land \neg p_{\text{min2}} \land \neg p_{\text{max2}} \land \neg q_{\text{min2}} \land \neg q_{\text{max2}} \land \neg e_{\text{stop}}$$
+$P_{\text{VS2}} \equiv \text{pos}_{\text{garrafa}} \land \neg cmd_{\text{RC1}} \land \neg p_{\text{min2}} \land \neg p_{\text{max2}} \land \neg q_{\text{min2}} \land \neg q_{\text{max2}} \land \neg e_{\text{stop}}$
 
 #### D. Intertravamento de Bloqueio Instantâneo (*Trip*) e Leis de De Morgan
 Em tempo real de varredura, o desarme imediato (*Trip*) da bomba $\text{BC1}$ é a negação de sua condição permissiva base, obtida pelas **Leis de De Morgan**:
 
-$$\text{Trip}_{\text{BC1}} \equiv \neg \left( y_{\text{valv1}} \land \neg p_{\text{min1}} \land \neg p_{\text{max1}} \land \neg p_{\text{max2}} \land \neg e_{\text{stop}} \right) \equiv \neg y_{\text{valv1}} \lor p_{\text{min1}} \lor p_{\text{max1}} \lor p_{\text{max2}} \lor e_{\text{stop}}$$
+$\text{Trip}_{\text{BC1}} \equiv \neg \left( y_{\text{valv1}} \land \neg p_{\text{min1}} \land \neg p_{\text{max1}} \land \neg p_{\text{max2}} \land \neg e_{\text{stop}} \right) \equiv \neg y_{\text{valv1}} \lor p_{\text{min1}} \lor p_{\text{max1}} \lor p_{\text{max2}} \lor e_{\text{stop}}$
 
 ---
 
