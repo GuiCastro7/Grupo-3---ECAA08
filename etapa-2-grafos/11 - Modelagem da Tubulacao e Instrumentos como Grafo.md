@@ -54,11 +54,38 @@ Para qualquer dígrafo $G = (V, E)$ representante da malha de fluidos:
 
 $$\sum_{v \in V} \deg^+(v) = \sum_{v \in V} \deg^-(v) = |E|$$
 
-**Justificativa Física e Topológica:** Cada tubulação $e_j = (u, v)$ parte obrigatoriamente de uma origem $u$ e chega a um destino $v$. Portanto, incrementa em $+1$ o grau de saída $\deg^+(u)$ e em $+1$ o grau de entrada $\deg^-(v)$. Esta igualdade é a regra fundamental de integridade na digitalização de diagramas P&ID: divergências na soma de graus indicam erros de cadastro no projeto (dutos desconectados ou sem término).
+### Justificativa Física e Topológica
 
-**Verificação na Rede da Linha de Envase:**
-Somando os graus de saída ($\deg^+$): $\deg^+(\text{TS1}) + \deg^+(\text{VS1}) + \deg^+(\text{BC1}) + \deg^+(\text{AS1}) + \deg^+(\text{VS2}) + \deg^+(\text{SQ2}) + \deg^+(\text{VALV\_Alivio}) + \deg^+(\text{EST\_Envase}) = 1 + 1 + 1 + 3 + 1 + 1 + 1 + 0 = 9$.
-Somando os graus de entrada ($\deg^-$): $1 + 1 + 1 + 1 + 1 + 2 + 1 + 1 = 9$. A identidade do Lema do Aperto de Mãos se confirma exatamente ($9 = 9 = |E|$).
+Cada tubulação \(e_j = (u, v)\) parte obrigatoriamente de uma origem \(u\) e chega a um destino \(v\). Portanto, incrementa em \(+1\) o grau de saída \(\deg^+(u)\) e em \(+1\) o grau de entrada \(\deg^-(v)\).
+
+Essa igualdade é a regra fundamental de integridade na digitalização de diagramas P&ID: divergências na soma dos graus indicam erros de cadastro no projeto (dutos desconectados ou sem término).
+
+### Verificação na Rede da Linha de Envase
+
+**Soma dos graus de saída (\(\deg^+\)):**
+
+\[
+\begin{aligned}
+&\deg^+(\text{TS1}) + \deg^+(\text{VS1}) + \deg^+(\text{BC1}) + \deg^+(\text{AS1}) \\
+&+ \deg^+(\text{VS2}) + \deg^+(\text{SQ2}) + \deg^+(\text{VALV\_Alivio}) + \deg^+(\text{EST\_Envase}) \\
+&= 1 + 1 + 1 + 3 + 1 + 1 + 1 + 0 \\
+&= 9
+\end{aligned}
+\]
+
+**Soma dos graus de entrada (\(\deg^-\)):**
+
+\[
+1 + 1 + 1 + 1 + 1 + 2 + 1 + 1 = 9
+\]
+
+Portanto, a identidade do **Lema do Aperto de Mãos** se confirma exatamente:
+
+\[
+\boxed{\sum \deg^+ = \sum \deg^- = |E| = 9}
+\]
+
+Assim, a rede apresenta **9 arestas (tubulações)**, e cada aresta contribui exatamente uma vez para o grau de saída de um vértice e uma vez para o grau de entrada de outro.
 
 ### 2.3. Representações Computacionais e Trade-offs
 
