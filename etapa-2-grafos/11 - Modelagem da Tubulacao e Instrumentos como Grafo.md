@@ -56,12 +56,12 @@ $$\sum_{v \in V} \deg^+(v) = \sum_{v \in V} \deg^-(v) = |E|$$
 
 ### Justificativa Física e Topológica
 
-Cada tubulação \(e_j = (u, v)\) parte obrigatoriamente de uma origem \(u\) e chega a um destino \(v\).
+Cada tubulação `e_j = (u, v)` parte obrigatoriamente de uma origem `u` e chega a um destino `v`.
 
 Portanto:
 
-* a origem \(u\) recebe uma contribuição de **+1** para o grau de saída \(\deg^+(u)\);
-* o destino \(v\) recebe uma contribuição de **+1** para o grau de entrada \(\deg^-(v)\).
+* a origem `u` recebe uma contribuição de **+1** para o grau de saída `deg⁺(u)`;
+* o destino `v` recebe uma contribuição de **+1** para o grau de entrada `deg⁻(v)`.
 
 Essa relação constitui uma regra fundamental de integridade na digitalização de diagramas P&ID. Divergências entre as somas dos graus podem indicar erros de cadastro no projeto, como **dutos desconectados ou sem término**.
 
@@ -71,42 +71,35 @@ Essa relação constitui uma regra fundamental de integridade na digitalização
 
 A soma dos graus de saída dos vértices é:
 
-$$
-\deg^+(\text{TS1}) +
-\deg^+(\text{VS1}) +
-\deg^+(\text{BC1}) +
-\deg^+(\text{AS1}) +
-\deg^+(\text{VS2}) +
-\deg^+(\text{SQ2}) +
-\deg^+(\text{VALV\_Alivio}) +
-\deg^+(\text{EST\_Envase})
-$$
+```math
+deg^+(TS1) + deg^+(VS1) + deg^+(BC1) + deg^+(AS1) + deg^+(VS2) + deg^+(SQ2) + deg^+(VALV\_Alivio) + deg^+(EST\_Envase)
+```
 
 Substituindo os valores:
 
-$$
+```math
 1 + 1 + 1 + 3 + 1 + 1 + 1 + 0 = 9
-$$
+```
 
 Logo:
 
-$$
-\boxed{\sum \deg^+ = 9}
-$$
+```math
+\sum \deg^+ = 9
+```
 
 #### 2. Soma dos graus de entrada
 
 A soma dos graus de entrada é:
 
-$$
+```math
 1 + 1 + 1 + 1 + 1 + 2 + 1 + 1 = 9
-$$
+```
 
 Logo:
 
-$$
-\boxed{\sum \deg^- = 9}
-$$
+```math
+\sum \deg^- = 9
+```
 
 #### 3. Verificação do Lema do Aperto de Mãos
 
@@ -114,15 +107,15 @@ Como cada aresta possui exatamente uma origem e um destino, cada tubulação con
 
 Portanto:
 
-$$
-\boxed{\sum \deg^+ = \sum \deg^- = |E|}
-$$
+```math
+\sum \deg^+ = \sum \deg^- = |E|
+```
 
 Neste caso:
 
-$$
-\boxed{9 = 9 = |E|}
-$$
+```math
+9 = 9 = |E|
+```
 
 Assim, a rede possui **9 arestas (tubulações)** e a identidade do **Lema do Aperto de Mãos** é satisfeita exatamente.
 
