@@ -56,36 +56,75 @@ $$\sum_{v \in V} \deg^+(v) = \sum_{v \in V} \deg^-(v) = |E|$$
 
 ### Justificativa Física e Topológica
 
-Cada tubulação \(e_j = (u, v)\) parte obrigatoriamente de uma origem \(u\) e chega a um destino \(v\). Portanto, incrementa em \(+1\) o grau de saída \(\deg^+(u)\) e em \(+1\) o grau de entrada \(\deg^-(v)\).
+Cada tubulação \(e_j = (u, v)\) parte obrigatoriamente de uma origem \(u\) e chega a um destino \(v\).
 
-Essa igualdade é a regra fundamental de integridade na digitalização de diagramas P&ID: divergências na soma dos graus indicam erros de cadastro no projeto (dutos desconectados ou sem término).
+Portanto:
+
+* a origem \(u\) recebe uma contribuição de **+1** para o grau de saída \(\deg^+(u)\);
+* o destino \(v\) recebe uma contribuição de **+1** para o grau de entrada \(\deg^-(v)\).
+
+Essa relação constitui uma regra fundamental de integridade na digitalização de diagramas P&ID. Divergências entre as somas dos graus podem indicar erros de cadastro no projeto, como **dutos desconectados ou sem término**.
 
 ### Verificação na Rede da Linha de Envase
 
-**Soma dos graus de saída (\(\deg^+\)):**
+#### 1. Soma dos graus de saída
 
-\[
-\begin{aligned}
-&\deg^+(\text{TS1}) + \deg^+(\text{VS1}) + \deg^+(\text{BC1}) + \deg^+(\text{AS1}) \\
-&+ \deg^+(\text{VS2}) + \deg^+(\text{SQ2}) + \deg^+(\text{VALV\_Alivio}) + \deg^+(\text{EST\_Envase}) \\
-&= 1 + 1 + 1 + 3 + 1 + 1 + 1 + 0 \\
-&= 9
-\end{aligned}
-\]
+A soma dos graus de saída dos vértices é:
 
-**Soma dos graus de entrada (\(\deg^-\)):**
+$$
+\deg^+(\text{TS1}) +
+\deg^+(\text{VS1}) +
+\deg^+(\text{BC1}) +
+\deg^+(\text{AS1}) +
+\deg^+(\text{VS2}) +
+\deg^+(\text{SQ2}) +
+\deg^+(\text{VALV\_Alivio}) +
+\deg^+(\text{EST\_Envase})
+$$
 
-\[
+Substituindo os valores:
+
+$$
+1 + 1 + 1 + 3 + 1 + 1 + 1 + 0 = 9
+$$
+
+Logo:
+
+$$
+\boxed{\sum \deg^+ = 9}
+$$
+
+#### 2. Soma dos graus de entrada
+
+A soma dos graus de entrada é:
+
+$$
 1 + 1 + 1 + 1 + 1 + 2 + 1 + 1 = 9
-\]
+$$
 
-Portanto, a identidade do **Lema do Aperto de Mãos** se confirma exatamente:
+Logo:
 
-\[
-\boxed{\sum \deg^+ = \sum \deg^- = |E| = 9}
-\]
+$$
+\boxed{\sum \deg^- = 9}
+$$
 
-Assim, a rede apresenta **9 arestas (tubulações)**, e cada aresta contribui exatamente uma vez para o grau de saída de um vértice e uma vez para o grau de entrada de outro.
+#### 3. Verificação do Lema do Aperto de Mãos
+
+Como cada aresta possui exatamente uma origem e um destino, cada tubulação contribui uma vez para a soma dos graus de saída e uma vez para a soma dos graus de entrada.
+
+Portanto:
+
+$$
+\boxed{\sum \deg^+ = \sum \deg^- = |E|}
+$$
+
+Neste caso:
+
+$$
+\boxed{9 = 9 = |E|}
+$$
+
+Assim, a rede possui **9 arestas (tubulações)** e a identidade do **Lema do Aperto de Mãos** é satisfeita exatamente.
 
 ### 2.3. Representações Computacionais e Trade-offs
 
