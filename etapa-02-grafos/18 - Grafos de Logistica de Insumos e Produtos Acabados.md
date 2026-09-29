@@ -22,7 +22,7 @@ O objetivo desta aula é construir grafos computacionais que conectem esses seto
 
 ### 2.1. Por que a Cadeia Logística de Envase é um DAG
 
-Diferente da malha hidráulica interna das Aulas 11 a 15 (que possui o ciclo fechado de recirculação e alívio de pressão via `VALV_Alivio -> TS1_Suprimento`), o fluxo global de materiais $G_M$ desta aula — do recebimento de insumos e vasilhames até a expedição do palete fechado — é, por definição de processo, um **Grafo Acíclico Dirigido (DAG — *Directed Acyclic Graph*)**: não existe caminho que retorne a um vértice já visitado, pois cada etapa produtiva (tratamento, xaroparia, carbonatação, envase na garrafa, tampa, rotulagem e paletização) é irreversível dentro do fluxo normal de fabricação.
+Diferente da malha hidráulica interna das Aulas 11 a 15 (que possui o ciclo fechado de recirculação e alívio de pressão via `VALV_Alivio -> TS1_Suprimento`), o fluxo global de materiais $G_M$ desta aula — do recebimento de insumos e vasilhames até a expedição do palete fechado — é, por definição de processo, um **Grafo Acíclico Dirigido (DAG — *Directed Acyclic Graph*)**: não existe caminho que retorne a um vértice já visitado, pois cada etapa produtiva (tratamento, xaroparia, carbonatação, envase na garrafa, fechamento, rotulagem e paletização) é irreversível dentro do fluxo normal de fabricação.
 
 * **Definição formal:** Um dígrafo $G=(V,E)$ é um DAG se não admite nenhum ciclo dirigido, ou seja, não existe sequência de vértices $v_0, v_1, \dots, v_k = v_0$ com $(v_{i-1}, v_i) \in E$ para todo $i$.
 * **Propriedade fundamental (ordenação topológica):** Todo DAG admite pelo menos uma **ordenação topológica**, isto é, uma numeração dos vértices de $1$ a $n$ tal que, para toda aresta dirigida $(u,v) \in E$, a ordem de $u$ é estritamente anterior à ordem de $v$. Essa propriedade torna o grafo de processo auditável pelo supervisório SCADA: qualquer sequência produtiva pode ser validada verificando se respeita a ordenação topológica do DAG — por exemplo, o modelo impede que `Paletização Automatizada` ocorra antes de `EST_Envase`, pois não existe ordenação compatível com essa inversão.
@@ -101,3 +101,78 @@ flowchart LR
     E1 --> D["Docas de Expedição"]
     E2 --> D
     E3 --> D
+```
+
+### 4.1. Correspondência com os Insumos e Equipamentos da Linha de Envase
+
+| Insumo / Equipamento da Planta | Vértice no Grafo $G_M$ | Função no Modelo |
+| :--- | :--- | :--- |
+| Xarope concentrado e aroma | `Tanque: Xarope Concentrado` | Alimentação líquida da xaroparia |
+| Água filtrada e desmineralizada | `Reservatório: Água Tratada` | Diluição padronizada no misturador |
+| Gás carbônico (CO2) | `Bateria: CO2 Líquido` | Carbonatação direta no tanque `TS1_Suprimento` |
+| Vasilhames / Garrafas PET | `Almoxarifado: Garrafas PET` | Alimentação física da esteira após enxágue (*rinser*) |
+| Tampas plásticas e rótulos | `Almoxarifado: Tampas e Rótulos` | Fechamento hermético no cabeçote `EST_Envase` |
+| Malha hidráulica SCADA-Core | `TS1_Suprimento -> ... -> EST_Envase` | Bombeamento, acumulação e dosagem (Aulas 11 a 15) |
+
+---
+
+## 5. Grafo de Circulação de Veículos ($G_V$)
+
+Enquanto o fluxo de bebida e embalagens em $G_M$ é estritamente acíclico, o anel viário externo em $G_V$ possui sentido único com retorno completo à portaria para controle de pesagem e emissão de nota fiscal:
+
+```mermaid
+flowchart LR
+    P["Portaria"] --> BI["Balança de Entrada"]
+    BI --> PR["Pátio de Recebimento"]
+    PR --> GA["Galpão A (Insumos)"]
+    GA --> PE["Área de Processo e Envase"]
+    PE --> GB["Galpão B (Acabados)"]
+    GB --> D["Docas de Expedição"]
+    D --> BS["Balança de Saída"]
+    BS --> P
+```
+
+### 5.1. O Anel Viário como Ciclo Hamiltoniano Degenerado
+
+Observa-se que $G_V$, ao contrário de $G_M$, **contém um ciclo dirigido** por construção: `Portaria -> Balança de Entrada -> ... -> Docas de Expedição -> Balança de Saída -> Portaria`. Esse ciclo reflete a regra operacional de que todo caminhão entra e sai da planta pelo mesmo ponto de controle patrimonial. Trata-se de um caso particular de Ciclo Hamiltoniano estudado na Aula 17.
+
+---
+
+## 6. Exemplo Resolvido
+
+**Pergunta:** Por que a rota de menor distância de `Portaria` até `Docas de Expedição` em $G_M$ passa por `Bateria: CO2 Líquido` ($281{,}0\text{ m}$) em vez de passar por `Tanque: Xarope Concentrado` ou `Reservatório: Água Tratada`?
+
+**Resolução:**
+Isso decorre diretamente da topologia do processo e das distâncias acumuladas até o tanque principal `TS1_Suprimento`:
+1. **Caminho via CO2 Líquido:**
+   * `Portaria -> Balança de Entrada -> Recebimento / Galpão A`: $25 + 55 = 80\text{ m}$.
+   * `Recebimento / Galpão A -> Bateria: CO2 Líquido`: $26\text{ m}$.
+   * `Bateria: CO2 Líquido -> TS1_Suprimento` (linha pressurizada direta de carbonatação): $45\text{ m}$.
+   * Distância acumulada até `TS1_Suprimento`: $80 + 26 + 45 = \mathbf{151{,}0\text{ m}}$.
+2. **Caminho via Xarope Concentrado:**
+   * `Recebimento / Galpão A -> Tanque: Xarope Concentrado`: $18\text{ m}$.
+   * `Tanque: Xarope Concentrado -> Misturador / Xaroparia`: $25\text{ m}$.
+   * `Misturador / Xaroparia -> TS1_Suprimento`: $30\text{ m}$.
+   * Distância acumulada até `TS1_Suprimento`: $80 + 18 + 25 + 30 = \mathbf{153{,}0\text{ m}}$.
+3. **Caminho via Garrafas PET:**
+   * `Recebimento / Galpão A -> Almoxarifado: Garrafas PET`: $30\text{ m}$.
+   * `Almoxarifado: Garrafas PET -> Lavadora / Rinser`: $40\text{ m}$.
+   * `Lavadora / Rinser -> EST_Envase`: $35\text{ m}$ (chega a `EST_Envase` com $185\text{ m}$, contra $179\text{ m}$ da linha via CO2).
+
+Embora a aresta inicial para o `Tanque: Xarope Concentrado` ($18\text{ m}$) seja mais curta que a aresta para `Bateria: CO2 Líquido` ($26\text{ m}$), o xarope exige a etapa intermediária de homogeneização no `Misturador / Xaroparia` antes de alimentar `TS1_Suprimento`. O algoritmo de Dijkstra avalia a **soma acumulada global** da rota, confirmando a otimalidade do caminho de $281{,}0\text{ m}$.
+
+---
+
+## 7. Atividades de Investigação
+
+1. Execute o notebook e identifique o caminho mínimo de `Portaria` até cada um dos três estoques de bebidas acabadas (`Estoque: Refrigerante Cola`, `Estoque: Refrigerante Guaraná` e `Estoque: Água Gaseificada`) em $G_M$.
+2. Remova temporariamente a aresta `Paletização Automatizada -> Estoque: Refrigerante Cola`. O que o algoritmo informa ao consultar o caminho para esse estoque? Relacione o resultado ao bloqueio de área de armazenagem no WMS/SCADA.
+3. No grafo viário $G_V$, verifique se a remoção da aresta `Balança de Saída -> Portaria` impede o fechamento do circuito logístico dos caminhões.
+4. Substitua os pesos em metros pelo tempo médio de processo em minutos (considerando que a batelada no `Misturador / Xaroparia` leva $45\text{ min}$ e o enxágue na `Lavadora / Rinser` leva $3\text{ min}$). Explique como essa mudança altera o caminho crítico da fábrica.
+5. Inclua um vértice `Quarentena / Laboratório CQ` entre `Recebimento / Galpão A` e `Misturador / Xaroparia`. Qual regra de controle de qualidade (Brix, pH e microbiologia) deve liberar essa aresta no sistema supervisório?
+
+---
+
+## 8. Entregável da Aula 18
+
+* **Modelo `GrafoLogistico` em Python (`18 - Grafos de Logistica de Insumos e Produtos Acabados.ipynb`):** Criação de rotas dirigidas e ponderadas, cálculo do menor caminho por Dijkstra via `heapq` e validação integrada do recebimento de insumos, passagem pela Linha de Envase (`TS1_Suprimento` a `EST_Envase`) e expedição nas docas.
