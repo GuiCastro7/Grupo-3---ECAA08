@@ -2,7 +2,7 @@
 
 ## 1. Fundamentos Matemáticos: Ciclos Hamiltonianos e o Caixeiro-Viajante (TSP)
 
-O **Problema do Caixeiro-Viajante (TSP — *Travelling Salesperson Problem*)** consiste em determinar o ciclo hamiltoniano de custo mínimo sobre um grafo ponderado completo $G = (V, E, W)$, visitando cada estação de amostragem e inspeção exatamente uma vez e retornando à base de recarga no Laboratório de Controle de Qualidade (`Lab_CQ`).
+O **Problema do Caixeiro-Viajante (TSP — *Travelling Salesperson Problem*)** consiste em determinar o ciclo hamiltoniano de custo mínimo sobre um grafo ponderado completo $G = (V, E, W)$, visitando cada estação de amostragem e inspeção exatamente uma vez e retornando à base de recarga no Laboratório de Controlo de Qualidade (`Lab_CQ`).
 
 Dado um conjunto finito de $n$ vértices e uma matriz simétrica de distâncias $D \in \mathbb{R}^{n \times n}$, a função objetivo visa encontrar a permutação $\pi \in \Pi_n$ que minimiza o comprimento total do ciclo fechado:
 
@@ -22,7 +22,7 @@ Onde $\Pi_n$ é o espaço de todas as $(n-1)!$ permutações possíveis dos post
 | :--- | :--- | :--- |
 | **Elemento Percorrido** | Cada **aresta** (tubulação física) exatamente uma vez | Cada **vértice** (estação/equipamento) exatamente uma vez |
 | **Repetição de Nós** | Permitida (desde que por tubos diferentes) | Estritamente proibida (exceto início e fim na base) |
-| **Complexidade de Decisão** | Polinomial e simples: $\deg(v) \equiv 0 \pmod 2$ ($O(\vert{}V\vert{} + \vert{}E\vert{})$) | **NP-completo**; não há critério estrutural simples conhecido |
+| **Complexidade de Decisão** | Simples e verificável em tempo polinomial (Teorema de Euler) | **NP-completo**; não há critério estrutural simples conhecido |
 | **Aplicação na Fábrica** | Robô *crawler* inspecionando espessura de parede nos tubos | Veículo AGV colhendo amostras físico-químicas nos skids |
 
 ### 2.2. Complexidade Computacional e Limitações da Força Bruta
@@ -31,7 +31,7 @@ O TSP pertence à classe **NP-difícil**. A estratégia de força bruta (avaliar
 * Para a malha da nossa bancada ($n = 6$ locais), o espaço amostral tem $5! = 120$ trajetórias, sendo computacionalmente tratável.
 * Para uma ampliação com $n = 20$ estações de recolha, o espaço atinge $19! \approx 1{,}2 \times 10^{17}$ permutações, tornando a busca exata inviável em tempo útil.
 
-Embora algoritmos de programação dinâmica como o de **Held-Karp (1962)** reduzam a complexidade para $O(n^2 2^n)$, a resposta rápida em sistemas de controle e supervisão em tempo real (SCADA-Core) requer a aplicação de **heurísticas construtivas** combinadas com **métodos de busca local**.
+Embora algoritmos de programação dinâmica como o de **Held-Karp (1962)** reduzam a complexidade para $O(n^2 2^n)$, a resposta rápida em sistemas de controlo e supervisão em tempo real (SCADA-Core) requer a aplicação de **heurísticas construtivas** combinadas com **métodos de busca local**.
 
 ### 2.3. Heurística Construtiva do Vizinho Mais Próximo (*Nearest Neighbor*)
 
@@ -84,7 +84,7 @@ $$\text{Custo}(\text{MST}) \le \text{Custo}(\text{Ciclo Hamiltoniano Ótimo})$$
 
 ## 4. Atividades de Investigação
 
-1. **Enumeração Exaustiva (Força Bruta):** Implemente uma rotina recursiva ou iterativa via `itertools.permutations` em Python que calcule o custo de todas as 120 permutações de ciclo possíveis com início no `Lab_CQ`, comprovando que $260{,}0\text{ m}$ é de fato o mínimo global da instância.
+1. **Enumeração Exaustiva (Força Bruta):** Implemente uma rotina recursiva ou iterativa via `itertools.permutations` em Python que calcule o custo de todas as 120 permutações de ciclo possíveis com início no `Lab_CQ`, comprovando que $260{,}0\text{ m}$ é de facto o mínimo global da instância.
 2. **Sensibilidade ao Ponto de Partida:** Execute o algoritmo do Vizinho Mais Próximo iniciando a exploração em `EST_Envase` (índice 5) e verifique se a trajetória preliminar diverge da obtida a partir do laboratório.
 3. **Cálculo da Cota via MST:** Construa a Árvore Geradora Mínima (usando o Algoritmo de Prim ou Kruskal) a partir da matriz de adjacência e comprove que $\text{Custo}(\text{MST}) \le 260{,}0\text{ m}$.
 4. **Algoritmo de Christofides (1976):** Pesquise o funcionamento do algoritmo de Christofides e sintetize como a associação de uma MST com um emparelhamento perfeito de peso mínimo sobre vértices de grau ímpar garante uma aproximação de no máximo $1{,}5\times$ em relação ao ótimo.
