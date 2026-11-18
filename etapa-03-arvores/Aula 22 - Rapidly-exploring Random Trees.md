@@ -97,7 +97,7 @@ $$
 \end{aligned}
 $$
 
-O RRT busca uma trajetória inteiramente contida em $\mathcal{Z}_{livre} = \mathcal{Z} \setminus \mathcal{Z}_{obs}$.
+O RRT busca uma trajetória inteiramente contida em $\mathcal{Z}{\mathrm{livre}} = \mathcal{Z} \setminus \mathcal{Z}{\mathrm{obs}}$.
 ### 2.3 Propriedade do Viés de Voronoi (*Voronoi Bias*)
 
 A eficiência exploratória do RRT decorre da partição de Voronoi induzida pelos vértices $V$ já existentes na árvore. A probabilidade de um vértice $\mathbf{z}_{\text{near}} \in V$ ser escolhido para expansão é proporcional ao hipervolume de sua célula de Voronoi $\mathcal{V}(\mathbf{z}_{\text{near}})$:
