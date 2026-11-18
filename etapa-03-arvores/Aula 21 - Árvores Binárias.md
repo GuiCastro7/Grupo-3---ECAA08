@@ -127,14 +127,14 @@ Onde o vetor de estado telemetrado contém os seis sinais primários do SCADA-Co
 
 $$
 \mathbf{D}(\tau) =
-\left[
+\begin{bmatrix}
 \underbrace{P_{\text{SP1}}}_{\text{Barg}},
 \underbrace{Q_{\text{SQ1}}}_{\text{L/min}},
 \underbrace{P_{\text{SP2}}}_{\text{Barg}},
 \underbrace{Q_{\text{SQ2}}}_{\text{L/min}},
-\underbrace{L_{\text{SL1}}}_{\%},
+\underbrace{L_{\text{SL1}}}_{\text{\%}},
 \underbrace{X_{\text{SFC1}}}_{\{0,1\}}
-\right]
+\end{bmatrix}
 $$
 
 ### 2.3 Propriedade de Balanceamento AVL e Fator de Balanceamento ($BF$)
