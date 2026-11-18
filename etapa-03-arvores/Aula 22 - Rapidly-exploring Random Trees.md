@@ -54,7 +54,7 @@ q_{\text{VS1}},
 q_{\text{BC1}},
 q_{\text{VS2}},
 q_{\text{RC1}},
-q_{\text{VALV\_Alivio}}
+q_{\mathrm{VALV\_Alivio}}
 \right)
 \in \{0,1\}^{5}
 $$
