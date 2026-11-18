@@ -61,7 +61,7 @@ $$
 
 O estado híbrido completo é o par $\mathbf{z} = (\mathbf{x}, \mathbf{q}) \in \mathcal{Z}$.
 
-### 2.2 Espaço de Obstáculos ($\mathcal{Z}_{\text{obs}}$) via Barreira Booleana $\Phi_{\text{SIS}}$
+### 2.2 Espaço de Obstáculos ($Z_{obs}$) via Barreira Booleana $\Phi_{SIS}$
 
 Em robótica móvel, obstáculos são paredes físicas. Na linha de envase, os obstáculos são **fronteiras hidráulicas e de segurança funcional** definidas pelas proposições booleanas do catálogo R-01..R-10 (Aula 10) e pelos limiares da norma ISA-5.1:
 
