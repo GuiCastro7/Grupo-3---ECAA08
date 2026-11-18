@@ -47,7 +47,17 @@ $$\mathbf{x} = \begin{bmatrix} P_{\text{SP2}} \\ Q_{\text{SQ2}} \\ P_{\text{SP1}
 
 * **Subespaço Discreto** ($\mathcal{Q} \subset \{0,1\}^5$): representa a configuração lógica dos cinco atuadores principais da linha:
 
-$$\mathbf{q} = (q_{\text{VS1}},\; q_{\text{BC1}},\; q_{\text{VS2}},\; q_{\text{RC1}},\; q_{\text{VALV\_Alivio}}) \in \{0,1\}^5$$
+$$
+\mathbf{q} =
+\left(
+q_{\text{VS1}},
+q_{\text{BC1}},
+q_{\text{VS2}},
+q_{\text{RC1}},
+q_{\text{VALV\_Alivio}}
+\right)
+\in \{0,1\}^{5}
+$$
 
 O estado híbrido completo é o par $\mathbf{z} = (\mathbf{x}, \mathbf{q}) \in \mathcal{Z}$.
 
