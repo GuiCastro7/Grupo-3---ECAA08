@@ -125,7 +125,17 @@ $$N = \Big\langle \tau, \; BF, \; \text{Ponteiro}_{\text{Esq}}, \; \text{Ponteir
 
 Onde o vetor de estado telemetrado contém os seis sinais primários do SCADA-Core:
 
-$$\mathbf{D}(\tau) = \left[ \underbrace{P_{\text{SP1}}}_{\text{Barg}}, \; \underbrace{Q_{\text{SQ1}}}_{\text{L/min}}, \; \underbrace{P_{\text{SP2}}}_{\text{Barg}}, \; \underbrace{Q_{\text{SQ2}}}_{\text{L/min}}, \; \underbrace{L_{\text{SL1}}}_{\%}, \; \underbrace{X_{\text{SFC1}}}_{\{0,1\}} \right]$$
+$$
+\mathbf{D}(\tau) =
+\left[
+\underbrace{P_{\text{SP1}}}_{\text{Barg}},
+\underbrace{Q_{\text{SQ1}}}_{\text{L/min}},
+\underbrace{P_{\text{SP2}}}_{\text{Barg}},
+\underbrace{Q_{\text{SQ2}}}_{\text{L/min}},
+\underbrace{L_{\text{SL1}}}_{\%},
+\underbrace{X_{\text{SFC1}}}_{\{0,1\}}
+\right]
+$$
 
 ### 2.3 Propriedade de Balanceamento AVL e Fator de Balanceamento ($BF$)
 
