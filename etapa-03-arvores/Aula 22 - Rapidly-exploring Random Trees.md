@@ -70,7 +70,7 @@ $$
 \left\{
 \mathbf{z} \in \mathcal{Z}
 \;\middle|\;
-\Phi_{\text{SIS\_envase}}(\mathbf{z}) = 1
+\Phi_{\mathrm{SIS\_envase}}(\mathbf{z}) = 1
 \right\}
 $$
 
