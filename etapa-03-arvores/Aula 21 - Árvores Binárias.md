@@ -193,7 +193,8 @@ Como a AVL mantém $\tau$ estritamente ordenado, este percurso garante extraçã
 | **Resultado de Negócio** | `PROD_APROV` / `DESCARTE_REJ` / Trip de Segurança | Gráfico de Tendência IHM / Relatório RCA |
 | **Referência Normativa** | IEC 61508 / IEC 61511 | Auditoria de Processo e Rastreabilidade de Batelada |
 
-![Árvore Binária — BDT e AVL na Linha de Envase](img/Arvore_binaria.png)
+<img width="1839" height="1161" alt="Arvore_binaria" src="https://github.com/user-attachments/assets/2f7ac3d3-8b81-4214-9ade-d96e74692828" />
+
 
 ---
 
