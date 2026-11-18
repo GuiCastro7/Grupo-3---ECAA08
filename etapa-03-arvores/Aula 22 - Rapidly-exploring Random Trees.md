@@ -144,4 +144,5 @@ flowchart TD
 4. IEC. **IEC 61511: Functional Safety — Safety Instrumented Systems for the Process Industry Sector**. Geneva: IEC, 2016.
 5. Grupo 3 — ECAA08. **Aula 10: Motor de Intertravamento e Diagnóstico; Aula 15: Simulação de Vazamentos e Desvio Automático**. UNIFEI, 2026.
 
-![RRT — Planejamento de Partida Segura da Linha de Envase](img/RRT_envase.png)
+<img width="2063" height="911" alt="RRT_envase" src="https://github.com/user-attachments/assets/2a35749a-b78a-47f3-89e1-b818c797e54c" />
+
