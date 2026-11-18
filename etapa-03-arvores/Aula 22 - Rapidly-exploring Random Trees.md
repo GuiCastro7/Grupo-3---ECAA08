@@ -67,11 +67,11 @@ Em robótica móvel, obstáculos são paredes físicas. Na linha de envase, os o
 
 $$
 \mathcal{Z}_{\text{obs}} =
-\left\{
+\{
 \mathbf{z} \in \mathcal{Z}
-\;\middle|\;
-\Phi_{\mathrm{SIS\_envase}}(\mathbf{z}) = 1
-\right\}
+\mid
+\Phi_{\text{SIS\_envase}}(\mathbf{z}) = 1
+\}
 $$
 
 Onde a barreira booleana do SIS é definida como a disjunção lógica de todos os predicados de alarme crítico:
