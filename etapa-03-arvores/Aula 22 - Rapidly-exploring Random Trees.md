@@ -76,7 +76,26 @@ $$
 
 Onde a barreira booleana do SIS é definida como a disjunção lógica de todos os predicados de alarme crítico:
 
-$$\Phi_{\text{SIS\_envase}}(\mathbf{z}) = \underbrace{p_{\text{max1}}}_{\text{SP1} \ge 3{,}5\text{ Barg}} \lor \underbrace{p_{\text{max2}}}_{\text{SP2} \ge 4{,}5\text{ Barg}} \lor \underbrace{p_{\text{min1}}}_{\text{SP1} \le 1{,}0\text{ Barg} \land q_{\text{BC1}}{=}1} \lor \underbrace{q_{\text{max2}}}_{\text{SQ2} \ge 8{,}0\text{ L/min} \land q_{\text{VS2}}{=}1} \lor \underbrace{q_{\text{min2}}}_{\text{SQ2} \le 2{,}0\text{ L/min} \land q_{\text{VS2}}{=}1 \land q_{\text{BC1}}{=}1} \lor \underbrace{e_{\text{stop}}}_{\text{emergência}}$$
+$$
+\begin{aligned}
+\Phi_{\mathrm{SIS\_envase}}(\mathbf{z}) =\;&
+\underbrace{p_{\mathrm{max1}}}_{\text{SP1} \ge 3{,}5\text{ Barg}}
+\lor
+\underbrace{p_{\mathrm{max2}}}_{\text{SP2} \ge 4{,}5\text{ Barg}}
+\\
+&\lor
+\underbrace{p_{\mathrm{min1}}}_{\text{SP1} \le 1{,}0\text{ Barg} \land q_{\mathrm{BC1}}=1}
+\\
+&\lor
+\underbrace{q_{\mathrm{max2}}}_{\text{SQ2} \ge 8{,}0\text{ L/min} \land q_{\mathrm{VS2}}=1}
+\\
+&\lor
+\underbrace{q_{\mathrm{min2}}}_{\text{SQ2} \le 2{,}0\text{ L/min} \land q_{\mathrm{VS2}}=1 \land q_{\mathrm{BC1}}=1}
+\\
+&\lor
+\underbrace{e_{\mathrm{stop}}}_{\text{emergência}}
+\end{aligned}
+$$
 
 O RRT busca uma trajetória inteiramente contida em $\mathcal{Z}_{\text{livre}} = \mathcal{Z} \setminus \mathcal{Z}_{\text{obs}}$.
 
