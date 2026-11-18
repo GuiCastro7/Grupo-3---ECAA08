@@ -97,7 +97,7 @@ $$
 \end{aligned}
 $$
 
-O RRT busca uma trajetória inteiramente contida em $\mathcal{Z}_{\mathrm{livre}} = \mathcal{Z} \setminus \mathcal{Z}_{\mathrm{obs}}$.
+O RRT busca uma trajetória inteiramente contida em $Z_{livre} = Z \setminus Z_{obs}$.
 
 ### 2.3 Propriedade do Viés de Voronoi (*Voronoi Bias*)
 
