@@ -90,8 +90,11 @@ Onde:
 * $V = V_I \;\dot{\cup}\; V_L$ é o conjunto finito de nós;
 * $E \subset V_I \times V$ é o conjunto de arestas direcionadas;
 * $r \in V_I$ é o nó raiz inicial;
-* $\mathcal{X}$ é o **espaço de estados de atributos** do produto inspecionado, definido pelas medições dos sensores da linha de bebidas:
-  $$\mathbf{x} = \big( \text{SL1}, \text{SQ2}, \text{SFC1}, \text{SP2} \big) \in \mathcal{X} \subseteq \mathbb{R}_{\ge 0} \times \mathbb{R}_{\ge 0} \times \{0, 1\} \times \mathbb{R}_{\ge 0}$$
+* $X$ é o **espaço de estados de atributos** do produto inspecionado, definido pelas medições dos sensores da linha de bebidas:
+
+$$
+x = (SL1, SQ2, SFC1, SP2) \in X \subseteq R_{\geq 0} \times R_{\geq 0} \times \{0,1\} \times R_{\geq 0}
+$$
 * $\mathcal{P} = \{P_1, P_2, \dots, P_k\}$ é o conjunto de predicados de teste baseados nas grandezas de engenharia;
 * $D = \{PROD\_APROV,\; DESCARTE\_REJ,\; REINSPECAO\}$ é o conjunto finito de decisões operacionais possíveis no SCADA;
 * $\phi_V: V_I \to \mathcal{P}$ é a função que associa a cada nó interno de decisão o predicado a ser inspecionado;
