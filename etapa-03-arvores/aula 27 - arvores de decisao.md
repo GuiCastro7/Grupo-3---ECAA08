@@ -290,9 +290,7 @@ Existe uma confusão conceitual comum que deve ser explicitamente evitada em eng
 * **Complexidade Assintótica de Pior Caso:**
   Para avaliar o estado de qualquer garrafa que entra na estação de inspeção, o algoritmo do CLP percorre exatamente um caminho direcionado da raiz até uma folha.
   O tempo de execução no pior caso é proporcional à altura da árvore:
-  $$
-T_{pior} = O(h) = O(3) = O(1)
-$$
+  T_pior = O(h) = O(3) = O(1)
 
 O tempo de execução no melhor caso (descarte imediato por nível crítico em `L1`) avalia apenas **1 nó de decisão**:
 
