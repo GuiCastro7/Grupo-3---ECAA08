@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etapa 03: Árvores & Simulador da Linha de Envase | SCADA-Core UNIFEI</title>
+  <meta name="description" content="Simulador Interativo da Linha de Engarrafamento e Inspeção de Bebidas, Árvores de Decisão, Behavior Trees e Redes de Petri - Grupo 3 ECAA08 UNIFEI.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌲</text></svg>">
+
+  <!-- MathJax 3 -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+  <!-- BARRA DE NAVEGAÇÃO SUPERIOR -->
+  <header class="scada-navbar">
+    <div class="navbar-container">
+      <div class="brand-group">
+        <div class="brand-icon">⚙️</div>
+        <div class="brand-badge-dual">
+          <span class="badge-segment-title">Engarrafamento e Inspeção de Bebidas</span>
+          <span class="badge-segment-group">Grupo-3---ECAA08</span>
+        </div>
+      </div>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link"><span>🏠</span> Início</a></li>
+          <li><a href="etapa-01-logica.html" class="nav-link"><span>⚡</span> Etapa 01</a></li>
+          <li><a href="etapa-02-grafos.html" class="nav-link"><span>🕸️</span> Etapa 02</a></li>
+          <li><a href="etapa-03-arvores.html" class="nav-link active"><span>🌲</span> Etapa 03: Árvores</a></li>
+          <li><a href="planta-modelo.html" class="nav-link"><span>🏭</span> Planta Modelo</a></li>
+          <li><a href="diretrizes-github.html" class="nav-link"><span>🐙</span> GitHub & 5W2H</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" type="button" aria-label="Alternar tema">
+          <span class="theme-btn-text">🌙 Modo Escuro</span>
+        </button>
+        <button class="mobile-nav-toggle" type="button" aria-label="Abrir menu móvel">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="scada-container">
+
+    <!-- 1. HERO SECTION -->
+    <section class="hero-section">
+      <div class="institution-badge">
+        <span class="live-indicator"></span>
+        <span>UNIFEI · Engenharia de Controle e Automação · ECAA08 (Etapa 03)</span>
+      </div>
+
+      <div>
+        <h1 class="hero-title">
+          Simulador SCADA-Core & Estruturas em Árvore <br>
+          <span class="gradient-text">Linha de Engarrafamento e Inspeção (Etapa 03)</span>
+        </h1>
+        <p class="hero-description">
+          Integração dos conceitos de Matemática Discreta das Aulas 19 a 27 (Árvores Geradoras Mínimas, Huffman, Árvores Binárias, RRT, RSTP, Redes de Petri, <em>Behavior Trees</em> a 50 Hz, KD-Trees e Árvores de Decisão) ao simulador operacional em tempo real da célula de envase, tampagem e inspeção de bebidas.
+        </p>
+      </div>
+
+      <div class="metadata-grid-4">
+        <div class="meta-box-card">
+          <div class="meta-box-icon">👥</div>
+          <div class="meta-box-content">
+            <span class="meta-box-label">Equipe</span>
+            <span class="meta-box-value">Grupo 3 · Linha de Envasamento & Inspeção</span>
+          </div>
+        </div>
+        <div class="meta-box-card">
+          <div class="meta-box-icon">🌲</div>
+          <div class="meta-box-content">
+            <span class="meta-box-label">Fundamentos</span>
+            <span class="meta-box-value">Behavior Trees, Árvores de Decisão & Redes de Petri</span>
+          </div>
+        </div>
+        <div class="meta-box-card">
+          <div class="meta-box-icon">🏭</div>
+          <div class="meta-box-content">
+            <span class="meta-box-label">Ativos Reais</span>
+            <span class="meta-box-value">RC1, TS1, BC1, AS1, VS1–VS5, SL1, AC1, SFC1</span>
+          </div>
+        </div>
+        <div class="meta-box-card">
+          <div class="meta-box-icon">🎯</div>
+          <div class="meta-box-content">
+            <span class="meta-box-label">Escopo</span>
+            <span class="meta-box-value">Aulas 19 a 27 · Simulação & Triagem</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-group-3" style="display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.5rem;">
+        <a href="#simulador" class="btn-cta-primary">
+          <span>🎛️ Ir para o Simulador da Linha</span>
+        </a>
+        <a href="#matematica" class="btn-cta-glass">
+          <span>📐 Lógica Booleana & Behavior Tree</span>
+        </a>
+        <a href="#memorial" class="btn-cta-glass">
+          <span>📖 Memorial Aulas 19 a 27</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 2. SIMULADOR INTERATIVO DA LINHA DE ENGARRAFAMENTO -->
+    <section id="simulador" style="margin: 2.5rem 0;">
+      <div class="section-header">
+        <span class="section-tag">Supervisório Interativo em Tempo Real</span>
+        <h2 class="section-title">Simulador da Linha de Engarrafamento e Inspeção</h2>
+        <p class="section-subtitle">
+          Acompanhe o transporte na esteira <code>RC1</code>, suprimento hidráulico (<code>TS1</code>, <code>BC1</code>, <code>AS1</code>), dosagem (<code>VS2</code>/<code>SQ2</code>), inspeção de nível (<code>SL1</code>), tampagem (<code>AC1</code>), vedação (<code>SFC1</code>) e triagem por Árvore de Decisão.
+        </p>
+      </div>
+
+      <!-- Barra de Controles -->
+      <div class="project-scada-card" style="padding: 1.25rem; margin-bottom: 1.25rem;">
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; justify-content: space-between;">
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+            <button id="env-btn-start" class="btn-cta-primary" type="button" style="padding: 0.55rem 1rem; font-size: 0.88rem;">▶️ Iniciar Linha</button>
+            <button id="env-btn-pause" class="btn-cta-glass" type="button" disabled style="padding: 0.55rem 1rem; font-size: 0.88rem;">⏸️ Pausar</button>
+            <button id="env-btn-reset" class="btn-cta-glass" type="button" style="padding: 0.55rem 1rem; font-size: 0.88rem;">🔄 Reiniciar</button>
+            <button id="env-btn-inject" class="btn-cta-glass" type="button" disabled style="padding: 0.55rem 1rem; font-size: 0.88rem; border-color: var(--cyan-neon); color: var(--cyan-neon);">🍾 Inserir Garrafa</button>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center; font-size: 0.85rem;">
+            <label style="display: flex; align-items: center; gap: 0.45rem; cursor: pointer;">
+              <input type="checkbox" id="env-auto-inject" checked>
+              <span>Auto-alimentação</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.45rem;">
+              <span>Velocidade: <strong id="env-speed-val" class="mono-font" style="color: var(--cyan-neon);">1.0x</strong></span>
+              <input type="range" id="env-speed" min="0.5" max="2.5" step="0.1" value="1.0">
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.45rem;">
+              <span>Taxa de Anomalias: <strong id="env-defect-rate-val" class="mono-font" style="color: var(--amber-warn);">18%</strong></span>
+              <input type="range" id="env-defect-rate" min="0" max="50" step="2" value="18">
+            </label>
+          </div>
+        </div>
+
+        <!-- Injeção de Falhas SIS / Campo -->
+        <div style="margin-top: 1rem; padding-top: 0.9rem; border-top: 1px solid var(--border-subtle); display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
+          <span class="mono-font" style="font-size: 0.8rem; color: var(--text-muted); margin-right: 0.35rem;">Injetar Falha / SIS:</span>
+          <button id="env-fault-estop" class="btn-cta-glass" type="button" style="padding: 0.35rem 0.75rem; font-size: 0.78rem; border-color: var(--crimson-alarm); color: var(--crimson-alarm);">🛑 e_stop</button>
+          <button id="env-fault-sp1" class="btn-cta-glass" type="button" style="padding: 0.35rem 0.75rem; font-size: 0.78rem; border-color: var(--crimson-alarm); color: var(--crimson-alarm);">⚠️ Cavitação SP1 ≤ 1,0</button>
+          <button id="env-fault-sp2" class="btn-cta-glass" type="button" style="padding: 0.35rem 0.75rem; font-size: 0.78rem; border-color: var(--crimson-alarm); color: var(--crimson-alarm);">💥 Sobrepressão SP2 ≥ 4,5</button>
+          <button id="env-fault-vs2" class="btn-cta-glass" type="button" style="padding: 0.35rem 0.75rem; font-size: 0.78rem; border-color: var(--amber-warn); color: var(--amber-warn);">🚰 Obstrução VS2</button>
+          <button id="env-fault-rc1" class="btn-cta-glass" type="button" style="padding: 0.35rem 0.75rem; font-size: 0.78rem; border-color: var(--amber-warn); color: var(--amber-warn);">⚙️ Falha Esteira RC1</button>
+          <button id="env-fault-clear" class="btn-cta-glass" type="button" style="padding: 0.35rem 0.75rem; font-size: 0.78rem; border-color: var(--emerald-ok); color: var(--emerald-ok);">✅ Reset SIS / Limpar Falha</button>
+        </div>
+      </div>
+
+      <!-- Canvas da Planta -->
+      <div class="project-scada-card" style="padding: 0.75rem; margin-bottom: 1.25rem; overflow: hidden;">
+        <canvas id="envasamento-canvas" style="width: 100%; display: block; border-radius: var(--radius-sm);"></canvas>
+      </div>
+
+      <!-- Painéis de Monitoramento SCADA -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem;">
+
+        <!-- Produção e Triagem -->
+        <div class="project-scada-card" style="padding: 1.25rem;">
+          <h3 style="font-size: 1rem; color: var(--cyan-neon); margin-bottom: 0.85rem;">📊 Indicadores de Produção</h3>
+          <ul class="plant-specs-list">
+            <li><span>Garrafas Inseridas:</span> <strong id="env-total" class="mono-font">0</strong></li>
+            <li><span>Processadas (Triagem):</span> <strong id="env-processed" class="mono-font">0</strong></li>
+            <li><span>PROD_APROV (Aprovadas):</span> <strong id="env-approved" class="mono-font" style="color: var(--emerald-ok);">0</strong></li>
+            <li><span>REINSPEÇÃO (Retrabalho):</span> <strong id="env-reinspect" class="mono-font" style="color: var(--amber-warn);">0</strong></li>
+            <li><span>DESCARTE_REJ (Rejeitadas):</span> <strong id="env-rejected" class="mono-font" style="color: var(--crimson-alarm);">0</strong></li>
+            <li><span>Taxa de Aprovação:</span> <strong id="env-approval-rate" class="mono-font">—</strong></li>
+            <li><span>Cadência da Linha:</span> <strong id="env-prod-rate" class="mono-font">—</strong></li>
+          </ul>
+        </div>
+
+        <!-- Telemetria e Ativos -->
+        <div class="project-scada-card" style="padding: 1.25rem;">
+          <h3 style="font-size: 1rem; color: var(--cyan-neon); margin-bottom: 0.85rem;">📡 Variáveis & Estados dos Ativos</h3>
+          <ul class="plant-specs-list">
+            <li><span>Pressão SP1 / SP2:</span> <strong class="mono-font"><span id="env-sp1-val">2.40 Barg</span> / <span id="env-sp2-val">3.80 Barg</span></strong></li>
+            <li><span>Vazão SQ2 / Vel. RC1:</span> <strong class="mono-font"><span id="env-sq2-val">5.2 L/min</span> / <span id="env-rc1-val">0.0 m/s</span></strong></li>
+            <li><span>Esteira RC1:</span> <strong id="env-eq-rc1" class="mono-font">DESLIGADO</strong></li>
+            <li><span>Bomba BC1:</span> <strong id="env-eq-bc1" class="mono-font">DESLIGADO</strong></li>
+            <li><span>Envase VS2:</span> <strong id="env-eq-vs2" class="mono-font">DESLIGADO</strong></li>
+            <li><span>Inspeção SL1 / Capping AC1:</span> <strong class="mono-font"><span id="env-eq-sl1">DESLIGADO</span> / <span id="env-eq-ac1">DESLIGADO</span></strong></li>
+            <li><span>Vedação SFC1:</span> <strong id="env-eq-sfc1" class="mono-font">DESLIGADO</strong></li>
+          </ul>
+        </div>
+
+        <!-- Alarmes e Console -->
+        <div class="project-scada-card" style="padding: 1.25rem;">
+          <h3 style="font-size: 1rem; color: var(--amber-warn); margin-bottom: 0.6rem;">🚨 Alarmes & Log SCADA</h3>
+          <div id="env-alarm-list" style="max-height: 90px; overflow-y: auto; padding: 0.5rem; background: var(--bg-surface); border-radius: var(--radius-sm); margin-bottom: 0.75rem;">
+            <div style="color: var(--text-muted); font-size: 0.8rem;">Nenhum alarme ativo.</div>
+          </div>
+          <div id="env-console-log" style="max-height: 120px; overflow-y: auto; padding: 0.5rem; background: var(--bg-surface); border-radius: var(--radius-sm);"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. PAINEL DE MATEMÁTICA DISCRETA AO VIVO -->
+    <section id="matematica" style="margin: 2.5rem 0;">
+      <div class="section-header">
+        <span class="section-tag">Integração Teoria & Prática</span>
+        <h2 class="section-title">Lógica Proposicional, Behavior Tree & Árvore de Decisão</h2>
+        <p class="section-subtitle">
+          Acompanhe em tempo real qual ramo da <em>Behavior Tree</em> (Aula 25) arbitra o CLP e como a Árvore de Decisão (Aula 27) classifica cada garrafa.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
+        <!-- Behavior Tree (Aula 25) -->
+        <div class="project-scada-card" style="padding: 1.25rem;">
+          <h3 style="font-size: 1.05rem; color: var(--cyan-neon); margin-bottom: 0.75rem;">🌲 Behavior Tree — Arbitragem 50 Hz (Aula 25)</h3>
+          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            O nó raiz <code>Selector [?]</code> avalia da prioridade P1 até P5 com preempção imediata:
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 0.45rem; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;">
+            <div id="bt-node-P1" style="padding: 0.5rem 0.7rem; border: 1px solid var(--border-subtle); border-radius: 6px;">[→] P1: Segurança SIS (e_stop ∨ SP2≥4,5 ∨ SP1≤1,0)</div>
+            <div id="bt-node-P2" style="padding: 0.5rem 0.7rem; border: 1px solid var(--border-subtle); border-radius: 6px;">[→] P2: Obstrução VS2 (VS2=1 ∧ SQ2≤2,0 L/min)</div>
+            <div id="bt-node-P3" style="padding: 0.5rem 0.7rem; border: 1px solid var(--border-subtle); border-radius: 6px;">[→] P3: Pressurização RRT AS1 (SP2 &lt; 3,0 Barg)</div>
+            <div id="bt-node-P4" style="padding: 0.5rem 0.7rem; border: 1px solid var(--border-subtle); border-radius: 6px;">[→] P4: Controle Qualidade (SL1&lt;95% ∨ SFC1=0)</div>
+            <div id="bt-node-P5" style="padding: 0.5rem 0.7rem; border: 1px solid var(--border-subtle); border-radius: 6px;">[→] P5: Envase Nominal (PROD_APROV · RC1 = 0,4 m/s)</div>
+          </div>
+        </div>
+
+        <!-- Árvore de Decisão e Expressão Booleana (Aula 27) -->
+        <div class="project-scada-card" style="padding: 1.25rem;">
+          <h3 style="font-size: 1.05rem; color: var(--emerald-ok); margin-bottom: 0.75rem;">📐 Árvore de Decisão & Lógica da Garrafa (Aula 27)</h3>
+          <div id="env-logic-panel-content"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. MEMORIAL RESUMIDO DAS AULAS 19 A 27 -->
+    <section id="memorial" style="margin: 3.5rem 0;">
+      <div class="section-header">
+        <span class="section-tag">Memorial Técnico</span>
+        <h2 class="section-title">Conceitos de Matemática Discreta Aplicados (Aulas 19 a 27)</h2>
+        <p class="section-subtitle">
+          Síntese das estruturas em árvore desenvolvidas pelo Grupo 3 nos cadernos da pasta <code>etapa-03-arvores/</code>.
+        </p>
+      </div>
+
+      <div class="plant-overview-grid">
+        <div class="plant-card">
+          <div class="plant-card-header">
+            <span class="plant-tag">Aulas 19, 20 e 23</span>
+            <span class="plant-icon">🌐</span>
+          </div>
+          <h3 class="plant-card-title">Infraestrutura, Huffman & RSTP</h3>
+          <p class="plant-card-desc">
+            Árvores Geradoras Mínimas (Kruskal/Prim) para cabeamento da planta, codificação de Huffman para telemetria dos sensores e RSTP (IEEE 802.1w) para redundância sem loops de rede.
+          </p>
+        </div>
+
+        <div class="plant-card">
+          <div class="plant-card-header">
+            <span class="plant-tag">Aulas 21, 22 e 24</span>
+            <span class="plant-icon">🔄</span>
+          </div>
+          <h3 class="plant-card-title">Árvores Binárias, RRT & Redes de Petri</h3>
+          <p class="plant-card-desc">
+            Árvore de Atingibilidade e Cobertura ($\omega$) em Redes de Petri provando ausência de deadlock e bloqueio mútuo entre pressurização de <code>AS1</code>, dosagem <code>VS2</code> e acúmulo na esteira <code>RC1</code>.
+          </p>
+        </div>
+
+        <div class="plant-card">
+          <div class="plant-card-header">
+            <span class="plant-tag">Aulas 25, 26 e 27</span>
+            <span class="plant-icon">🌲</span>
+          </div>
+          <h3 class="plant-card-title">Behavior Trees, KD-Trees & Decisão</h3>
+          <p class="plant-card-desc">
+            Arbitragem reativa por Behavior Tree a 50 Hz (P1..P5) e Árvore de Decisão determinística $\mathcal{T}$ particionando as garrafas em <code>PROD_APROV</code>, <code>REINSPECAO</code> e <code>DESCARTE_REJ</code>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ SCADA -->
+  <footer class="scada-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="brand-group">
+          <div class="brand-icon">⚡</div>
+          <div class="brand-badge-dual">
+            <span class="badge-segment-title">SCADA-Core UNIFEI</span>
+            <span class="badge-segment-group">Grupo-3---ECAA08</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          Universidade Federal de Itajubá (UNIFEI) · Campus Itajubá - MG.<br>
+          Instituto de Engenharia de Sistemas e Tecnologias da Informação (IESTI).<br>
+          Desenvolvido para a disciplina de Automática (ECAA08) - Etapa 03: Árvores & Simulador.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Navegação Rápida</div>
+        <ul class="footer-links">
+          <li><a href="../index.html">🏠 Página Inicial</a></li>
+          <li><a href="etapa-01-logica.html">⚡ Etapa 01 - Lógica Formal & Simulador</a></li>
+          <li><a href="etapa-02-grafos.html">🕸️ Etapa 02 - Grafos & Roteamento SCADA</a></li>
+          <li><a href="etapa-03-arvores.html">🌲 Etapa 03 - Árvores & Simulador Envase</a></li>
+          <li><a href="planta-modelo.html">🏭 Planta Modelo & P&ID</a></li>
+          <li><a href="diretrizes-github.html">🐙 Diretrizes GitHub & 5W2H</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Equipe Grupo 3</div>
+        <ul class="footer-links">
+          <li><span>Guilherme Narciso Castro Silva</span></li>
+          <li><span>Rafael Ribeiro Guedes</span></li>
+          <li><span>Matheus F. de O. Agostinho</span></li>
+          <li><span>Nickolas Nicoleto Musico</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Grupo 3 - ECAA08 - UNIFEI. Licença de uso acadêmico.</div>
+      <div>SCADA-Core Etapa 03 · Compatível com GitHub Pages</div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/etapa-03-simulator.js"></script>
+</body>
+</html>
