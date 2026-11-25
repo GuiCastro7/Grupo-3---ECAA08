@@ -216,15 +216,15 @@ graph TD
 
 A tabela a seguir consolida o percurso de cada folha, sua expressão booleana conjuntiva, a decisão operacional atribuída e os comandos de saída sobre os atuadores da linha de bebidas:
 
-| Folha ($\ell$) | Caminho ($\pi(r, \ell)$) | Expressão Conjuntiva ($\mathcal{R}_\ell(\mathbf{x})$) | Decisão ($\phi_L(\ell)$) | Ação nos Atuadores (`RC1`, Pistões, Alarmes) | Justificativa Técnica de Engenharia |
+| Folha ($\ell$) | Caminho ($\pi(r,\ell)$) | Expressão Conjuntiva ($R_\ell(x)$) | Decisão ($\phi_L(\ell)$) | Ação nos Atuadores (`RC1`, Pistões, Alarmes) | Justificativa Técnica de Engenharia |
 | :---: | :---: | :--- | :---: | :--- | :--- |
-| **$L_1$** | $(u_0)$ | $\text{SL1} < 85\% \lor \text{SQ2} < 1{,}5$ | `DESCARTE_REJ` | Pistão Ejetor 1 = ATIVO, `RC1` = $0{,}4\text{ m/s}$, Alarme = Nível Crítico | Volume severamente abaixo do padrão metrológico ou vazamento por trinca plástica. |
-| **$L_2$** | $(u_0, u_1)$ | $(85\% \le \text{SL1} < 95\%) \land (\text{SQ2} \ge 2{,}0)$ | `REINSPECAO` | Defletor Pulmão = ATIVO, `RC1` = $0{,}2\text{ m/s}$, Alarme = Aviso Espuma | O bico injetou volume nominal; a medição de nível foi atenuada por espuma. Reavaliação após decantação. |
-| **$L_3$** | $(u_0, u_1)$ | $(85\% \le \text{SL1} < 95\%) \land (\text{SQ2} < 2{,}0)$ | `DESCARTE_REJ` | Pistão Ejetor 1 = ATIVO, `RC1` = $0{,}4\text{ m/s}$, Alarme = Falha Dosagem | A baixa vazão comprova subdosagem real. A garrafa não atinge a tolerância legal do Inmetro. |
-| **$L_4$** | $(u_0, u_2, u_3)$ | $(\text{SL1} \ge 95\%) \land (\text{SQ2} > 8{,}0) \land (\text{SFC1} = 0)$ | `DESCARTE_REJ` | Pistão Ejetor 2 = ATIVO, `RC1` = $0{,}4\text{ m/s}$, Alarme = Transbordo Grave | Transbordo de xarope sobre gargalo desprovido de tampa provoca contaminação bacteriana externa irrecuperável. |
-| **$L_5$** | $(u_0, u_2, u_3)$ | $(\text{SL1} \ge 95\%) \land (\text{SQ2} > 8{,}0) \land (\text{SFC1} = 1)$ | `REINSPECAO` | Defletor Lavagem = ATIVO, `RC1` = $0{,}2\text{ m/s}$, Alarme = Aviso Higiene | A selagem foi concluída com sucesso, mas o fluido extravasado exige lavagem externa de carcaça e conferência. |
-| **$L_6$** | $(u_0, u_2, u_4)$ | $(\text{SL1} \ge 95\%) \land (2{,}0 \le \text{SQ2} \le 8{,}0) \land (\text{SFC1} = 1)$ | `PROD_APROV` | Esteira `RC1` = $0{,}4\text{ m/s}$ (Livre para Paletizadora), Alarme = NENHUM | Garrafa $100\%$ conforme em volume e vedação mecânica. |
-| **$L_7$** | $(u_0, u_2, u_4)$ | $(\text{SL1} \ge 95\%) \land (2{,}0 \le \text{SQ2} \le 8{,}0) \land (\text{SFC1} = 0)$ | `REINSPECAO` | Defletor Capping = ATIVO, `RC1` = $0{,}2\text{ m/s}$, Alarme = Aviso Tampa | O fluido envasado é nobre e está intacto; apenas a tampa ausente precisa ser colocada pelo cabeçote `AC1`. |
+| **$L_1$** | $(u_0)$ | $SL1 < 85\% \lor SQ2 < 1{,}5$ | `DESCARTE_REJ` | Pistão Ejetor 1 = ATIVO, `RC1` = $0{,}4$ m/s, Alarme = Nível Crítico | Volume severamente abaixo do padrão metrológico ou vazamento por trinca plástica. |
+| **$L_2$** | $(u_0,u_1)$ | $(85\% \leq SL1 < 95\%) \land (SQ2 \geq 2{,}0)$ | `REINSPECAO` | Defletor Pulmão = ATIVO, `RC1` = $0{,}2$ m/s, Alarme = Aviso Espuma | O bico injetou volume nominal; a medição de nível foi atenuada por espuma. Reavaliação após decantação. |
+| **$L_3$** | $(u_0,u_1)$ | $(85\% \leq SL1 < 95\%) \land (SQ2 < 2{,}0)$ | `DESCARTE_REJ` | Pistão Ejetor 1 = ATIVO, `RC1` = $0{,}4$ m/s, Alarme = Falha Dosagem | A baixa vazão comprova subdosagem real. A garrafa não atinge a tolerância legal do Inmetro. |
+| **$L_4$** | $(u_0,u_2,u_3)$ | $(SL1 \geq 95\%) \land (SQ2 > 8{,}0) \land (SFC1 = 0)$ | `DESCARTE_REJ` | Pistão Ejetor 2 = ATIVO, `RC1` = $0{,}4$ m/s, Alarme = Transbordo Grave | Transbordo de xarope sobre gargalo desprovido de tampa provoca contaminação bacteriana externa irrecuperável. |
+| **$L_5$** | $(u_0,u_2,u_3)$ | $(SL1 \geq 95\%) \land (SQ2 > 8{,}0) \land (SFC1 = 1)$ | `REINSPECAO` | Defletor Lavagem = ATIVO, `RC1` = $0{,}2$ m/s, Alarme = Aviso Higiene | A selagem foi concluída com sucesso, mas o fluido extravasado exige lavagem externa de carcaça e conferência. |
+| **$L_6$** | $(u_0,u_2,u_4)$ | $(SL1 \geq 95\%) \land (2{,}0 \leq SQ2 \leq 8{,}0) \land (SFC1 = 1)$ | `PROD_APROV` | Esteira `RC1` = $0{,}4$ m/s (Livre para Paletizadora), Alarme = NENHUM | Garrafa $100\%$ conforme em volume e vedação mecânica. |
+| **$L_7$** | $(u_0,u_2,u_4)$ | $(SL1 \geq 95\%) \land (2{,}0 \leq SQ2 \leq 8{,}0) \land (SFC1 = 0)$ | `REINSPECAO` | Defletor Capping = ATIVO, `RC1` = $0{,}2$ m/s, Alarme = Aviso Tampa | O fluido envasado é nobre e está intacto; apenas a tampa ausente precisa ser colocada pelo cabeçote `AC1`. |
 
 ---
 
