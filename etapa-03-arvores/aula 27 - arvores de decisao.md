@@ -234,7 +234,7 @@ Nesta seção, estabelecemos a distinção rigorosa entre as propriedades univer
 
 ### 5.1. Teorema das Arestas em Árvores Gerais
 
-**Teorema 1:** *Qualquer árvore (ou arborescência) finita $T = (V, E)$ contendo $|V| = N$ vértices possui exatamente $|E| = N - 1$ arestas.*
+**Teorema 1:** *Qualquer árvore (ou arborescência) finita T = (V, E), contendo N vértices, possui exatamente N − 1 arestas.*
 
 *Demonstração:* Na arborescência, por definição, todo vértice $v \in V \setminus \{r\}$ possui grau de entrada exatamente igual a 1 ($\text{grau}^-(v) = 1$), enquanto a raiz possui $\text{grau}^-(r) = 0$. Como cada aresta contribui com exatamente uma unidade para o grau de entrada de algum vértice:
 $$|E| = \sum_{v \in V} \text{grau}^-(v) = \text{grau}^-(r) + \sum_{v \in V \setminus \{r\}} \text{grau}^-(v) = 0 + \sum_{v \in V \setminus \{r\}} 1 = |V| - 1 \quad \blacksquare$$
