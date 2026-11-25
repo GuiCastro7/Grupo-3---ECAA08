@@ -252,7 +252,7 @@ Existe uma confusão conceitual comum que deve ser explicitamente evitada em eng
 1. **Árvores $m$-árias Estritas (Cheias):**
    Em uma árvore onde *todo* nó interno possui exatamente $m$ filhos ($\text{grau}^+(u) = m$ para todo $u \in V_I$), a contagem total de arestas que saem dos nós internos é $m \cdot |V_I|$. Como $|E| = |V| - 1$ e $|V| = |V_I| + |V_L|$:
    $$m \cdot |V_I| = (|V_I| + |V_L|) - 1 \implies |V_L| = (m - 1)|V_I| + 1$$
-   *Caso Particular — Árvore Binária Estrita ($m = 2$):*
+   *Caso Particular — Árvore Binária Estrita (m = 2):*
    $$|V_L| = (2 - 1)|V_I| + 1 = |V_I| + 1$$
    O número de folhas é sempre igual ao número de nós internos mais um.
 
@@ -290,9 +290,15 @@ Existe uma confusão conceitual comum que deve ser explicitamente evitada em eng
 * **Complexidade Assintótica de Pior Caso:**
   Para avaliar o estado de qualquer garrafa que entra na estação de inspeção, o algoritmo do CLP percorre exatamente um caminho direcionado da raiz até uma folha.
   O tempo de execução no pior caso é proporcional à altura da árvore:
-  $$\mathcal{T}_{\text{pior}} = \mathcal{O}(h) = \mathcal{O}(3) = \mathcal{O}(1)$$
-  O tempo de execução no melhor caso (descarte imediato por nível crítico em $L_1$) avalia apenas $1$ nó de decisão:
-  $$\mathcal{T}_{\text{melhor}} = 1 \text{ avaliação}$$
+  $$
+T_{pior} = O(h) = O(3) = O(1)
+$$
+
+O tempo de execução no melhor caso (descarte imediato por nível crítico em `L1`) avalia apenas **1 nó de decisão**:
+
+$$
+T_{melhor} = 1 \text{ avaliação}
+$$
 
 ### 5.4. Comparação: Árvore de Decisão vs. Tabela-Verdade Combinatória
 
