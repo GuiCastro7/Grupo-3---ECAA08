@@ -216,7 +216,7 @@ graph TD
 
 A tabela a seguir consolida o percurso de cada folha, sua expressão booleana conjuntiva, a decisão operacional atribuída e os comandos de saída sobre os atuadores da linha de bebidas:
 
-| Folha ($\ell$) | Caminho ($\pi(r,\ell)$) | Expressão Conjuntiva ($R_\ell(x)$) | Decisão ($\phi_L(\ell)$) | Ação nos Atuadores (`RC1`, Pistões, Alarmes) | Justificativa Técnica de Engenharia |
+| Folha (ℓ) | Caminho (π(r, ℓ)) | Expressão Conjuntiva (Rℓ(x)) | Decisão (φL(ℓ)) | Ação nos Atuadores (`RC1`, Pistões, Alarmes) | Justificativa Técnica de Engenharia |
 | :---: | :---: | :--- | :---: | :--- | :--- |
 | **$L_1$** | $(u_0)$ | $SL1 < 85\% \lor SQ2 < 1{,}5$ | `DESCARTE_REJ` | Pistão Ejetor 1 = ATIVO, `RC1` = $0{,}4$ m/s, Alarme = Nível Crítico | Volume severamente abaixo do padrão metrológico ou vazamento por trinca plástica. |
 | **$L_2$** | $(u_0,u_1)$ | $(85\% \leq SL1 < 95\%) \land (SQ2 \geq 2{,}0)$ | `REINSPECAO` | Defletor Pulmão = ATIVO, `RC1` = $0{,}2$ m/s, Alarme = Aviso Espuma | O bico injetou volume nominal; a medição de nível foi atenuada por espuma. Reavaliação após decantação. |
