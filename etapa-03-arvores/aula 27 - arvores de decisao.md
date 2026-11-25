@@ -93,7 +93,7 @@ Onde:
 * $\mathcal{X}$ é o **espaço de estados de atributos** do produto inspecionado, definido pelas medições dos sensores da linha de bebidas:
   $$\mathbf{x} = \big( \text{SL1}, \text{SQ2}, \text{SFC1}, \text{SP2} \big) \in \mathcal{X} \subseteq \mathbb{R}_{\ge 0} \times \mathbb{R}_{\ge 0} \times \{0, 1\} \times \mathbb{R}_{\ge 0}$$
 * $\mathcal{P} = \{P_1, P_2, \dots, P_k\}$ é o conjunto de predicados de teste baseados nas grandezas de engenharia;
-* $\mathcal{D} = \{\texttt{PROD\_APROV}, \; \texttt{DESCARTE\_REJ}, \; \texttt{REINSPECAO}\}$ é o conjunto finito de decisões operacionais possíveis no SCADA;
+* $D = \{PROD\_APROV,\; DESCARTE\_REJ,\; REINSPECAO\}$ é o conjunto finito de decisões operacionais possíveis no SCADA;
 * $\phi_V: V_I \to \mathcal{P}$ é a função que associa a cada nó interno de decisão o predicado a ser inspecionado;
 * $\phi_E: E \to \mathcal{C}$ é a função que rotula cada aresta $(u, v) \in E$ com a condição lógica (resultado do teste) que habilita a transição de $u$ para o filho $v$;
 * $\phi_L: V_L \to \mathcal{D}$ é a função que mapeia univocamente cada nó folha a uma decisão operacional final.
